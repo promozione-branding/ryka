@@ -50,7 +50,7 @@ export default function PublicRestroomProducts() {
         <div className="text-center mb-3 md:mb-8">
 
           <h2 className="text-[36px] sm:text-[48px] md:text-[64px] lg:text-[68px] font-semibold text-black leading-[1.05] tracking-[-2px]">
-            Public Restroom Partitions
+            Kids Restroom Partitions
           </h2>
 
           <p className="text-[13px] md:text-[15px] text-[#242424] mt-4 max-w-[1000px] mx-auto leading-6">
