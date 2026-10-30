@@ -4,7 +4,7 @@ import Categories from "../components/Categories";
 import Applications from "../components/Applications";
 import Transformation from "../components/Transformation";
 import Products from "../components/Products";
-import Process from "../components/Process";
+import Process from "../components/Before";
 import Testimonials from "../components/Testimonials";
 import Counter from "@/components/Counter";
 import ShadeSelector from "@/components/ShadeSelector";
@@ -22,10 +22,12 @@ export default function Home() {
       <ShadeSelector/>
       <WhyRyka/>
       <Applications />
+         <Process />
       <Transformation />
-      <Products />
-      <Process />
-      <Testimonials />
+   
+    { /* <Products />
+      
+      <Testimonials /> */}
     </>
   );
 }

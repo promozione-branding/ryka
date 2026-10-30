@@ -29,9 +29,16 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-titillium), sans-serif;
+  font-family: var(--font-playfair), serif;
 }
 
+.font-playfair {
+  font-family: var(--font-playfair), serif;
+}
+
+.font-raleway {
+  font-family: var(--font-raleway), sans-serif;
+}
 html {
   scroll-behavior: smooth;
 }
