@@ -1,9 +1,10 @@
+
 "use client";
 
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X, Search } from "lucide-react";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -15,60 +16,61 @@ export default function Header() {
     { name: "Compact Laminate", href: "/compact-laminate" },
   ];
 
-  return (
-    <header className="absolute left-0 top-0 z-50 w-full bg-transparent">
-      <div className="relative flex h-[90px] w-full items-center justify-between border-b border-white/20 px-4 md:px-6">
+  const closeMenu = () => {
+    setMenuOpen(false);
+    setSolutionsOpen(false);
+  };
 
-        {/* LEFT: LOGO */}
-        <Link
-          href="/"
-          aria-label="RYKA Restroom Cubicles home"
-          className="relative z-10 flex h-full shrink-0 items-center"
-        >
+  return (
+    <header className="fixed top-0 left-0 z-[9999] w-full text-white">
+<div className="flex h-[65px] lg:h-[75px] items-center px-5 sm:px-8 lg:px-12">
+
+        {/* LOGO */}
+        <Link href="/" className="flex shrink-0 items-center gap-5">
           <Image
             src="/logo-10 (2).webp"
             alt="RYKA Restroom Cubicles"
-            width={200}
-            height={82}
+            width={270}
+            height={90}
             priority
-            className="h-auto w-[175px] object-contain md:w-[200px]"
+          className="w-[135px] sm:w-[160px] lg:w-[200px] h-auto object-contain mt-7 mb-3"
           />
+
+          <span className="hidden lg:block h-10 w-px bg-white/40" />
         </Link>
 
-        {/* CENTER: DESKTOP NAVIGATION */}
-        <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-10 text-[16px] font-medium uppercase text-white md:flex">
+        {/* DESKTOP NAVIGATION */}
+        <nav className="hidden lg:flex items-center gap-12 ml-16">
+
           <Link
             href="/"
-            className="transition-opacity hover:opacity-70"
+            className="relative py-3 text-sm font-semibold uppercase tracking-wide after:absolute after:bottom-0 after:left-0 after:h-[3px] after:w-full after:bg-[#FFA21A]"
           >
             Home
           </Link>
 
-          {/* SOLUTIONS DROPDOWN */}
           <div className="relative">
             <button
-              type="button"
               onClick={() => setSolutionsOpen(!solutionsOpen)}
-              aria-expanded={solutionsOpen}
-              className="flex items-center gap-1.5 transition-opacity hover:opacity-70"
+              className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wide hover:text-[#FFA21A] transition-colors"
             >
               Solutions
               <ChevronDown
-                size={14}
-                className={`transition-transform duration-200 ${
+                size={16}
+                className={`transition-transform ${
                   solutionsOpen ? "rotate-180" : ""
                 }`}
               />
             </button>
 
             {solutionsOpen && (
-              <div className="absolute left-0 top-full mt-5 min-w-[230px] border border-white/15 bg-black/90 py-2 text-sm normal-case shadow-xl backdrop-blur-md">
+              <div className="absolute left-0 top-full mt-5 w-64 overflow-hidden rounded-xl border border-white/15 bg-[#101820]/95 py-2 shadow-2xl backdrop-blur-xl">
                 {solutions.map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
                     onClick={() => setSolutionsOpen(false)}
-                    className="block px-5 py-3 text-white transition-colors hover:bg-white/10"
+                    className="block px-5 py-3 text-sm hover:bg-white/10 hover:text-[#FFA21A] transition-colors"
                   >
                     {item.name}
                   </Link>
@@ -79,87 +81,72 @@ export default function Header() {
 
           <Link
             href="/contact"
-            className="transition-opacity hover:opacity-70"
+            className="text-sm font-semibold uppercase tracking-wide hover:text-[#FFA21A] transition-colors"
           >
             Contacts
           </Link>
         </nav>
 
-        {/* RIGHT: ICON + HAMBURGER */}
-        <div className="relative z-10 ml-auto flex items-center gap-6">
+        {/* RIGHT ACTIONS */}
+        <div className="ml-auto flex items-center gap-5 lg:gap-7">
+
           <Link
-            href="/"
-            aria-label="RYKA website"
-            className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border-2 border-white bg-white"
+            href="/search"
+            aria-label="Search"
+            className="flex h-12 w-12 items-center justify-center rounded-full border border-white/50 bg-black/30 backdrop-blur-sm hover:bg-[#FFA21A] hover:border-[#FFA21A] transition-all"
           >
-            <Image
-              src="/logoes.webp"
-              alt="RYKA icon"
-              width={36}
-              height={36}
-              className="h-full w-full object-contain"
-            />
+            <Search size={26} />
           </Link>
 
           <button
-            type="button"
             onClick={() => setMenuOpen(!menuOpen)}
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
-            aria-expanded={menuOpen}
-            className="text-white transition-opacity hover:opacity-70"
+            aria-label="Toggle menu"
+            className="text-white hover:text-[#FFA21A] transition-colors"
           >
-            {menuOpen ? (
-              <X size={30} strokeWidth={2.5} />
-            ) : (
-              <Menu size={30} strokeWidth={2.5} />
-            )}
+            {menuOpen ? <X size={34} /> : <Menu size={34} />}
           </button>
         </div>
       </div>
 
-      {/* HAMBURGER MENU PANEL */}
+      {/* HAMBURGER PANEL */}
       {menuOpen && (
-        <div className="absolute right-0 top-full w-full border-t border-white/15 bg-black/90 px-6 py-5 text-white shadow-xl backdrop-blur-md md:w-[320px]">
-          <nav className="flex flex-col text-sm uppercase">
+        <div className="absolute right-0 top-full w-full sm:w-[350px] border border-white/10 bg-[#0B1118]/95 px-7 py-6 shadow-2xl backdrop-blur-xl">
+          <nav className="flex flex-col">
+
             <Link
               href="/"
-              onClick={() => setMenuOpen(false)}
-              className="border-b border-white/10 py-4"
+              onClick={closeMenu}
+              className="border-b border-white/10 py-4 text-sm uppercase"
             >
               Home
             </Link>
 
             <button
-              type="button"
               onClick={() => setSolutionsOpen(!solutionsOpen)}
-              className="flex items-center justify-between border-b border-white/10 py-4 text-left"
+              className="flex justify-between border-b border-white/10 py-4 text-sm uppercase"
             >
               Solutions
               <ChevronDown
-                size={16}
+                size={17}
                 className={solutionsOpen ? "rotate-180" : ""}
               />
             </button>
 
-            {solutionsOpen &&
-              solutions.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => {
-                    setMenuOpen(false);
-                    setSolutionsOpen(false);
-                  }}
-                  className="py-3 pl-4 text-white/75 hover:text-white"
-                >
-                  {item.name}
-                </Link>
-              ))}
+            {solutionsOpen && solutions.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={closeMenu}
+                className="py-3 pl-4 text-sm text-white/70 hover:text-[#FFA21A]"
+              >
+                {item.name}
+              </Link>
+            ))}
 
             <Link
               href="/contact"
-              onClick={() => setMenuOpen(false)}
-              className="py-4"
+              onClick={closeMenu}
+              className="py-4 text-sm uppercase"
             >
               Contacts
             </Link>
