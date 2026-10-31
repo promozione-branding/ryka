@@ -34,7 +34,8 @@ export default function AboutUs() {
   return (
     <section
       id="about"
-      className="relative overflow-hidden bg-[#f5f5f7] px-5 py-16 md:px-8 lg:min-h-[760px] lg:px-7 lg:py-20"
+      className="relative overflow-hidden bg-[#f5f5f7] px-5 py-12 
+      md:px-8 lg:min-h-[760px] lg:px-7 lg:py-14"
     >
       {/* Subtle vertical lines like the reference */}
       <div className="pointer-events-none absolute inset-y-0 left-[6.3%] w-px bg-black/[0.07]" />

@@ -15,7 +15,7 @@ const applications = [
 
 export default function Applications() {
   return (
-    <section className="py-20 lg:py-28 bg-white">
+    <section className="py-13 lg:py-15 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
           <p className="text-teal-700 font-semibold tracking-widest text-sm uppercase mb-3">

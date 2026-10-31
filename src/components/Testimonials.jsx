@@ -1,78 +1,139 @@
+
 "use client";
 
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const testimonials = [
   {
-    text: "When upgrading restrooms at K. R. Mangalam University, we needed a reliable partner. Choosing Grand and Canvas EVO cubicles was the right decision, delivering quality, professionalism, and timely execution.",
-    author: "K. R. Mangalam University",
-  },
-  {
     text: "Despite tight deadlines, the Carlton Prime cubicles were delivered and installed with precision. The team demonstrated excellent workmanship, professionalism, and a commitment to high standards.",
-    author: "Commercial Client",
+    brand: "zudio",
+    brandClass: "text-black text-[30px] font-black tracking-tight",
   },
   {
-    text: "Ryka's Carlton Prime doors streamlined our mall renovation with no wet work, minimal disruption, and significant time saved. The upgrade made our restrooms feel modern, clean, and more premium to visitors.",
-    author: "Mall Renovation Project",
+    text: "Ryka’s Carlton Prime doors streamlined our mall renovation with no wet work, minimal disruption, and significant time saved. The upgrade made our restrooms feel modern, clean, and more premium to visitors.",
+    brand: "cinépolis",
+    brandClass: "text-[#18266B] text-[29px] font-extrabold tracking-tight",
   },
   {
-    text: "Thanks to Ryka, our hotel restrooms now reflect modern luxury. Guests often compliment the sleek, clean design—an upgrade that has elevated the overall experience.",
-    author: "Hotel Group",
-  },
-  {
-    text: "The Frisking Booths installed at DMRC offer outstanding durability and performance. Built to withstand heavy usage, they reflect quality engineering and robust construction.",
-    author: "Delhi Metro Rail Corporation",
-  },
-  {
-    text: "Carlton Pristine was installed at our Uno Minda facility on time. The quick, hassle-free installation and clean, high-quality finish showed true professionalism.",
-    author: "Uno Minda",
+    text: "Thanks to Ryka, our hotel restrooms now reflect modern luxury. Guests often compliment the sleek, clean design—an upgrade that has elevated the overall experience and enhanced our amenities significantly.",
+    brand: "ClubMahindra",
+    brandClass: "text-black text-[19px] font-semibold tracking-tight",
   },
 ];
 
 export default function Testimonials() {
-  const [active, setActive] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const nextSlide = () => {
+    setActiveIndex((prev) => (prev + 1) % testimonials.length);
+  };
+
+  const prevSlide = () => {
+    setActiveIndex(
+      (prev) => (prev - 1 + testimonials.length) % testimonials.length
+    );
+  };
+
+  const visibleTestimonials = [
+    ...testimonials.slice(activeIndex),
+    ...testimonials.slice(0, activeIndex),
+  ];
 
   return (
-    <section className="py-20 lg:py-28 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-14">
-          <p className="text-teal-700 font-semibold tracking-widest text-sm uppercase mb-3">
+    <section className="relative w-full overflow-hidden bg-[#fafafa] py-10 sm:py-12 lg:py-14">
+      {/* Subtle Grid Background */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-60"
+        style={{
+          backgroundImage: `
+            linear-gradient(#e9e9e9 1px, transparent 1px),
+            linear-gradient(90deg, #e9e9e9 1px, transparent 1px)
+          `,
+          backgroundSize: "10px 10px",
+        }}
+      />
+
+      <div className="relative z-10 mx-auto w-full max-w-[1400px] px-5 sm:px-10 lg:px-16">
+
+        {/* Heading */}
+        <div className="mb-10 sm:mb-12 text-center">
+          <h2 className="text-[38px] leading-tight font-bold text-[#191919] sm:text-[48px] lg:text-[60px]">
             Testimonials
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
-            What Our Clients Say
           </h2>
+
+          <div className="mx-auto mt-4 w-[65px] border-b-2 border-dotted border-black" />
         </div>
 
-        <div className="max-w-3xl mx-auto">
-          <div className="bg-gray-50 rounded-2xl p-8 sm:p-12 relative">
-            <svg
-              className="absolute top-6 left-6 w-10 h-10 text-teal-200"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-            </svg>
-            <p className="text-lg text-gray-700 leading-relaxed mb-6 relative z-10 pt-4">
-              {testimonials[active].text}
-            </p>
-            <p className="font-semibold text-teal-800">
-              — {testimonials[active].author}
-            </p>
-          </div>
+        {/* Cards and Navigation */}
+        <div className="relative">
 
-          <div className="flex justify-center gap-2 mt-6">
-            {testimonials.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setActive(i)}
-                className={`w-2.5 h-2.5 rounded-full transition-all ${
-                  i === active ? "bg-teal-700 w-6" : "bg-gray-300"
-                }`}
-                aria-label={`Testimonial ${i + 1}`}
-              />
+          {/* Previous Button */}
+          <button
+            onClick={prevSlide}
+            aria-label="Previous testimonials"
+            className="absolute -left-3 sm:-left-7 lg:-left-9 top-1/2 z-20 flex -translate-y-1/2 items-center justify-center text-black transition-transform duration-300 hover:-translate-x-1"
+          >
+            <ChevronLeft size={34} strokeWidth={3} />
+          </button>
+
+          {/* Testimonial Cards */}
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-3 md:gap-[18px]">
+            {visibleTestimonials.map((item, index) => (
+              <AnimatePresence mode="wait" key={`${item.brand}-${activeIndex}`}>
+                <motion.div
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.4,
+                    delay: index * 0.08,
+                    ease: "easeOut",
+                  }}
+                  className={`flex min-h-[370px] flex-col items-center justify-between rounded-[25px] border border-[#777] bg-[#fafafa]/90 px-6 py-8 sm:min-h-[390px] sm:px-7 sm:py-8 lg:min-h-[405px] lg:px-7 lg:py-8 ${
+                    index > 0 ? "hidden md:flex" : "flex"
+                  }`}
+                >
+                  {/* Testimonial Text */}
+                  <p className="w-full text-center text-[16px] italic leading-[1.85] text-[#252525] sm:text-[17px] lg:text-[18px]">
+                    {item.text}
+                  </p>
+
+                  {/* Brand Name */}
+                  <div className="mt-8 flex min-h-[55px] w-full items-center justify-center">
+                    <span className={item.brandClass}>
+                      {item.brand}
+                    </span>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
             ))}
           </div>
+
+          {/* Next Button */}
+          <button
+            onClick={nextSlide}
+            aria-label="Next testimonials"
+            className="absolute -right-3 sm:-right-7 lg:-right-9 top-1/2 z-20 flex -translate-y-1/2 items-center justify-center text-black transition-transform duration-300 hover:translate-x-1"
+          >
+            <ChevronRight size={34} strokeWidth={3} />
+          </button>
+        </div>
+
+        {/* Pagination Dots */}
+        <div className="mt-7 flex items-center justify-center gap-2">
+          {testimonials.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setActiveIndex(index)}
+              aria-label={`Go to testimonial ${index + 1}`}
+              className={`h-[7px] rounded-full transition-all duration-300 ${
+                activeIndex === index
+                  ? "w-7 bg-black"
+                  : "w-[7px] bg-black/30 hover:bg-black/60"
+              }`}
+            />
+          ))}
         </div>
       </div>
     </section>

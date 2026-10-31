@@ -140,9 +140,10 @@ export default function Hero() {
 
       {/* ORANGE DECORATION */}
 
-      <div className="pointer-events-none absolute left-0 top-0 z-0 h-32 w-32 rounded-tl-[90px] border-l-[8px] border-t-[8px] border-[#FFA21A]" />
+      <div className="pointer-events-none absolute left-0 top-0 z-0 h-32 w-32 rounded-tl-[90px] border-l-[8px] border-t-[8px] border-white" />
 
-      <div className="pointer-events-none absolute bottom-20 right-0 z-0 h-32 w-40 rounded-br-[100px] border-b-[8px] border-r-[8px] border-[#FFA21A]" />
+      <div className="pointer-events-none absolute bottom-20 right-0 z-0 h-32 w-40 rounded-br-[100px] border-b-[8px] 
+      border-r-[8px] border-white" />
 
       {/* MAIN CONTENT */}
 
@@ -217,7 +218,7 @@ export default function Hero() {
                   <a
                     key={social}
                     href="#"
-                    className="rotate-180 text-[10px] font-semibold tracking-widest text-white transition-colors hover:text-[#FFA21A] sm:text-xs"
+                    className="rotate-180 text-[10px] font-semibold tracking-widest text-white transition-colors hover:text-white sm:text-xs"
                     style={{
                       writingMode: "vertical-rl",
                     }}
@@ -275,7 +276,7 @@ export default function Hero() {
 
                   <Link
                     href="/public-restroom-partitions"
-                    className="mt-8 inline-flex items-center justify-center border border-white px-9 py-4 text-xs font-semibold tracking-wider text-white transition-all duration-300 hover:bg-[#FFA21A] hover:text-black"
+                    className="mt-8 inline-flex items-center justify-center border border-white px-9 py-4 text-xs font-semibold tracking-wider text-white transition-all duration-300 hover:bg-white hover:text-black"
                   >
                     VIEW MORE
                   </Link>
@@ -320,7 +321,7 @@ export default function Hero() {
                   aria-label={`Go to slide ${index + 1}`}
                   className={`h-[7px] rounded-full transition-all duration-500 ${
                     current === index
-                      ? "w-12 bg-[#FFA21A]"
+                      ? "w-12 bg-black"
                       : "w-8 bg-white/50 hover:bg-white"
                   }`}
                 />
@@ -348,7 +349,7 @@ export default function Hero() {
             className="hidden rounded-[25px] border border-white/40 bg-[#07111d]/85 p-5 text-white shadow-2xl backdrop-blur-md md:block lg:mt-8 lg:self-start xl:p-6"
           >
 
-            <h2 className="text-3xl font-bold text-[#FFA21A]">
+            <h2 className="text-3xl font-bold text-white">
               RYKA
             </h2>
 
@@ -356,9 +357,9 @@ export default function Hero() {
               Premium Toilet Cubicles Built for Modern Spaces
             </p>
 
-            <div className="my-5 h-[2px] w-32 bg-[#FFA21A]" />
+            <div className="my-5 h-[2px] w-32 bg-[#6C6D71]" />
 
-            <h3 className="mb-5 text-lg font-bold text-[#FFA21A]">
+            <h3 className="mb-5 text-lg font-bold text-white">
               Why Choose RYKA?
             </h3>
 
@@ -387,7 +388,7 @@ export default function Hero() {
                   <Check
                     size={21}
                     strokeWidth={3}
-                    className="shrink-0 text-[#FFA21A]"
+                    className="shrink-0 text-white"
                   />
 
                   <span className="text-sm leading-5">
@@ -485,7 +486,7 @@ export default function Hero() {
 
                         {/* PRODUCT IMAGE */}
 
-                        <div className="relative h-[85px] overflow-hidden bg-gray-100 sm:h-[110px] lg:h-[105px] xl:h-[125px]">
+                        <div className="relative h-[85px] overflow-hidden bg-gray-700 sm:h-[110px] lg:h-[105px] xl:h-[125px]">
 
                           <motion.img
                             src={product.image}
@@ -504,13 +505,13 @@ export default function Hero() {
 
                         {/* PRODUCT NAME */}
 
-                        <div className="flex items-center justify-between gap-2 px-3 py-2 sm:px-4 sm:py-2.5">
+                        <div className="flex items-center justify-between gap-2 px-3 py-2 sm:px-4 sm:py-2.5 bg-gray-400">
 
-                          <h3 className="text-xs font-semibold text-[#101820] sm:text-sm lg:text-base">
+                          <h3 className="text-xs font-semibold text-white sm:text-sm lg:text-base">
                             {product.name}
                           </h3>
 
-                          <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#FFA21A] text-black transition-all duration-300 group-hover:bg-[#101820] group-hover:text-white">
+                          <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white text-black transition-all duration-300 group-hover:bg-[#101820] group-hover:text-white">
                             <ArrowRight size={16} />
                           </span>
 
@@ -534,7 +535,7 @@ export default function Hero() {
               onClick={nextProducts}
               whileHover={{
                 scale: 1.08,
-                backgroundColor: "#FFA21A",
+                backgroundColor: "white",
                 color: "#07111d",
               }}
               whileTap={{
@@ -563,7 +564,7 @@ export default function Hero() {
                 aria-label={`Show ${product.name}`}
                 className={`h-2.5 rounded-full transition-all duration-300 ${
                   productStart === index
-                    ? "w-8 bg-[#FFA21A]"
+                    ? "w-8 bg-[black]]"
                     : "w-2.5 bg-white/60 hover:bg-white"
                 }`}
               />

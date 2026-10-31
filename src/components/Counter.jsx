@@ -4,10 +4,30 @@
 import { useEffect, useRef, useState } from "react";
 
 const stats = [
-  { value: 15000, suffix: "K+", label: "Projects", display: "15K+" },
-  { value: 15, suffix: "+", label: "Year of Experience", display: "15+" },
-  { value: 50000, suffix: "K+", label: "Cubicle Installed", display: "50K+" },
-  { value: 11000, suffix: "K+", label: "Happy Client", display: "11K+" },
+  {
+    value: 15000,
+    label: "PROJECTS",
+    number: "15",
+    suffix: "K+",
+  },
+  {
+    value: 15,
+    label: "YEAR OF EXPERIENCE",
+    number: "15",
+    suffix: "+",
+  },
+  {
+    value: 50000,
+    label: "CUBICLE INSTALLED",
+    number: "50",
+    suffix: "K+",
+  },
+  {
+    value: 11000,
+    label: "HAPPY CLIENT",
+    number: "11",
+    suffix: "K+",
+  },
 ];
 
 export default function Counter() {
@@ -26,7 +46,9 @@ export default function Counter() {
       { threshold: 0.3 }
     );
 
-    if (sectionRef.current) observer.observe(sectionRef.current);
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
 
     return () => observer.disconnect();
   }, []);
@@ -41,10 +63,18 @@ export default function Counter() {
     const animate = (timestamp) => {
       if (!startTime) startTime = timestamp;
 
-      const progress = Math.min((timestamp - startTime) / duration, 1);
+      const progress = Math.min(
+        (timestamp - startTime) / duration,
+        1
+      );
+
       const eased = 1 - Math.pow(1 - progress, 4);
 
-      setCounts(stats.map((stat) => Math.floor(stat.value * eased)));
+      setCounts(
+        stats.map((stat) =>
+          Math.floor(stat.value * eased)
+        )
+      );
 
       if (progress < 1) {
         frame = requestAnimationFrame(animate);
@@ -63,24 +93,61 @@ export default function Counter() {
       ref={sectionRef}
       className="w-full bg-[#f5f5f7] px-0 py-7"
     >
-      <div className="grid min-h-[145px] w-full grid-cols-2 items-center gap-y-7 rounded-bl-[72px] rounded-tr-none border-[3px] border-black bg-[#207eae] px-3 py-5 text-center text-white sm:grid-cols-4 sm:gap-y-0 sm:px-4 sm:py-4">
-        {stats.map((stat, index) => (
-          <div key={stat.label} className="flex flex-col items-center">
-            <h3 className="text-[34px] font-bold leading-tight tracking-wide sm:text-[42px] md:text-[50px]">
-              {index === 0
-                ? `${Math.floor(counts[index] / 1000)}K+`
-                : index === 2
-                  ? `${Math.floor(counts[index] / 1000)}K+`
-                  : index === 3
-                    ? `${Math.floor(counts[index] / 1000)}K+`
-                    : `${counts[index]}+`}
-            </h3>
+      <div className="relative w-full overflow-hidden border-t-[3px]
+       border-[#D6A927] bg-gradient-to-r from-[#0B2147] via-[#123C79] to-[#174A96]">
 
-            <p className="mt-2 text-[14px] font-normal sm:text-[16px] md:text-[19px]">
-              {stat.label}
-            </p>
-          </div>
-        ))}
+        {/* STATS GRID */}
+
+        <div className="grid min-h-[170px] grid-cols-2 sm:grid-cols-4">
+
+          {stats.map((stat, index) => {
+            const count = counts[index];
+
+            const displayNumber =
+              index === 1
+                ? count
+                : Math.floor(count / 1000);
+
+            return (
+              <div
+                key={stat.label}
+                className={`relative flex flex-col justify-center px-4 py-7 pl-5 sm:px-5 sm:pl-7 md:px-8 lg:px-10 ${
+                  index !== 0
+                    ? "border-l border-white/20"
+                    : ""
+                } ${
+                  index >= 2
+                    ? "border-t border-white/20 sm:border-t-0"
+                    : ""
+                }`}
+              >
+
+                {/* COUNTER */}
+
+                <h3 className="whitespace-nowrap font-serif text-[32px] font-bold leading-none tracking-tight text-white sm:text-[35px] md:text-[40px] lg:text-[46px]">
+
+                  <span>{displayNumber}</span>
+
+                  <span className="ml-0.5 italic font-normal text-[#E6B62E]">
+                    {stat.suffix}
+                  </span>
+
+                </h3>
+
+                {/* LABEL */}
+
+                <p className="mt-3 text-[9px] font-semibold uppercase leading-relaxed tracking-[1.5px] text-[#D8E5FF] sm:text-[10px] md:text-[11px] lg:text-xs lg:tracking-[1.8px]">
+
+                  {stat.label}
+
+                </p>
+
+              </div>
+            );
+          })}
+
+        </div>
+
       </div>
     </section>
   );

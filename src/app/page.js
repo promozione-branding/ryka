@@ -10,24 +10,30 @@ import Counter from "@/components/Counter";
 import ShadeSelector from "@/components/ShadeSelector";
 import WhyRyka from "@/components/WhyRyka";
 import SpaceMarquee from "@/components/SpaceMarquee";
+import Before from "../components/Before";
+import ContactSection from "@/components/ContactSection";
 
 export default function Home() {
   return (
     <>
       <Hero />
+       <Counter/>
+       <SpaceMarquee/>
       <About />
-      <Counter/>
+     
       <Categories />
-    <SpaceMarquee/>
+    
       <ShadeSelector/>
       <WhyRyka/>
       <Applications />
-         <Process />
+         <Before />
       <Transformation />
+      <Testimonials />
+      <ContactSection/>
    
     { /* <Products />
       
-      <Testimonials /> */}
+       */}
     </>
   );
 }
