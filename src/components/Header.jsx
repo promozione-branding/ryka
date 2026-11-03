@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronDown, Menu, X, Search } from "lucide-react";
@@ -9,6 +9,18 @@ import { ChevronDown, Menu, X, Search } from "lucide-react";
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [solutionsOpen, setSolutionsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const solutions = [
     { name: "Restroom Cubicles", href: "/restroom-cubicles" },
@@ -22,8 +34,14 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed top-0 left-0 z-[9999] w-full text-white">
-<div className="flex h-[65px] lg:h-[75px] items-center px-5 sm:px-8 lg:px-12">
+    <header
+      className={`fixed top-0 left-0 z-[9999] w-full text-white transition-all duration-300 ${
+        scrolled
+          ? "bg-black/80 backdrop-blur-xl shadow-lg border-b border-white/10"
+          : "bg-transparent border-b border-transparent"
+      }`}
+    >
+      <div className="flex h-[65px] lg:h-[75px] items-center px-5 sm:px-8 lg:px-12">
 
         {/* LOGO */}
         <Link href="/" className="flex shrink-0 items-center gap-5">
@@ -33,7 +51,7 @@ export default function Header() {
             width={270}
             height={90}
             priority
-          className="w-[135px] sm:w-[160px] lg:w-[200px] h-auto object-contain mt-7 mb-3"
+            className="w-[135px] sm:w-[160px] lg:w-[200px] h-auto object-contain mt-7 mb-3"
           />
 
           <span className="hidden lg:block h-10 w-px bg-white/40" />
@@ -108,9 +126,9 @@ export default function Header() {
         </div>
       </div>
 
-      {/* HAMBURGER PANEL */}
+      {/* MOBILE MENU */}
       {menuOpen && (
-        <div className="absolute right-0 top-full w-full sm:w-[350px] border border-white/10 bg-[#0B1118]/95 px-7 py-6 shadow-2xl backdrop-blur-xl">
+        <div className="absolute right-0 top-full w-full sm:w-[350px] border border-white/10 bg-black/95 px-7 py-6 shadow-2xl backdrop-blur-xl">
           <nav className="flex flex-col">
 
             <Link
@@ -132,16 +150,17 @@ export default function Header() {
               />
             </button>
 
-            {solutionsOpen && solutions.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={closeMenu}
-                className="py-3 pl-4 text-sm text-white/70 hover:text-[#FFA21A]"
-              >
-                {item.name}
-              </Link>
-            ))}
+            {solutionsOpen &&
+              solutions.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={closeMenu}
+                  className="py-3 pl-4 text-sm text-white/70 hover:text-[#FFA21A]"
+                >
+                  {item.name}
+                </Link>
+              ))}
 
             <Link
               href="/contact"

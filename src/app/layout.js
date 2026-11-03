@@ -1,7 +1,7 @@
 import { Raleway, Playfair_Display } from "next/font/google";
 import "./globals.css";
-import Header from "../components/Header";
 import Footer from "../components/Footer";
+import HomeHeader from "@/components/HomeHeader";
 
 const raleway = Raleway({
   variable: "--font-raleway",
@@ -27,7 +27,7 @@ export default function RootLayout({ children }) {
       className={`${raleway.variable} ${playfairDisplay.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <Header />
+        <HomeHeader/>
         <main className="flex-1">{children}</main>
         <Footer />
       </body>

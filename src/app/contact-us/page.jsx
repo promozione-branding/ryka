@@ -57,7 +57,7 @@ export default function ContactUs() {
 
       {/* ================= CONTACT SECTION ================= */}
       <section
-        className="relative bg-[#f5f5f5] bg-cover bg-center px-5 py-10 md:py-12 lg:py-0"
+        className="relative bg-[#f5f5f5] bg-cover bg-center px-5 py-10 md:py-12 lg:py-10"
         style={{
           backgroundImage: "url('/contact-us-bann-e.webp')",
         }}
