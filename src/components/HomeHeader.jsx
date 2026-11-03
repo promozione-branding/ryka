@@ -23,9 +23,11 @@ export default function HomeHeader() {
   }, []);
 
   const solutions = [
-    { name: "Restroom Cubicles", href: "/restroom-cubicles" },
-    { name: "Toilet Partitions", href: "/toilet-partitions" },
-    { name: "Compact Laminate", href: "/compact-laminate" },
+    { name: "Public Restroom Partitions", href: "/public-restroom-partitions" },
+     { name: "luxe Partition Systems", href: "/luxe-partition-systems" },
+    { name: "Kids Restroom Partitions", href: "/kids-restroom-partitions" },
+    { name: "Urinal Partitions", href: "/urinal-partitions" },
+    { name: "Colors & Finished", href: "/colors-finished" },
   ];
 
   const closeMenu = () => {
@@ -98,7 +100,7 @@ export default function HomeHeader() {
           </div>
 
           <Link
-            href="/contact"
+            href="/contact-us"
             className="text-sm font-semibold uppercase tracking-wide hover:text-[#FFA21A] transition-colors"
           >
             Contacts
