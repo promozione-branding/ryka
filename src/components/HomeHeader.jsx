@@ -51,20 +51,24 @@ export default function HomeHeader() {
     setMenuOpen(false);
   }, []);
 
+  // Text color: white only on home page (when not scrolled), otherwise black
+  const textColor = isHome && !scrolled ? "text-white" : "text-[#1a1a1a]";
+  const hoverColor = "hover:text-[#FFA21A]";
+
   return (
     <>
       <header
         className={`fixed top-0 left-0 z-[9999] w-full transition-all duration-300 ${
-          scrolled
-            ? "bg-[#FDF8F0]/95 backdrop-blur-md shadow-sm border-b border-black/5"
-            : "bg-[#FDF8F0] border-b border-black/5"
+          isHome && !scrolled
+            ? "bg-black border-b border-white/10"
+            : "bg-[#FDF8F0]/95 backdrop-blur-md shadow-sm border-b border-black/5"
         }`}
       >
         <div className="mx-auto flex h-[90px] max-w-[1600px] items-center justify-between px-5 sm:px-8 lg:px-12">
           {/* LOGO */}
           <Link href="/" className="flex shrink-0 items-center">
             <Image
-              src={isHome ? "/logo-10 (2).webp" : "/logo_transp.webp"}
+              src={isHome && !scrolled ? "/logo-10 (2).webp" : "/logo_transp.webp"}
               alt="RYKA Restroom Cubicles"
               width={220}
               height={70}
@@ -77,7 +81,7 @@ export default function HomeHeader() {
           <nav className="hidden lg:flex items-center gap-10 xl:gap-14">
             <Link
               href="/"
-              className={`relative py-2 text-[13px] font-semibold uppercase tracking-[0.12em] text-[#1a1a1a] transition-colors hover:text-[#FFA21A] ${
+              className={`relative py-2 text-[13px] font-semibold uppercase tracking-[0.12em] ${textColor} transition-colors ${hoverColor} ${
                 isHome ? underline : ""
               }`}
             >
@@ -97,7 +101,7 @@ export default function HomeHeader() {
                 <Link
                   href="/products"
                   onClick={() => setSolutionsOpen(false)}
-                  className="text-[13px] font-semibold uppercase tracking-[0.12em] text-[#1a1a1a] transition-colors hover:text-[#FFA21A]"
+                  className={`text-[13px] font-semibold uppercase tracking-[0.12em] ${textColor} transition-colors ${hoverColor}`}
                 >
                   Solutions
                 </Link>
@@ -107,7 +111,7 @@ export default function HomeHeader() {
                   onClick={() => setSolutionsOpen(!solutionsOpen)}
                   aria-label="Toggle solutions menu"
                   aria-expanded={solutionsOpen}
-                  className="text-[#1a1a1a] transition-colors hover:text-[#FFA21A]"
+                  className={`${textColor} transition-colors ${hoverColor}`}
                 >
                   <ChevronDown
                     size={15}
@@ -138,7 +142,7 @@ export default function HomeHeader() {
 
             <Link
               href="/contact-us"
-              className="text-[13px] font-semibold uppercase tracking-[0.12em] text-[#1a1a1a] transition-colors hover:text-[#FFA21A]"
+              className={`text-[13px] font-semibold uppercase tracking-[0.12em] ${textColor} transition-colors ${hoverColor}`}
             >
               Contacts
             </Link>
@@ -164,7 +168,7 @@ export default function HomeHeader() {
               onClick={() => setMenuOpen(true)}
               aria-label="Open menu"
               aria-expanded={menuOpen}
-              className="flex items-center justify-center text-[#1a1a1a] transition-colors hover:text-[#FFA21A]"
+              className={`flex items-center justify-center ${textColor} transition-colors ${hoverColor}`}
             >
               <Menu size={28} strokeWidth={1.8} />
             </button>
