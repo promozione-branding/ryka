@@ -1,10 +1,11 @@
 import { notFound } from "next/navigation";
 import { getBlog } from "@/lib/blogs";
 import BlogForm from "@/components/admin/BlogForm";
-
+import { requireAdmin } from "@/lib/auth";   
 export const dynamic = "force-dynamic";
 
 export default async function EditBlog({ params }) {
+  await requireAdmin();
   const { slug } = await params;
   const blog = await getBlog(decodeURIComponent(slug));
   if (!blog) notFound();

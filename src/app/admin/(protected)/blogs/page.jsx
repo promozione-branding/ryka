@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { getBlogs, thumb } from "@/lib/blogs";
 import DeleteButton from "@/components/admin/DeleteButton";
+import { requireAdmin } from "@/lib/auth";  
 
 export const dynamic = "force-dynamic";
 
 export default async function AdminBlogs() {
+  await requireAdmin();
   let blogs = [];
   let error = "";
   try {

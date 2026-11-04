@@ -1,35 +1,17 @@
-import db from "@/utils/db"
-import Blog from "@/models/Blogs"
+import mongoose from "mongoose"
 
-export const slugify = (s = "") =>
-  s.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")
+const BlogSchema = new mongoose.Schema(
+  {
+    title: { type: String, required: true, trim: true, maxlength: 200 },
+    permalink: { type: String, required: true, unique: true, trim: true, lowercase: true },
+    date: { type: Date, required: true, default: Date.now, index: true },
+    metaTitle: { type: String, trim: true, maxlength: 70, default: "" },
+    metaDescription: { type: String, trim: true, maxlength: 200, default: "" },
+    content: { type: String, default: "" },
+    image: { type: String, required: true },       // public URL (R2)
+    imageFileId: { type: String, required: true }, // R2 object key, used for cleanup
+  },
+  { timestamps: true }
+)
 
-const plain = (x) => JSON.parse(JSON.stringify(x))
-
-export const thumb = (url = "", w = 700) =>
-  url.includes("ik.imagekit.io") ? `${url}${url.includes("?") ? "&" : "?"}tr=w-${w},f-auto` : url
-
-export function pickBlog(body = {}) {
-  const out = {}
-  for (const k of ["title", "metaTitle", "metaDescription", "content", "image", "imageFileId"]) {
-    if (typeof body[k] === "string") out[k] = body[k].trim()
-  }
-  if (typeof body.permalink === "string") out.permalink = slugify(body.permalink)
-  if (body.date) {
-    const d = new Date(body.date)
-    if (!isNaN(d)) out.date = d
-  }
-  return out
-}
-
-export async function getBlogs() {
-  await db()
-  return plain(
-    await Blog.find().select("title permalink date image metaDescription").sort({ date: -1 }).lean()
-  )
-}
-
-export async function getBlog(permalink) {
-  await db()
-  return plain(await Blog.findOne({ permalink }).lean())
-}
+export default mongoose.models.Blog || mongoose.model("Blog", BlogSchema)

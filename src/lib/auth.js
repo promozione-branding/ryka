@@ -1,11 +1,12 @@
 import crypto from "node:crypto"
 import { cookies } from "next/headers"
+import { redirect } from "next/navigation"
 
 const MAX_AGE_MS = 8 * 60 * 60 * 1000 // keep in sync with cookie maxAge
 
 function secret() {
   const s = process.env.SESSION_SECRET
-  if (!s || s.length < 16) throw new Error("AUTH_SECRET must be set (16+ chars)")
+  if (!s || s.length < 16) throw new Error("SESSION_SECRET must be set (16+ chars)")
   return s
 }
 
@@ -36,4 +37,8 @@ export async function isAdmin() {
   } catch {
     return false
   }
+}
+
+export async function requireAdmin() {
+  if (!(await isAdmin())) redirect("/admin/login")
 }

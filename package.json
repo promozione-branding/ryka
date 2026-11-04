@@ -9,9 +9,12 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.1161.0",
     "axios": "^1.21.0",
     "framer-motion": "^14.9.1",
+    "jodit-react": "^5.9.2",
     "lucide-react": "^1.66.0",
+    "mongoose": "^9.11.4",
     "next": "16.4.3",
     "react": "19.3.0",
     "react-dom": "19.3.0",

@@ -1,4 +1,3 @@
-import Map from "@/components/Map"
 import BlogPage from "@/components/BlogPage"
 import BgHeader from "@/components/BgHeader"
 import { pageSeo, buildMetadata } from "@/data/seo";
@@ -13,13 +12,11 @@ export default function Blogs() {
      <BgHeader
           title="Blogs"
           eyebrow="Latest Blogs"
-        accent="#f9c32f"
+        accent="#5eead4"
           text="Insights That Shape Smarter, Better and Efficient Construction"
-          backgroundImage="/blogs_hero_.png"
+          backgroundImage="/contact-us-bann-e.webp"
         />
       <BlogPage/>
-
-     
     </>
   )
 }
