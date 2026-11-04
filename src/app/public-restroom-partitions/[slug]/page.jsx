@@ -3,11 +3,8 @@
 
 import React from "react";
 import { useParams } from "next/navigation";
-import productData from "@/app/lib/data";
+import productData from "@/lib/data";
 
-/* ---------------------------------- */
-/* Reusable Components                */
-/* ---------------------------------- */
 
 function SectionHeading({ title, subtitle }) {
   return (

@@ -42,7 +42,7 @@ const products = [
 
 export default function PublicRestroomProducts() {
   return (
-    <section className="relative w-full bg-[#cad6c1] overflow-hidden py-12 md:py-18">
+    <section className="relative w-full bg-[#cad6c1] overflow-hidden py-12 md:py-28">
 
       <div className="max-w-[1350px] mx-auto px-5 md:px-8">
 

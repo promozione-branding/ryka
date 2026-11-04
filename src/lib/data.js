@@ -1,4 +1,3 @@
-
 const productData = [
   {
     id: 1,
@@ -140,7 +139,7 @@ const productData = [
       {
         name: "H-type Top Rail with Aluminum Cover",
         material: "Aluminum / SS",
-        image: "/product/h-type-top-rail.webp",
+        image: "/product/h-type-Top-Rail.webp",
       },
       {
         name: "U-Channel SS",
@@ -212,7 +211,7 @@ const productData = [
   shortDescription: "Ryka’s Nexus Evo cubicles combine 12 mm high-pressure compact laminate with full stainless-steel hardware and top rail—built for high-traffic commercial washrooms that demand durability and a sleek modern look.",
  
   mainImage: {
-    url: "product/Nexus-Evos.webp",
+    url: "/product/imgi_9_Nexus-Evos.webp",
     alt: "Toilet Cubicles Partition, Nexus Evo",
     width: 1920,
     height: 1000
@@ -221,52 +220,52 @@ const productData = [
     {
       name: "Stainless Steel U-Channel",
       material: "Stainless Steel (SS)",
-      image: "product/ss-u-channel.webp"
+      image: "/product/2-4.webp"
     },
     {
       name: "Stainless Steel Privacy Thumb-Turn with Indicator",
       material: "Stainless Steel (SS)",
-      image: "product/ss-privacy-thumb-turn.webp"
+      image: "/product/ss-privacy-thumb-turn-indicator.webp"
     },
     {
       name: "Stainless Steel Adjustable Foot",
       material: "Stainless Steel (SS)",
-      image: "product/ss-adjustable-foot.webp"
+      image: "/product/ss-adjustable-foot.webp"
     },
     {
       name: "Stainless Steel Top Rail",
       material: "Stainless Steel (SS)",
-      image: "product/ss-top-rail.webp"
+      image: "/product/ss-top-rail.webp"
     },
     {
       name: "Stainless Steel Door Knob",
       material: "Stainless Steel (SS)",
-      image: "product/ss-door-knob.webp"
+      image: "/product/9-1.webp"
     },
     {
       name: "Stainless Steel Door Stopper Powder Coated",
       material: "Stainless Steel / Powder Coated",
-      image: "product/ss-4-4.webp"
+      image: "/product/4-4.webp"
     },
     {
       name: "Coat Hook SS",
       material: "Stainless Steel (SS)",
-      image: "product/10-1.webp"
+      image: "/product/10-1.webp"
     },
     {
       name: "Stainless Steel Screws & Wall Plug",
       material: "Stainless Steel (SS)",
-      image: "product/ss-12-1.webp"
+      image: "/product/12-1.webp"
     },
     {
       name: "Noise Deafening Tape",
       material: "Tape / Rubber",
-      image: "product/noise-deafening-tape.webp"
+      image: "/product/noise-deafening-tape.webp"
     },
     {
       name: "Stainless Steel Hinges",
       material: "Stainless Steel (SS)",
-      image: "product/ss-hinges.webp"
+      image: "/product/6-4.webp"
     }
   ],
   dimensions: {
@@ -335,7 +334,7 @@ const productData = [
   shortDescription: "Ryka’s Nexus Canvas features 12 mm high-pressure compact laminate, full stainless-steel hardware, a stainless steel top rail, and a sleek shoe-box base—delivering superior durability and a clean modern look.",
  
   mainImage: {
-    url: "product/Nexus-Canvas-1.webp",
+    url: "/product/imgi_10_Nexus-Canvas-1.webp",
     alt: "Toilet Cubicles Partition, Nexus Canvas",
     width: 1920,
     height: 1000
@@ -344,57 +343,57 @@ const productData = [
     {
       name: "Stainless Steel U-Channel",
       material: "Stainless Steel (SS)",
-      image: "product/ss-u-channel.webp"
+      image: "/product/2-4.webp"
     },
     {
       name: "Stainless Steel Privacy Thumb-Turn with Indicator",
       material: "Stainless Steel (SS)",
-      image: "product/ss-privacy-thumb-turn.webp"
+      image: "/product/ss-privacy-thumb-turn-indicator.webp"
     },
     {
       name: "Stainless Steel Shoebox",
       material: "Stainless Steel (SS)",
-      image: "product/ss-shoebox.webp"
+      image: "/product/ss-shoebox-canvas.webp"
     },
     {
       name: "Stainless Steel Top Rail",
       material: "Stainless Steel (SS)",
-      image: "product/ss-top-rail.webp"
+      image: "/product/ss-top-rail.webp"
     },
     {
       name: "Stainless Steel Door Stopper Channel",
       material: "Stainless Steel (SS)",
-      image: "product/ss-door-stopper-channel.webp"
+      image: "/product/4-4.webp"
     },
     {
       name: "Stainless Steel Door Knob",
       material: "Stainless Steel (SS)",
-      image: "product/ss-door-knob.webp"
+      image: "/product/9-1.webp"
     },
     {
       name: "Noise Deafening Tape",
       material: "Tape / Rubber",
-      image: "product/noise-deafening-tape.webp"
+      image: "/product/noise-deafening-tape.webp"
     },
     {
       name: "SS Coat Hook Cum Door Stopper",
       material: "Stainless Steel (SS)",
-      image: "product/ss-coat-hook-door-stopper.webp"
+      image: "/product/10-1.webp"
     },
     {
       name: "Stainless Steel Screws & Wall Plug",
       material: "Stainless Steel (SS)",
-      image: "product/ss-12-1.webp"
+      image: "/product/12-1.webp"
     },
     {
       name: "Stainless Steel Hinges",
       material: "Stainless Steel (SS)",
-      image: "product/ss-hinges.webp"
+      image: "/product/6-4.webp"
     },
     {
       name: "Floor Anchor SS",
       material: "Stainless Steel (SS)",
-      image: "product/floor-anchor-ss.webp"
+      image: "/product/ss-floor-anchor.webp"
     }
   ],
   dimensions: {
@@ -464,7 +463,7 @@ const productData = [
   shortDescription: "Ryka’s Nexus Canvas features 12 mm high-pressure compact laminate, full stainless-steel hardware, a stainless steel top rail, and a sleek shoe-box base—delivering superior durability and a clean modern look.",
  
   mainImage: {
-    url: "product/Nexus-Canvas-1.webp",
+    url: "/product/imgi_10_Nexus-Canvas-1.webp",
     alt: "Toilet Cubicles Partition, Nexus Canvas",
     width: 1920,
     height: 1000
@@ -473,57 +472,57 @@ const productData = [
     {
       name: "Stainless Steel U-Channel",
       material: "Stainless Steel (SS)",
-      image: "product/ss-u-channel.webp"
+      image: "/product/2-4.webp"
     },
     {
       name: "Stainless Steel Privacy Thumb-Turn with Indicator",
       material: "Stainless Steel (SS)",
-      image: "product/ss-privacy-thumb-turn.webp"
+      image: "/product/ss-privacy-thumb-turn-indicator.webp"
     },
     {
       name: "Stainless Steel Shoebox",
       material: "Stainless Steel (SS)",
-      image: "product/ss-shoebox.webp"
+      image: "/product/ss-shoebox-canvas.webp"
     },
     {
       name: "Stainless Steel Top Rail",
       material: "Stainless Steel (SS)",
-      image: "product/ss-top-rail.webp"
+      image: "/product/ss-top-rail.webp"
     },
     {
       name: "Stainless Steel Door Stopper Channel",
       material: "Stainless Steel (SS)",
-      image: "product/ss-door-stopper-channel.webp"
+      image: "/product/4-4.webp"
     },
     {
       name: "Stainless Steel Door Knob",
       material: "Stainless Steel (SS)",
-      image: "product/ss-door-knob.webp"
+      image: "/product/9-1.webp"
     },
     {
       name: "Noise Deafening Tape",
       material: "Tape / Rubber",
-      image: "product/noise-deafening-tape.webp"
+      image: "/product/noise-deafening-tape.webp"
     },
     {
       name: "SS Coat Hook Cum Door Stopper",
       material: "Stainless Steel (SS)",
-      image: "product/ss-coat-hook-door-stopper.webp"
+      image: "/product/10-1.webp"
     },
     {
       name: "Stainless Steel Screws & Wall Plug",
       material: "Stainless Steel (SS)",
-      image: "product/ss-12-1.webp"
+      image: "/product/12-1.webp"
     },
     {
       name: "Stainless Steel Hinges",
       material: "Stainless Steel (SS)",
-      image: "product/ss-hinges.webp"
+      image: "/product/6-4.webp"
     },
     {
       name: "Floor Anchor SS",
       material: "Stainless Steel (SS)",
-      image: "product/floor-anchor-ss.webp"
+      image: "/product/ss-floor-anchor.webp"
     }
   ],
   dimensions: {
@@ -594,7 +593,7 @@ const productData = [
   shortDescription: "Ryka’s Nexus Grand combines 12 mm high-pressure compact laminate with anodized aluminum top rail and stainless-steel hardware—delivering premium full-height performance at excellent value.",
  
   mainImage: {
-    url: "product/Nexus-Grand-2.webp",
+    url: "/product/imgi_11_Nexus-Grand-2.webp",
     alt: "Toilet Cubicles Partition, Nexus Grand",
     width: 1920,
     height: 1000
@@ -603,57 +602,57 @@ const productData = [
     {
       name: "Aluminum Anodized U-Channel",
       material: "Anodized Aluminum",
-      image: "product/aluminum-anodized-u-channel.webp"
+      image: "/product/2-4.webp"
     },
     {
       name: "Stainless Steel Privacy Thumb-Turn with Indicator",
       material: "Stainless Steel (SS)",
-      image: "product/ss-privacy-thumb-turn.webp"
+      image: "/product/ss-privacy-thumb-turn-indicator.webp"
     },
     {
       name: "Stainless Steel Adjustable Foot",
       material: "Stainless Steel (SS)",
-      image: "product/ss-adjustable-foot.webp"
+      image: "/product/ss-adjustable-foot.webp"
     },
     {
       name: "Aluminum Anodized Top Rail",
       material: "Anodized Aluminum",
-      image: "product/aluminum-anodized-top-rail.webp"
+      image: "/product/aluminum-anodized-top-rail.webp"
     },
     {
       name: "Stainless Steel Door Knob",
       material: "Stainless Steel (SS)",
-      image: "product/ss-door-knob.webp"
+      image: "/product/9-1.webp"
     },
     {
       name: "Aluminum Anodized Door Stopper Channel",
       material: "Anodized Aluminum",
-      image: "product/aluminum-anodized-door-stopper.webp"
+      image: "/product/aluminum-anodized-door-stopper-channel.png"
     },
     {
       name: "Stainless Steel Coat Hook Cum Door Stopper",
       material: "Stainless Steel (SS)",
-      image: "product/ss-coat-hook-door-stopper.webp"
+      image: "/product/10-1.webp"
     },
     {
       name: "Stainless Steel Screws & Wall Plug",
       material: "Stainless Steel (SS)",
-      image: "product/ss-12-1.webp"
+      image: "/product/12-1.webp"
     },
     {
       name: "Stainless Steel Hinges",
       material: "Stainless Steel (SS)",
-      image: "product/ss-hinges.webp"
+      image: "/product/6-4.webp"
     },
     {
       name: "Nylon Polyamide Top Rail End Cap",
       material: "Nylon Polyamide",
-      image: "product/nylon-top-rail-end-cap.webp"
+      image: "/product/nylon-top-rail-end-cap.webp"
     },
     {
       name: "Noise Deafening Rubber",
       material: "Rubber",
-      image: "product/11-1.webp"
+      image: "/product/11-1.webp"
     }
   ],
   dimensions: {
@@ -723,7 +722,7 @@ const productData = [
   shortDescription: "Ryka’s Carlton Prime offers clean, joint-free panels, 12 mm thickness with chamfered edges, powder-coated aluminum top rail and polyamide hardware—simple, modern, and easy to maintain.",
  
   mainImage: {
-    url: "product/Carlton-Prime-1.webp",
+    url: "/product/imgi_12_Carlton-Prime-1.webp",
     alt: "Toilet Cubicles Partition, Carlton Prime",
     width: 1920,
     height: 1000
@@ -732,57 +731,57 @@ const productData = [
     {
       name: "Powder Coated Aluminum U-Channel",
       material: "Powder Coated Aluminum",
-      image: "product/powder-coated-aluminum-u-channel.webp"
+      image: "/product/pc-aluminum-u-channel.webp"
     },
     {
       name: "Nylon Polyamide Thumb-Turn With Indicator",
       material: "Nylon Polyamide",
-      image: "product/nylon-thumb-turn.webp"
+      image: "/product/nylon-thumb-turn-indicator.webp"
     },
     {
       name: "Nylon Polyamide Coated Adjustable Foot",
       material: "Nylon Polyamide",
-      image: "product/nylon-adjustable-foot.webp"
+      image: "/product/nylon-adjustable-foot.webp"
     },
     {
       name: "Powder Coated Aluminum Top Rail",
       material: "Powder Coated Aluminum",
-      image: "product/powder-coated-aluminum-top-rail.webp"
+      image: "/product/pc-aluminum-top-rail.webp"
     },
     {
       name: "Powder Coated Aluminum Door Stopper Channel",
       material: "Powder Coated Aluminum",
-      image: "product/powder-coated-aluminum-door-stopper.webp"
+      image: "/product/pc-aluminum-door-stopper-channel.webp"
     },
     {
       name: "Nylon Coated Gravity Hinge",
       material: "Nylon Coated",
-      image: "product/nylon-gravity-hinge.webp"
+      image: "/product/nylon-gravity-hinge.webp"
     },
     {
       name: "Nylon Polyamide Door Knob",
       material: "Nylon Polyamide",
-      image: "product/nylon-door-knob.webp"
+      image: "/product/nylon-door-knob.webp"
     },
     {
       name: "Noise Deafening Rubber",
       material: "Rubber",
-      image: "product/11-1.webp"
+      image: "/product/11-1.webp"
     },
     {
       name: "Nylon Polyamide Coat Hook",
       material: "Nylon Polyamide",
-      image: "product/nylon-coat-hook.webp"
+      image: "/product/nylon-coat-hook.webp"
     },
     {
       name: "Stainless Steel Screws & Wall Plug",
       material: "Stainless Steel (SS)",
-      image: "product/ss-12-1.webp"
+      image: "/product/12-1.webp"
     },
     {
       name: "Polyamide Top Rail End Cap",
       material: "Nylon Polyamide",
-      image: "product/polyamide-top-rail-end-cap.webp"
+      image: "/product/polyamide-top-rail-end-cap.webp"
     }
   ],
   dimensions: {
@@ -852,7 +851,7 @@ const productData = [
   shortDescription: "Ryka’s Carlton Pristine is a door-only retrofit solution for existing masonry walls—12 mm compact laminate doors with nylon/polyamide hardware, ideal for quick restroom upgrades without full partition replacement.",
   
   mainImage: {
-    url: "product/Carlton-Pristine-2.webp",
+    url: "/product/imgi_13_Carlton-Pristine-2.webp",
     alt: "Toilet Cubicles Partition, Carlton Pristine",
     width: 1920,
     height: 1000
@@ -861,37 +860,37 @@ const productData = [
     {
       name: "Powder Coated Aluminum Half Round Pole",
       material: "Powder Coated Aluminum",
-      image: "product/powder-coated-aluminum-half-round-pole.webp"
+      image: "/product/pc-aluminum-half-round-pole.webp"
     },
     {
       name: "Nylon Polyamide Door Knob",
       material: "Nylon Polyamide",
-      image: "product/nylon-door-knob.webp"
+      image: "/product/pristine-nylon-door-knob.webp"
     },
     {
       name: "Nylon Polyamide Coat Hook",
       material: "Nylon Polyamide",
-      image: "product/nylon-coat-hook.webp"
+      image: "/product/pristine-nylon-coat-hook.webp"
     },
     {
       name: "Nylon Polyamide Coated Gravity Hinge",
       material: "Nylon Polyamide",
-      image: "product/nylon-gravity-hinge.webp"
+      image: "/product/pristine-nylon-gravity-hinge.webp"
     },
     {
       name: "Noise Deafening Rubber",
       material: "Rubber",
-      image: "product/11-1.webp"
+      image: "/product/11-1.webp"
     },
     {
       name: "SS Screws & Wall Plug",
       material: "Stainless Steel (SS)",
-      image: "product/ss-12-1.webp"
+      image: "/product/12-1.webp"
     },
     {
       name: "Nylon Polyamide Thumb-Turn With Indicator",
       material: "Nylon Polyamide",
-      image: "product/nylon-thumb-turn.webp"
+      image: "/product/pristine-nylon-thumb-turn.webp"
     }
   ],
   dimensions: {
@@ -938,7 +937,7 @@ const productData = [
 {
   id: 8,
   productName: "Miniput",
-  fullTitle: "Miniput Toilet Cubicles | Kids Restroom Partitions by Ryka",
+  fullTitle: "Miniput Toilet Cubicles | Compact Partitions by Ryka",
   url: "/miniput",
   brand: "Ryka Restroom Cubicles",
   series: "Miniput",
@@ -949,7 +948,7 @@ const productData = [
  
 
   mainImage: {
-    url: "/product/kids-cubicles.webp",
+    url: "/product/imgi_16_kids-cubicles.webp",
     alt: "Miniput Kids Toilet Cubicles Partition by Ryka",
     width: 1000,
     height: 500
@@ -964,7 +963,7 @@ const productData = [
     {
       name: "Privacy Thumb-Turn With Indicator",
       material: "Stainless Steel (SS)",
-      image: "/product/Stainless-Steel-Privacy-Thumb-Turn-with-Indicator.webp"
+      image: "/product/ss-privacy-thumb-turn-indicator.webp"
     },
     {
       name: "Stainless Steel Shoebox",
@@ -994,7 +993,7 @@ const productData = [
     {
       name: "Noise Deafening Tape",
       material: "Rubber",
-      image: "/product/tape.webp"
+      image: "/product/noise-deafening-tape.webp"
     },
     {
       name: "Stainless Steel Hinges",
@@ -1062,7 +1061,7 @@ const productData = [
 {
   id: 9,
   productName: "Lil-Waves",
-  fullTitle: "Lil-Waves Toilet Cubicles | Crown Glass Series by Ryka",
+  fullTitle: "Lil-Waves Toilet Cubicles | Wavy Kids' Partitions by Ryka",
   url: "/lil-waves",
   brand: "Ryka Restroom Cubicles",
   series: "Crown Glass",
@@ -1076,7 +1075,7 @@ const productData = [
   
 
   mainImage: {
-    url: "/product/Lil-Waves.webp",
+    url: "/product/imgi_17_petar-pan.webp",
     alt: "Lil-Waves Kids Restroom Cubicles Partition by Ryka",
     width: 1920,
     height: 1000
@@ -1091,17 +1090,17 @@ const productData = [
     {
       name: "Stainless Steel Privacy Thumb-Turn With Indicator",
       material: "Stainless Steel (SS)",
-      image: "/product/8-2.webp"
+      image: "/product/ss-privacy-thumb-turn-indicator.webp"
     },
     {
       name: "Stainless Steel Adjustable Foot",
       material: "Stainless Steel (SS)",
-      image: "/product/adjustable-foot.webp"
+      image: "/product/ss-adjustable-foot.webp"
     },
     {
       name: "Aluminum Anodized Top Rail",
       material: "Anodized Aluminum",
-      image: "/product/top-rail.webp"
+      image: "/product/aluminum-anodized-top-rail.webp"
     },
     {
       name: "Stainless Steel Door Knob",
@@ -1111,7 +1110,7 @@ const productData = [
     {
       name: "Aluminum Anodized Door Stopper Channel",
       material: "Anodized Aluminum",
-      image: "/product/door-stopper-channel.webp"
+      image: "/product/aluminum-anodized-door-stopper-channel.png"
     },
     {
       name: "Stainless Steel Coat Hook Cum Door Stopper",
@@ -1131,7 +1130,7 @@ const productData = [
     {
       name: "Nylon Polyamide Top Rail End Cap",
       material: "Nylon Polyamide",
-      image: "/product/top-rail-end-cap.webp"
+      image: "/product/nylon-top-rail-end-cap.webp"
     },
     {
       name: "Noise Deafening Rubber",
@@ -1199,7 +1198,7 @@ const productData = [
 {
   id: 10,
   productName: "Lil-Shine",
-  fullTitle: "Lil-Shine Toilet Cubicles | Kids Restroom Partitions by Ryka",
+  fullTitle: "Lil-Shine Toilet Cubicles | Child-Friendly Partitions by Ryka",
   url: "/lil-shine",
   brand: "Ryka Restroom Cubicles",
   series: "Lil-Shine",
@@ -1213,7 +1212,7 @@ const productData = [
  
 
   mainImage: {
-    url: "/product/Lil-Shine.webp",
+    url: "/product/imgi_18_Lil-Shine.webp",
     alt: "Lil-Shine Kids Restroom Cubicles Partition by Ryka",
     width: 1920,
     height: 1000
@@ -1228,7 +1227,7 @@ const productData = [
     {
       name: "Privacy Thumb-Turn With Indicator",
       material: "Stainless Steel (SS)",
-      image: "/product/8-2.webp"
+      image: "/product/ss-privacy-thumb-turn-indicator.webp"
     },
     {
       name: "Stainless Steel Shoebox",
@@ -1248,7 +1247,7 @@ const productData = [
     {
       name: "Stainless Steel Door Stopper Channel",
       material: "Stainless Steel (SS)",
-      image: "/product/door-stopper-channel.webp"
+      image: "/product/4-4.webp"
     },
     {
       name: "SS Coat Hook Cum Door Stopper",
@@ -1258,7 +1257,7 @@ const productData = [
     {
       name: "Noise Deafening Tape",
       material: "Rubber",
-      image: "/product/tape.webp"
+      image: "/product/noise-deafening-tape.webp"
     },
     {
       name: "Stainless Steel Hinges",
@@ -1326,7 +1325,7 @@ const productData = [
 {
   id: 11,
   productName: "Aero Kids",
-  fullTitle: "Aero Kids Toilet Cubicles | Kids Restroom Partitions by Ryka",
+  fullTitle: "Aero Kids Toilet Cubicles | Colorful Washroom Partitions for Children",
   url: "/aero-kids",
   brand: "Ryka Restroom Cubicles",
   series: "Aero Kids",
@@ -1340,7 +1339,7 @@ const productData = [
 
 
   mainImage: {
-    url: "/product/Aero-Kids.webp",
+    url: "/product/aero-kids.webp",
     alt: "Aero Kids Toilet Cubicles Partition by Ryka",
     width: 1920,
     height: 1000
@@ -1350,12 +1349,12 @@ const productData = [
     {
       name: "Powder Coated Aluminium U-Channel",
       material: "Powder Coated Aluminium",
-      image: "/product/powder-coated-aluminum-u-channel.webp"
+      image: "/product/pc-aluminum-u-channel.webp"
     },
     {
       name: "Nylon Polyamide Thumb-Turn With Indicator",
       material: "Nylon Polyamide",
-      image: "/product/nylon-thumb-turn.webp"
+      image: "/product/nylon-thumb-turn-indicator.webp"
     },
     {
       name: "Nylon Polyamide Adjustable Foot",
@@ -1365,7 +1364,7 @@ const productData = [
     {
       name: "Powder Coated Aluminum Door Stopper Channel",
       material: "Powder Coated Aluminium",
-      image: "/product/powder-coated-door-stopper-channel.webp"
+      image: "/product/pc-aluminum-door-stopper-channel.webp"
     },
     {
       name: "Nylon Coated Gravity Hinge",
@@ -1446,7 +1445,7 @@ const productData = [
 {
   id: 12,
   productName: "Half Round",
-  fullTitle: "Half Round Toilet Cubicles | Kids Restroom Partitions by Ryka",
+  fullTitle: "Half Round Toilet Cubicles | Sleek Rounded Partition Design",
   url: "/half-round",
   brand: "Ryka Restroom Cubicles",
   series: "Half Round",
@@ -1460,7 +1459,7 @@ const productData = [
 
 
   mainImage: {
-    url: "/product/Half-Round.webp",
+    url: "/product/imgi_20_Hansel-Gretel.webp",
     alt: "Half Round Kids Restroom Cubicles Partition by Ryka",
     width: 1920,
     height: 1000
@@ -1470,12 +1469,12 @@ const productData = [
     {
       name: "Powder Coated Aluminium U-Channel",
       material: "Powder Coated Aluminium",
-      image: "/product/powder-coated-aluminum-u-channel.webp"
+      image: "/product/pc-aluminum-u-channel.webp"
     },
     {
       name: "Nylon Polyamide Thumb-Turn With Indicator",
       material: "Nylon Polyamide",
-      image: "/product/nylon-thumb-turn.webp"
+      image: "/product/nylon-thumb-turn-indicator.webp"
     },
     {
       name: "Nylon Polyamide Adjustable Foot",
@@ -1485,7 +1484,7 @@ const productData = [
     {
       name: "Powder Coated Aluminium Door Stopper Channel",
       material: "Powder Coated Aluminium",
-      image: "/product/powder-coated-door-stopper-channel.webp"
+      image: "/product/pc-aluminum-door-stopper-channel.webp"
     },
     {
       name: "Nylon Polyamide Gravity Hinge",
@@ -1505,7 +1504,7 @@ const productData = [
     {
       name: "Powder Coated Aluminium Top Rail",
       material: "Powder Coated Aluminium",
-      image: "/product/powder-coated-aluminum-top-rail.webp"
+      image: "/product/pc-aluminum-top-rail.webp"
     },
     {
       name: "Screws & Wall Plug",
@@ -1515,7 +1514,7 @@ const productData = [
     {
       name: "Polyamide Top Rail End Cap",
       material: "Polyamide",
-      image: "/product/top-rail-end-cap.webp"
+      image: "/product/polyamide-top-rail-end-cap.webp"
     }
   ],
 
@@ -1570,7 +1569,7 @@ const productData = [
 {
   id: 13,
   productName: "Slice Cut",
-  fullTitle: "Slice Cut Toilet Cubicles | Kids Restroom Partitions by Ryka",
+  fullTitle: "Slice Cut Toilet Cubicles | Sharp, Modern Partition Design",
   url: "/slice-cut",
   brand: "Ryka Restroom Cubicles",
   series: "Slice Cut",
@@ -1584,7 +1583,7 @@ const productData = [
   
 
   mainImage: {
-    url: "/product/Slice-Cut.webp",
+    url: "/product/imgi_21_Slice-Cut-2.webp",
     alt: "Slice Cut Kids Restroom Cubicles Partition by Ryka",
     width: 1920,
     height: 1000
@@ -1599,7 +1598,7 @@ const productData = [
     {
       name: "Privacy Thumb-Turn With Indicator",
       material: "Stainless Steel (SS)",
-      image: "/product/8-2.webp"
+      image: "/product/ss-privacy-thumb-turn-indicator.webp"
     },
     {
       name: "Stainless Steel Shoebox",
@@ -1619,7 +1618,7 @@ const productData = [
     {
       name: "Stainless Steel Door Stopper Channel",
       material: "Stainless Steel (SS)",
-      image: "/product/door-stopper-channel.webp"
+      image: "/product/4-4.webp"
     },
     {
       name: "SS Coat Hook Cum Door Stopper",
@@ -1629,7 +1628,7 @@ const productData = [
     {
       name: "Noise Deafening Tape",
       material: "Rubber",
-      image: "/product/tape.webp"
+      image: "/product/noise-deafening-tape.webp"
     },
     {
       name: "Stainless Steel Hinges",
@@ -1689,7 +1688,7 @@ const productData = [
 {
   id: 14,
   productName: "Straight",
-  fullTitle: "Straight Toilet Cubicles | Kids Restroom Partitions by Ryka",
+  fullTitle: "Straight Toilet Cubicles | Minimal Partition Design by Ryka",
   url: "/straight",
   brand: "Ryka Restroom Cubicles",
   series: "Straight",
@@ -1702,7 +1701,7 @@ const productData = [
 
 
   mainImage: {
-    url: "/product/Straight.webp",
+    url: "/product/straight.webp",
     alt: "Straight Kids Restroom Cubicles Partition by Ryka",
     width: 1920,
     height: 1000
@@ -1712,12 +1711,12 @@ const productData = [
     {
       name: "Powder Coated Aluminium U-Channel",
       material: "Powder Coated Aluminium",
-      image: "/product/powder-coated-aluminum-u-channel.webp"
+      image: "/product/pc-aluminum-u-channel.webp"
     },
     {
       name: "Nylon Polyamide Thumb-Turn With Indicator",
       material: "Nylon Polyamide",
-      image: "/product/nylon-thumb-turn.webp"
+      image: "/product/nylon-thumb-turn-indicator.webp"
     },
     {
       name: "Nylon Polyamide Adjustable Foot",
@@ -1727,7 +1726,7 @@ const productData = [
     {
       name: "Powder Coated Aluminium Door Stopper Channel",
       material: "Powder Coated Aluminium",
-      image: "/product/powder-coated-door-stopper-channel.webp"
+      image: "/product/pc-aluminum-door-stopper-channel.webp"
     },
     {
       name: "Nylon Polyamide Gravity Hinge",

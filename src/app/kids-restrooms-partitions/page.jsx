@@ -1,46 +1,45 @@
-
 "use client";
 
 const products = [
   {
-    name: "Floatex",
-    image: "/product/imgi_7_Swing-Lite-4.webp",
-    href: "#",
+    name: "Miniput",
+    image: "/product/imgi_16_kids-cubicles.webp",
+    href: "/kids-restrooms-partitions/miniput",
   },
   {
-    name: "Sky Hung",
-    image: "/product/imgi_8_top-hung-2.webp",
-    href: "#",
+    name: "Lil-Waves",
+    image: "/product/imgi_17_petar-pan.webp",
+    href: "/kids-restrooms-partitions/lil-waves",
     featured: true,
   },
   {
-    name: "Nexus Evo",
-    image: "/product/imgi_9_Nexus-Evos.webp",
-    href: "#",
+    name: "Lil-Shine",
+    image: "/product/imgi_18_Lil-Shine.webp",
+    href: "/kids-restrooms-partitions/lil-shine",
   },
   {
-    name: "Nexus Canvas",
-    image: "/product/imgi_10_Nexus-Canvas-1.webp",
-    href: "#",
+    name: "Aero Kids",
+    image: "/product/aero-kids.webp",
+    href: "/kids-restrooms-partitions/aero-kids",
   },
   {
-    name: "Nexus Grand",
-    image: "/product/imgi_11_Nexus-Grand-2.webp",
-    href: "#",
+    name: "Half Round",
+    image: "/product/imgi_20_Hansel-Gretel.webp",
+    href: "/kids-restrooms-partitions/half-round",
   },
   {
-    name: "Carlton Prime",
-    image: "/product/imgi_12_Carlton-Prime-1.webp",
-    href: "#",
+    name: "Slice Cut",
+    image: "/product/imgi_21_Slice-Cut-2.webp",
+    href: "/kids-restrooms-partitions/slice-cut",
   },
   {
-    name: "Carlton Pristine",
-    image: "/product/imgi_13_Carlton-Pristine-2.webp",
-    href: "#",
+    name: "Straight",
+    image: "/product/straight.webp",
+    href: "/kids-restrooms-partitions/straight",
   },
 ];
 
-export default function PublicRestroomProducts() {
+export default function KidsRestroomProducts() {
   return (
     <section className="relative w-full bg-[#cad6c1] overflow-hidden py-12 md:py-18">
 
@@ -54,9 +53,9 @@ export default function PublicRestroomProducts() {
           </h2>
 
           <p className="text-[13px] md:text-[15px] text-[#242424] mt-4 max-w-[1000px] mx-auto leading-6">
-            From commercial buildings to public facilities, our restroom
-            partition systems offer modern design, easy maintenance,
-            and robust functionality.
+            Our kids restroom partitions combine fun colors, low-height
+            panels, and smooth edges to ensure safety and comfort for
+            young users.
           </p>
 
         </div>
@@ -86,7 +85,7 @@ export default function PublicRestroomProducts() {
 
                 <img
                   src={product.image}
-                  alt={`${product.name} Public Restroom Partitions`}
+                  alt={`${product.name} Kids Restroom Partitions`}
                   loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.045]"
                 />

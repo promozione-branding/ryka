@@ -1,12 +1,14 @@
-
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronDown, Menu, X, Search } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { ChevronDown, Menu, Search } from "lucide-react";
+import MenuPopup from "@/components/MenuPopup";
 
 export default function HomeHeader() {
+  const isHome = usePathname() === "/";
   const [menuOpen, setMenuOpen] = useState(false);
   const [solutionsOpen, setSolutionsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -24,23 +26,27 @@ export default function HomeHeader() {
 
   const solutions = [
     { name: "Public Restroom Partitions", href: "/public-restroom-partitions" },
-     { name: "luxe Partition Systems", href: "/luxe-partition-systems" },
-    { name: "Kids Restroom Partitions", href: "/kids-restroom-partitions" },
-    { name: "Urinal Partitions", href: "/urinal-partitions" },
+    { name: "Luxe Partition Systems", href: "/luxe-partition-systems" },
+    { name: "Kids Restroom Partitions", href: "/kids-restrooms-partitions" },
+    { name: "Urinal Partitions", href: "/urinals-partitions" },
     { name: "Colors & Finished", href: "/colors-finished" },
   ];
 
-  const closeMenu = () => {
+  const closeMenu = useCallback(() => {
     setMenuOpen(false);
-    setSolutionsOpen(false);
-  };
+  }, []);
 
   return (
+    <>
     <header
-      className={`fixed top-0 left-0 z-[9999] w-full text-white transition-all duration-300 ${
+      className={`fixed top-0 left-0 z-[9999] w-full transition-all duration-300 ${
+        isHome ? "text-white" : "text-black"
+      } ${
         scrolled
-          ? "bg-black/80 backdrop-blur-xl shadow-lg border-b border-white/10"
-          : "bg-transparent border-b border-transparent"
+          ? isHome
+            ? "bg-black/80 backdrop-blur-xl shadow-lg border-b border-white/10 h-24"
+            : "bg-white/90 backdrop-blur-xl shadow-lg border-b border-black/10 h-24"
+          : "bg-white/20 backdrop-blur-xl shadow-lg border-b border-black/10 h-24"
       }`}
     >
       <div className="flex h-[65px] lg:h-[75px] items-center px-5 sm:px-8 lg:px-12">
@@ -48,7 +54,7 @@ export default function HomeHeader() {
         {/* LOGO */}
         <Link href="/" className="flex shrink-0 items-center gap-5">
           <Image
-            src="/logo-10 (2).webp"
+            src={isHome ? "/logo-10 (2).webp" : "/logo_transp.webp"}
             alt="RYKA Restroom Cubicles"
             width={270}
             height={90}
@@ -56,7 +62,11 @@ export default function HomeHeader() {
             className="w-[135px] sm:w-[160px] lg:w-[200px] h-auto object-contain mt-7 mb-3"
           />
 
-          <span className="hidden lg:block h-10 w-px bg-white/40" />
+          <span
+            className={`hidden lg:block h-10 w-px ${
+              isHome ? "bg-white/40" : "bg-black/20"
+            }`}
+          />
         </Link>
 
         {/* DESKTOP NAVIGATION */}
@@ -84,7 +94,7 @@ export default function HomeHeader() {
             </button>
 
             {solutionsOpen && (
-              <div className="absolute left-0 top-full mt-5 w-64 overflow-hidden rounded-xl border border-white/15 bg-[#101820]/95 py-2 shadow-2xl backdrop-blur-xl">
+              <div className="absolute left-0 top-full mt-5 w-64 overflow-hidden rounded-xl border border-white/15 bg-[#101820]/95 py-2 text-white shadow-2xl backdrop-blur-xl">
                 {solutions.map((item) => (
                   <Link
                     key={item.href}
@@ -113,67 +123,32 @@ export default function HomeHeader() {
           <Link
             href="/search"
             aria-label="Search"
-            className="flex h-12 w-12 items-center justify-center rounded-full border border-white/50 bg-black/30 backdrop-blur-sm hover:bg-[#FFA21A] hover:border-[#FFA21A] transition-all"
+            className={`flex h-12 w-12 items-center justify-center rounded-full border backdrop-blur-sm hover:bg-[#FFA21A] hover:border-[#FFA21A] hover:text-white transition-all ${
+              isHome
+                ? "border-white/50 bg-black/30"
+                : "border-[#1680b8]/60 bg-white/60 text-[#1680b8]"
+            }`}
           >
             <Search size={26} />
           </Link>
 
           <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Toggle menu"
-            className="text-white hover:text-[#FFA21A] transition-colors"
+            onClick={() => setMenuOpen(true)}
+            aria-label="Open menu"
+            aria-expanded={menuOpen}
+            className={`hover:text-[#FFA21A] transition-colors ${
+              isHome ? "text-white" : "text-[#1680b8]"
+            }`}
           >
-            {menuOpen ? <X size={34} /> : <Menu size={34} />}
+            <Menu size={34} />
           </button>
         </div>
       </div>
-
-      {/* MOBILE MENU */}
-      {menuOpen && (
-        <div className="absolute right-0 top-full w-full sm:w-[350px] border border-white/10 bg-black/95 px-7 py-6 shadow-2xl backdrop-blur-xl">
-          <nav className="flex flex-col">
-
-            <Link
-              href="/"
-              onClick={closeMenu}
-              className="border-b border-white/10 py-4 text-sm uppercase"
-            >
-              Home
-            </Link>
-
-            <button
-              onClick={() => setSolutionsOpen(!solutionsOpen)}
-              className="flex justify-between border-b border-white/10 py-4 text-sm uppercase"
-            >
-              Solutions
-              <ChevronDown
-                size={17}
-                className={solutionsOpen ? "rotate-180" : ""}
-              />
-            </button>
-
-            {solutionsOpen &&
-              solutions.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={closeMenu}
-                  className="py-3 pl-4 text-sm text-white/70 hover:text-[#FFA21A]"
-                >
-                  {item.name}
-                </Link>
-              ))}
-
-            <Link
-              href="/contact"
-              onClick={closeMenu}
-              className="py-4 text-sm uppercase"
-            >
-              Contacts
-            </Link>
-          </nav>
-        </div>
-      )}
     </header>
+
+    {/* FULL-SCREEN MENU (outside <header> so the header's backdrop-blur
+        doesn't turn it into the containing block for the fixed layer) */}
+    <MenuPopup open={menuOpen} onClose={closeMenu} />
+    </>
   );
 }

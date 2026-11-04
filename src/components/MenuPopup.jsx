@@ -1,25 +1,22 @@
-
 "use client";
 
 import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { X, Mail, Phone } from "lucide-react";
 import {
-  X,
-  Mail,
-  Phone,
-  Facebook,
-  Linkedin,
-  Instagram,
-  Youtube,
-} from "lucide-react";
+  FaFacebookF,
+  FaLinkedinIn,
+  FaInstagram,
+  FaYoutube,
+} from "react-icons/fa";
 
 const navigation = [
   { name: "Home", href: "/" },
   { name: "About Us", href: "/about-us" },
-  { name: "Solutions", href: "/restroom-cubicles" },
+  { name: "Solutions", href: "/public-restroom-partitions" },
   { name: "Blog", href: "/blog" },
-  { name: "Contacts", href: "/contact" },
+  { name: "Contacts", href: "/contact-us" },
   { name: "Why Choose Us", href: "/why-choose-us" },
   { name: "Latest Creations", href: "/latest-creations" },
   { name: "Clientele", href: "/clientele" },
@@ -29,16 +26,16 @@ const navigation = [
 const solutions = [
   { name: "Public Restroom Partitions", href: "/public-restroom-partitions" },
   { name: "Luxe Partition Systems", href: "/luxe-partition-systems" },
-  { name: "Kids Restroom Partitions", href: "/kids-restroom-partitions" },
-  { name: "Urinal Partitions", href: "/urinal-partitions" },
-  { name: "Color & Finished", href: "/color-finished" },
+  { name: "Kids Restroom Partitions", href: "/kids-restrooms-partitions" },
+  { name: "Urinal Partitions", href: "/urinals-partitions" },
+  { name: "Color & Finished", href: "/colors-finished" },
 ];
 
 const socialLinks = [
-  { icon: Facebook, href: "https://facebook.com/", label: "Facebook" },
-  { icon: Linkedin, href: "https://linkedin.com/", label: "LinkedIn" },
-  { icon: Instagram, href: "https://instagram.com/", label: "Instagram" },
-  { icon: Youtube, href: "https://youtube.com/", label: "YouTube" },
+  { icon: FaFacebookF, href: "https://facebook.com/", label: "Facebook" },
+  { icon: FaLinkedinIn, href: "https://linkedin.com/", label: "LinkedIn" },
+  { icon: FaInstagram, href: "https://instagram.com/", label: "Instagram" },
+  { icon: FaYoutube, href: "https://youtube.com/", label: "YouTube" },
 ];
 
 export default function Menupopup({ open, onClose }) {
@@ -61,17 +58,15 @@ export default function Menupopup({ open, onClose }) {
 
   return (
     <div
-      className={`fixed inset-0 z-[10000] bg-black/90 p-2 sm:p-3 transition-all duration-500 ${
-        open
-          ? "visible opacity-100"
-          : "invisible opacity-0 pointer-events-none"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Site menu"
+      aria-hidden={!open}
+      className={`fixed inset-0 z-[10000] overflow-y-auto bg-white text-black transition-[transform,visibility] duration-500 ease-in-out ${
+        open ? "visible translate-y-0" : "invisible -translate-y-full"
       }`}
     >
-      <div
-        className={`relative h-full w-full overflow-y-auto bg-white text-black transition-transform duration-500 ${
-          open ? "translate-y-0" : "-translate-y-5"
-        }`}
-      >
+      <div className="relative min-h-full w-full">
         {/* Close Button */}
         <button
           onClick={onClose}
@@ -87,7 +82,7 @@ export default function Menupopup({ open, onClose }) {
           <div className="flex justify-center mb-9">
             <Link href="/" onClick={onClose}>
               <Image
-                src="/logo-10 (2).webp"
+                src="/logo.webp"
                 alt="RYKA Restroom Cubicles"
                 width={270}
                 height={120}
