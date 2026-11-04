@@ -35,7 +35,7 @@ function Content({ pathname, onNavigate }) {
   return (
     <div className="flex h-full flex-col px-4 py-6">
       <Link href="/admin/blogs" onClick={onNavigate} className="mx-2 block w-fit rounded-xl bg-white px-4 py-2.5 shadow-sm">
-        <img src="/logo.png" alt="R.V. Infrastructural" className="h-9 w-auto" />
+        <img src="/logo_transp.webp" alt="R.V. Infrastructural" className="h-9 w-auto" />
       </Link>
       <p className="mx-2 mt-5 text-[0.72rem] font-bold uppercase tracking-[0.28em] text-[#f5a623]">Blog admin</p>
 

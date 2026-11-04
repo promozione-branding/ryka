@@ -1,5 +1,6 @@
-
 "use client";
+
+import { usePathname } from "next/navigation";
 
 const pages = [
   "Blogs",
@@ -22,6 +23,12 @@ const categories = [
 ];
 
 export default function Footer() {
+  const pathname = usePathname();
+  const isAdmin = pathname === "/admin" || pathname.startsWith("/admin/");
+
+  // Hide the footer on admin routes
+  if (isAdmin) return null;
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,

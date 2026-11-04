@@ -21,6 +21,7 @@ const underline =
 export default function HomeHeader() {
   const pathname = usePathname();
   const isHome = pathname === "/";
+  const isAdmin = pathname === "/admin" || pathname.startsWith("/admin/");
   const solutionsActive =
     pathname === "/products" ||
     solutionHrefs.some((href) => pathname.startsWith(href));
@@ -50,6 +51,9 @@ export default function HomeHeader() {
   const closeMenu = useCallback(() => {
     setMenuOpen(false);
   }, []);
+
+  // Hide the header on admin routes (must come after all hooks)
+  if (isAdmin) return null;
 
   // Text color: white only on home page (when not scrolled), otherwise black
   const textColor = isHome && !scrolled ? "text-white" : "text-[#1a1a1a]";
@@ -145,6 +149,12 @@ export default function HomeHeader() {
               className={`text-[13px] font-semibold uppercase tracking-[0.12em] ${textColor} transition-colors ${hoverColor}`}
             >
               Contact
+            </Link>
+            <Link
+              href="/blogs"
+              className={`text-[13px] font-semibold uppercase tracking-[0.12em] ${textColor} transition-colors ${hoverColor}`}
+            >
+              Blogs
             </Link>
           </nav>
 

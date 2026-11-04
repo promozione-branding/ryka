@@ -1,5 +1,5 @@
 import db from "./db"
-import Blog from "@/models/Blogs"
+import Blog from "@/models/blogs"
 
 export const slugify = (s = "") =>
   s.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")
