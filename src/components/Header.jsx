@@ -98,7 +98,7 @@ export default function Header() {
           </div>
 
           <Link
-            href="/contact"
+            href="/contact-us"
             className="text-sm font-semibold uppercase tracking-wide hover:text-[#FFA21A] transition-colors"
           >
             Contacts
@@ -163,7 +163,7 @@ export default function Header() {
               ))}
 
             <Link
-              href="/contact"
+              href="/contact-us"
               onClick={closeMenu}
               className="py-4 text-sm uppercase"
             >

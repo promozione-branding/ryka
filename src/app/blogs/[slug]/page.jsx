@@ -63,7 +63,7 @@ export default async function BlogDetailPage({ params }) {
 
           <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-slate-200 pt-6">
             <Link href="/blogs" className="font-semibold text-[#253970] hover:underline">← Back to all blogs</Link>
-            <Link href="/contact" className="rounded-full bg-[#f5a623] px-6 py-3 font-bold text-[#0b2a5b] transition hover:brightness-95">
+            <Link href="/contact-us" className="rounded-full bg-[#f5a623] px-6 py-3 font-bold text-[#0b2a5b] transition hover:brightness-95">
               Get a quote
             </Link>
           </div>
