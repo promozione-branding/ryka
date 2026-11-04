@@ -173,8 +173,6 @@ ${message}`
 
   return (
     <main className="min-h-screen bg-white text-gray-900 antialiased">
-      {/* ============ HERO ============ */}
-
       <section className="relative">
         <div className="relative h-[30vh] lg:h-[90vh] min-h-[420px] w-full overflow-hidden">
           <img
