@@ -12,11 +12,29 @@ import WhyRyka from "@/components/WhyRyka";
 import SpaceMarquee from "@/components/SpaceMarquee";
 import Before from "../components/Before";
 import ContactSection from "@/components/ContactSection";
+import { getProductByName, getProductHref } from "@/lib/catalog";
+
+const HERO_PRODUCT_NAMES = [
+  "Nexus Evo",
+  "Nexus Canvas",
+  "Nexus Grand",
+  "Carlton Prime",
+  "Floatex",
+  "Sky Hung",
+];
+
+const heroProducts = HERO_PRODUCT_NAMES.map(getProductByName)
+  .filter(Boolean)
+  .map((product) => ({
+    name: product.productName,
+    image: product.mainImage.url,
+    href: getProductHref(product),
+  }));
 
 export default function Home() {
   return (
     <>
-      <Hero />
+      <Hero products={heroProducts} />
        <Counter/>
        <SpaceMarquee/>
       <About />

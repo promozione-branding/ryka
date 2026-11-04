@@ -5,38 +5,38 @@ const products = [
   {
     name: "Floatex",
     image: "/product/imgi_7_Swing-Lite-4.webp",
-    href: "public-restroom-partitions/floatex",
+    href: "/public-restroom-partitions/floatex",
   },
   {
     name: "Sky Hung",
     image: "/product/imgi_8_top-hung-2.webp",
-    href: "public-restroom-partitions/sky-hung",
+    href: "/public-restroom-partitions/sky-hung",
     featured: true,
   },
   {
     name: "Nexus Evo",
     image: "/product/imgi_9_Nexus-Evos.webp",
-    href: "public-restroom-partitions/nexus-evo",
+    href: "/public-restroom-partitions/nexus-evo",
   },
   {
     name: "Nexus Canvas",
     image: "/product/imgi_10_Nexus-Canvas-1.webp",
-    href: "public-restroom-partitions/nexus-canvas",
+    href: "/public-restroom-partitions/nexus-canvas",
   },
   {
     name: "Nexus Grand",
     image: "/product/imgi_11_Nexus-Grand-2.webp",
-    href: "public-restroom-partitions/nexus-grand",
+    href: "/public-restroom-partitions/nexus-grand",
   },
   {
     name: "Carlton Prime",
     image: "/product/imgi_12_Carlton-Prime-1.webp",
-    href: "public-restroom-partitions/carlton-prime",
+    href: "/public-restroom-partitions/carlton-prime",
   },
   {
     name: "Carlton Pristine",
     image: "/product/imgi_13_Carlton-Pristine-2.webp",
-    href: "public-restroom-partitions/carlton-pristine",
+    href: "/public-restroom-partitions/carlton-pristine",
   },
 ];
 

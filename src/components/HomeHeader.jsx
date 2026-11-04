@@ -7,8 +7,23 @@ import { usePathname } from "next/navigation";
 import { ChevronDown, Menu, Search } from "lucide-react";
 import MenuPopup from "@/components/MenuPopup";
 
+const solutionHrefs = [
+  "/public-restroom-partitions",
+  "/luxe-partition-systems",
+  "/kids-restrooms-partitions",
+  "/urinals-partitions",
+  "/colors-finished",
+];
+
+const underline =
+  "after:absolute after:bottom-0 after:left-0 after:h-[3px] after:w-full after:bg-[#FFA21A]";
+
 export default function HomeHeader() {
-  const isHome = usePathname() === "/";
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+  const solutionsActive =
+    pathname === "/products" ||
+    solutionHrefs.some((href) => pathname.startsWith(href));
   const [menuOpen, setMenuOpen] = useState(false);
   const [solutionsOpen, setSolutionsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -25,6 +40,7 @@ export default function HomeHeader() {
   }, []);
 
   const solutions = [
+    { name: "All Products", href: "/products" },
     { name: "Public Restroom Partitions", href: "/public-restroom-partitions" },
     { name: "Luxe Partition Systems", href: "/luxe-partition-systems" },
     { name: "Kids Restroom Partitions", href: "/kids-restrooms-partitions" },
@@ -74,37 +90,63 @@ export default function HomeHeader() {
 
           <Link
             href="/"
-            className="relative py-3 text-sm font-semibold uppercase tracking-wide after:absolute after:bottom-0 after:left-0 after:h-[3px] after:w-full after:bg-[#FFA21A]"
+            className={`relative py-3 text-sm font-semibold uppercase tracking-wide hover:text-[#FFA21A] transition-colors ${
+              isHome ? underline : ""
+            }`}
           >
             Home
           </Link>
 
-          <div className="relative">
-            <button
-              onClick={() => setSolutionsOpen(!solutionsOpen)}
-              className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wide hover:text-[#FFA21A] transition-colors"
+          <div
+            className="relative"
+            onMouseEnter={() => setSolutionsOpen(true)}
+            onMouseLeave={() => setSolutionsOpen(false)}
+          >
+            <div
+              className={`relative flex items-center gap-2 py-3 ${
+                solutionsActive ? underline : ""
+              }`}
             >
-              Solutions
-              <ChevronDown
-                size={16}
-                className={`transition-transform ${
-                  solutionsOpen ? "rotate-180" : ""
-                }`}
-              />
-            </button>
+              {/* Label goes to the all-products page */}
+              <Link
+                href="/products"
+                onClick={() => setSolutionsOpen(false)}
+                className="text-sm font-semibold uppercase tracking-wide hover:text-[#FFA21A] transition-colors"
+              >
+                Solutions
+              </Link>
+
+              {/* Chevron toggles the quick-links dropdown */}
+              <button
+                type="button"
+                onClick={() => setSolutionsOpen(!solutionsOpen)}
+                aria-label="Toggle solutions menu"
+                aria-expanded={solutionsOpen}
+                className="hover:text-[#FFA21A] transition-colors"
+              >
+                <ChevronDown
+                  size={16}
+                  className={`transition-transform ${
+                    solutionsOpen ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+            </div>
 
             {solutionsOpen && (
-              <div className="absolute left-0 top-full mt-5 w-64 overflow-hidden rounded-xl border border-white/15 bg-[#101820]/95 py-2 text-white shadow-2xl backdrop-blur-xl">
-                {solutions.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    onClick={() => setSolutionsOpen(false)}
-                    className="block px-5 py-3 text-sm hover:bg-white/10 hover:text-[#FFA21A] transition-colors"
-                  >
-                    {item.name}
-                  </Link>
-                ))}
+              <div className="absolute left-0 top-full w-64 pt-2">
+                <div className="overflow-hidden rounded-xl border border-white/15 bg-[#101820]/95 py-2 text-white shadow-2xl backdrop-blur-xl">
+                  {solutions.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      onClick={() => setSolutionsOpen(false)}
+                      className="block px-5 py-3 text-sm hover:bg-white/10 hover:text-[#FFA21A] transition-colors"
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
+                </div>
               </div>
             )}
           </div>

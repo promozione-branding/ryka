@@ -48,30 +48,38 @@ const slides = [
   },
 ];
 
+// Hero product carousel. Each `href` is a real, existing route:
+//   /public-restroom-partitions/[slug]  ->  slug = product url in src/lib/data.js
 const products = [
   {
     name: "Nexus Evo",
     image: "/product/imgi_9_Nexus-Evos.webp",
+    href: "/public-restroom-partitions/nexus-evo",
   },
   {
     name: "Nexus Canvas",
     image: "/product/imgi_10_Nexus-Canvas-1.webp",
+    href: "/public-restroom-partitions/nexus-canvas",
   },
   {
     name: "Nexus Grand",
     image: "/product/imgi_11_Nexus-Grand-2.webp",
+    href: "/public-restroom-partitions/nexus-grand",
   },
   {
     name: "Carlton Prime",
     image: "/product/imgi_12_Carlton-Prime-1.webp",
+    href: "/public-restroom-partitions/carlton-prime",
   },
   {
     name: "Floatex",
     image: "/product/imgi_7_Swing-Lite-4.webp",
+    href: "/public-restroom-partitions/floatex",
   },
   {
     name: "Sky Hung",
     image: "/product/imgi_8_top-hung-2.webp",
+    href: "/public-restroom-partitions/sky-hung",
   },
 ];
 
@@ -98,16 +106,14 @@ export default function Hero() {
   }, []);
 
   // PRODUCT SLIDER - ONE BY ONE
+  const maxProductStart = Math.max(products.length - 4, 0);
+
   const nextProducts = () => {
-    setProductStart((prev) =>
-      prev >= products.length - 4 ? 0 : prev + 1
-    );
+    setProductStart((prev) => (prev >= maxProductStart ? 0 : prev + 1));
   };
 
   const previousProducts = () => {
-    setProductStart((prev) =>
-      prev <= 0 ? products.length - 4 : prev - 1
-    );
+    setProductStart((prev) => (prev <= 0 ? maxProductStart : prev - 1));
   };
 
   const visibleProducts = products.slice(
@@ -116,7 +122,7 @@ export default function Hero() {
   );
 
   return (
-    <section className="relative isolate min-h-screen w-full overflow-hidden bg-[#07111d] lg:h-screen">
+    <section className="relative isolate min-h-screen w-full overflow-hidden bg-[#07111d] lg:h-full">
 
       {/* BACKGROUND */}
 
@@ -480,7 +486,7 @@ export default function Hero() {
                     >
 
                       <Link
-                        href="/restroom-cubicles"
+                        href={product.href}
                         className="block"
                       >
 
@@ -558,13 +564,13 @@ export default function Hero() {
                 key={product.name}
                 onClick={() =>
                   setProductStart(
-                    Math.min(index, products.length - 4)
+                    Math.min(index, maxProductStart)
                   )
                 }
                 aria-label={`Show ${product.name}`}
                 className={`h-2.5 rounded-full transition-all duration-300 ${
                   productStart === index
-                    ? "w-8 bg-[black]]"
+                    ? "w-8 bg-black"
                     : "w-2.5 bg-white/60 hover:bg-white"
                 }`}
               />

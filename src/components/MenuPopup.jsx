@@ -14,7 +14,7 @@ import {
 const navigation = [
   { name: "Home", href: "/" },
   { name: "About Us", href: "/about-us" },
-  { name: "Solutions", href: "/public-restroom-partitions" },
+  { name: "Solutions", href: "/products" },
   { name: "Blog", href: "/blog" },
   { name: "Contacts", href: "/contact-us" },
   { name: "Why Choose Us", href: "/why-choose-us" },
@@ -24,6 +24,7 @@ const navigation = [
 ];
 
 const solutions = [
+  { name: "All Products", href: "/products" },
   { name: "Public Restroom Partitions", href: "/public-restroom-partitions" },
   { name: "Luxe Partition Systems", href: "/luxe-partition-systems" },
   { name: "Kids Restroom Partitions", href: "/kids-restrooms-partitions" },
