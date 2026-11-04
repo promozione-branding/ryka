@@ -78,7 +78,7 @@ export default function Footer() {
               {pages.map((page, index) => (
                 <li key={index}>
                   <a
-                    href="#"
+                    href={page.toLowerCase()}
                     className="text-[14px] text-white hover:text-gray-400 transition-colors duration-300"
                   >
                     {page}

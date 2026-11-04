@@ -150,12 +150,7 @@ export default function HomeHeader() {
             >
               Contact
             </Link>
-            <Link
-              href="/blogs"
-              className={`text-[13px] font-semibold uppercase tracking-[0.12em] ${textColor} transition-colors ${hoverColor}`}
-            >
-              Blogs
-            </Link>
+          
           </nav>
 
           {/* RIGHT ACTIONS */}
