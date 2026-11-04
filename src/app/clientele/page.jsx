@@ -76,7 +76,7 @@ export default function Clientele() {
   return (
     <main className="w-full bg-[#D8F3F9] min-h-screen">
       {/* Heading Section */}
-      <section className="px-5 pt-16 pb-10 md:pt-20 md:pb-14 text-center">
+      <section className="px-5 pt-16 pb-10 md:pt-20 md:pb-14 text-center mt-10">
         <span className="text-sm tracking-[4px] uppercase text-[#b49a55] font-semibold">
           Trusted Partnerships
         </span>

@@ -1,14 +1,17 @@
-
 "use client";
 
 import React from "react";
 import { useParams } from "next/navigation";
 import productData from "@/lib/data";
-
+import {
+  FadeInUp,
+  Stagger,
+  StaggerItem,
+} from "@/components/MotionWrappers";
 
 function SectionHeading({ title, subtitle }) {
   return (
-    <div className="mb-7 text-center">
+    <FadeInUp className="mb-7 text-center">
       <h2 className="text-3xl md:text-5xl font-semibold text-gray-900 tracking-tight">
         {title}
       </h2>
@@ -20,7 +23,7 @@ function SectionHeading({ title, subtitle }) {
       )}
 
       <div className="mt-4 mx-auto h-1 w-16 rounded-full bg-amber-500" />
-    </div>
+    </FadeInUp>
   );
 }
 
@@ -50,9 +53,7 @@ function SpecRow({ spec, measurement, highlight, unit }) {
         highlight ? "bg-amber-50/60" : "bg-white"
       }`}
     >
-      <span className="font-medium text-gray-600">
-        {spec}
-      </span>
+      <span className="font-medium text-gray-600">{spec}</span>
 
       <span className="text-right font-semibold text-gray-900">
         {measurement}
@@ -84,8 +85,7 @@ export default function Page() {
   const product = Array.isArray(productData)
     ? productData.find(
         (item) =>
-          normalizeSlug(item.url) ===
-          normalizeSlug(currentSlug)
+          normalizeSlug(item.url) === normalizeSlug(currentSlug)
       )
     : null;
 
@@ -117,9 +117,7 @@ export default function Page() {
 
   const dimensions = product.dimensions || {};
 
-  const specifications = Array.isArray(
-    dimensions.specifications
-  )
+  const specifications = Array.isArray(dimensions.specifications)
     ? dimensions.specifications
     : [];
 
@@ -148,8 +146,7 @@ export default function Page() {
     const mobile = formData.get("mobile");
     const message = formData.get("message");
 
-    const contactEmail =
-      process.env.NEXT_PUBLIC_CONTACT_EMAIL;
+    const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL;
 
     if (!contactEmail) {
       alert("Please configure your contact email.");
@@ -171,18 +168,15 @@ Message:
 ${message}`
     );
 
-    window.location.href =
-      `mailto:${contactEmail}?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:${contactEmail}?subject=${subject}&body=${body}`;
   };
 
   return (
     <main className="min-h-screen bg-white text-gray-900 antialiased">
-
       {/* ============ HERO ============ */}
 
       <section className="relative">
         <div className="relative h-[30vh] lg:h-[90vh] min-h-[420px] w-full overflow-hidden">
-
           <img
             src={mainImage.url || "/placeholder.webp"}
             alt={mainImage.alt || productName}
@@ -190,49 +184,40 @@ ${message}`
           />
 
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/30 to-transparent" />
-
         </div>
       </section>
 
       {/* ============ OVERVIEW ============ */}
 
       <section className="mx-auto max-w-7xl px-6 py-16">
+        <SectionHeading title={`About ${productName}`} />
 
-        <SectionHeading
-          title={`About ${productName}`}
-        />
-
-        <p className="text-gray-600 leading-relaxed text-center">
-          {description}
-        </p>
-
+        <FadeInUp custom={1}>
+          <p className="text-gray-600 leading-relaxed text-center">
+            {description}
+          </p>
+        </FadeInUp>
       </section>
 
       {/* ============ KEY FEATURES ============ */}
 
       {keyFeatures.length > 0 && (
         <section className="max-w-7xl mx-auto px-6 pb-16">
-
           <SectionHeading title="Key Features" />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-
+          <Stagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {keyFeatures.map((feature, index) => (
-              <div
+              <StaggerItem
                 key={index}
+                custom={index}
                 className="flex gap-3 items-start bg-gray-50 p-5 rounded-lg"
               >
-                <span className="text-[#0785cc] font-bold">
-                  ✓
-                </span>
+                <span className="text-[#0785cc] font-bold">✓</span>
 
-                <p className="text-gray-700 text-sm">
-                  {feature}
-                </p>
-              </div>
+                <p className="text-gray-700 text-sm">{feature}</p>
+              </StaggerItem>
             ))}
-
-          </div>
+          </Stagger>
         </section>
       )}
 
@@ -240,34 +225,22 @@ ${message}`
 
       {hardwareAndAccessories.length > 0 && (
         <section className="w-full bg-[#e7e7e7] py-12 md:py-16 overflow-hidden">
-
           <div className="mx-auto max-w-[1350px] px-5 md:px-8">
+            <FadeInUp>
+              <h2 className="text-center text-[34px] sm:text-[46px] md:text-[58px] lg:text-[64px] font-semibold tracking-tight leading-tight mb-8 md:mb-5">
+                <span className="text-black">Hardware & </span>
+                <span className="text-[#0785cc]">Accessories</span>
+              </h2>
+            </FadeInUp>
 
-            <h2 className="text-center text-[34px] sm:text-[46px] md:text-[58px] lg:text-[64px] font-semibold tracking-tight leading-tight mb-8 md:mb-5">
-
-              <span className="text-black">
-                Hardware &{" "}
-              </span>
-
-              <span className="text-[#0785cc]">
-                Accessories
-              </span>
-
-            </h2>
-
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-x-5 gap-y-6 md:gap-x-7 md:gap-y-5">
-
+            <Stagger className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-x-5 gap-y-6 md:gap-x-7 md:gap-y-5">
               {hardwareAndAccessories.map((item, index) => (
-                <HardwareCard
-                  key={item.name || index}
-                  item={item}
-                />
+                <StaggerItem key={item.name || index}>
+                  <HardwareCard item={item} />
+                </StaggerItem>
               ))}
-
-            </div>
-
+            </Stagger>
           </div>
-
         </section>
       )}
 
@@ -283,11 +256,9 @@ ${message}`
             backgroundColor: "#f5f5f5",
           }}
         >
-
           <div className="absolute inset-0 bg-white/20 pointer-events-none" />
 
           <div className="relative z-10 mx-auto max-w-7xl px-5 md:px-8">
-
             <SectionHeading
               title="Dimensions & Specifications"
               subtitle={`All measurements in ${unit}.`}
@@ -296,70 +267,61 @@ ${message}`
             {/* Drawings */}
 
             {drawings.length > 0 && (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10 mb-12">
+              <Stagger className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10 mb-12">
+                {drawings.map(
+                  (d, index) =>
+                    d.image && (
+                      <StaggerItem key={d.name || index} custom={index}>
+                        <figure className="overflow-hidden rounded-xl border border-gray-200 bg-white p-4 shadow-sm hover:shadow-lg transition-shadow duration-300">
+                          <div className="h-[260px] sm:h-[320px] lg:h-[360px] flex items-center justify-center overflow-hidden rounded-lg bg-white">
+                            <img
+                              src={d.image}
+                              alt={d.name || "Dimension drawing"}
+                              className="w-full h-full object-contain"
+                              loading="lazy"
+                            />
+                          </div>
 
-                {drawings.map((d, index) => (
-                  d.image && (
-                    <figure
-                      key={d.name || index}
-                      className="overflow-hidden rounded-xl border border-gray-200 bg-white p-4 shadow-sm hover:shadow-lg transition-shadow duration-300"
-                    >
-
-                      <div className="h-[260px] sm:h-[320px] lg:h-[360px] flex items-center justify-center overflow-hidden rounded-lg bg-white">
-
-                        <img
-                          src={d.image}
-                          alt={d.name || "Dimension drawing"}
-                          className="w-full h-full object-contain"
-                          loading="lazy"
-                        />
-
-                      </div>
-
-                      <figcaption className="mt-4 text-center text-sm font-semibold text-gray-700">
-                        {d.name}
-                      </figcaption>
-
-                    </figure>
-                  )
-                ))}
-
-              </div>
+                          <figcaption className="mt-4 text-center text-sm font-semibold text-gray-700">
+                            {d.name}
+                          </figcaption>
+                        </figure>
+                      </StaggerItem>
+                    )
+                )}
+              </Stagger>
             )}
 
             {/* Specifications */}
 
             {specifications.length > 0 && (
-              <div className="max-w-4xl mx-auto overflow-hidden rounded-xl border border-gray-200 bg-white shadow-md">
+              <FadeInUp margin="-60px">
+                <div className="max-w-4xl mx-auto overflow-hidden rounded-xl border border-gray-200 bg-white shadow-md">
+                  <div className="bg-[#03070e] px-6 py-4">
+                    <h3 className="text-lg font-semibold text-white">
+                      Technical Specifications
+                    </h3>
+                  </div>
 
-                <div className="bg-[#03070e] px-6 py-4">
-                  <h3 className="text-lg font-semibold text-white">
-                    Technical Specifications
-                  </h3>
+                  <div className="divide-y divide-gray-100">
+                    {specifications.map((s, index) => (
+                      <SpecRow
+                        key={s.specification || index}
+                        spec={s.specification}
+                        measurement={s.measurement}
+                        highlight={index % 2 === 0}
+                        unit={unit}
+                      />
+                    ))}
+                  </div>
                 </div>
-
-                <div className="divide-y divide-gray-100">
-
-                  {specifications.map((s, index) => (
-                    <SpecRow
-                      key={s.specification || index}
-                      spec={s.specification}
-                      measurement={s.measurement}
-                      highlight={index % 2 === 0}
-                      unit={unit}
-                    />
-                  ))}
-
-                </div>
-
-              </div>
+              </FadeInUp>
             )}
-
           </div>
-
         </section>
       )}
-{/* 
+
+      {/* 
       ============ CATEGORIES ============ */}
 
       {/* {categories.length > 0 && (
@@ -382,37 +344,28 @@ ${message}`
       {/* ============ GET IN TOUCH ============ */}
 
       <section className="w-full bg-[#f5f5f5] px-5 py-10 md:py-11">
-
         <div className="max-w-[1150px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-
           {/* LEFT IMAGE */}
 
-          <div className="w-full">
-
+          <FadeInUp margin="-60px" className="w-full">
             <div className="relative w-full h-[260px] sm:h-[320px] lg:h-[318px] overflow-hidden rounded-[6px]">
-
               <img
                 src="/get-in-touch-5-1024x576.webp"
                 alt="Modern restroom cubicle partitions"
                 className="w-full h-full object-cover"
               />
-
             </div>
-
-          </div>
+          </FadeInUp>
 
           {/* RIGHT FORM */}
 
-          <div className="w-full">
-
+          <FadeInUp margin="-60px" custom={1} className="w-full">
             <h2 className="text-center text-black text-[38px] sm:text-[46px] md:text-[50px] font-semibold leading-tight mb-5">
               Get in Touch
             </h2>
 
             <form onSubmit={handleSubmit}>
-
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-2 gap-y-5">
-
                 <div className="flex flex-col">
                   <label className="text-[17px] text-[#222] mb-1">
                     Name
@@ -468,7 +421,6 @@ ${message}`
                     className="w-full h-[108px] px-2 py-2 bg-transparent border-0 border-b border-black text-[12px] outline-none resize-y placeholder:text-[#888] focus:border-[#168fc0]"
                   />
                 </div>
-
               </div>
 
               <button
@@ -477,15 +429,10 @@ ${message}`
               >
                 Submit Now
               </button>
-
             </form>
-
-          </div>
-
+          </FadeInUp>
         </div>
-
       </section>
-
     </main>
   );
 }

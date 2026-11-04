@@ -92,10 +92,8 @@ export default function ColorFinished() {
   return (
     <main className="w-full overflow-hidden">
 
-      {/* ================= COLOR & FINISHED ================= */}
-
       <section
-        className="relative w-full overflow-hidden bg-[#EDE8D4] px-4 pb-7 pt-10 md:px-8 md:pb-8 md:pt-10"
+        className="relative w-full overflow-hidden bg-[#EDE8D4] px-4 pb-7 pt-10 md:px-8 md:pb-8 md:pt-30"
         style={{
           backgroundImage: "url('/Flowers-1-1.webp')",
           backgroundSize: "cover",

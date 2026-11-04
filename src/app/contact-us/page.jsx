@@ -1,6 +1,7 @@
-
 "use client";
 
+import { useState } from "react";
+import axios from "axios";
 import {
   MapPin,
   Mail,
@@ -8,31 +9,107 @@ import {
 } from "lucide-react";
 
 export default function ContactUs() {
-  const handleSubmit = (e) => {
+  const [loading, setLoading] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const formData = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const fd = new FormData(form);
 
-    const name = formData.get("name");
-    const email = formData.get("email");
-    const phone = formData.get("phone");
-    const message = formData.get("message");
+    const name = fd.get("name")?.toString().trim();
+    const email = fd.get("email")?.toString().trim();
+    const phone = fd.get("phone")?.toString().trim();
+    const product = fd.get("product")?.toString().trim();
+    const message = fd.get("message")?.toString().trim();
 
-    const subject = encodeURIComponent("Website Contact Enquiry");
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\n\nMessage:\n${message}`
-    );
+const formData = {
+      platform: "Ryka Restroom Cubicles",
+      supplierToken: "6a9bb67ac077e066ff1e0d9e",
+      platformEmail: "rykarestroomcubicle@gmail.com",
+      name,
+      phone,
+      email,
+      product,
+      message,
+      place: "N/A",
+    };
 
-    window.location.href = `mailto:rykarestroomcubicle@gmail.com?subject=${subject}&body=${body}`;
+    if (!/^\d{10}$/.test(formData.phone)) {
+      return alert("Enter a valid 10-digit phone number");
+    }
+
+    try {
+      setLoading(true);
+
+      const { data } = await axios.post(
+        "https://brandbnalo.com/api/form/add",
+        formData
+      );
+
+      console.log(data);
+      form.reset();
+      setShowSuccess(true);
+    } catch (error) {
+      console.error(error);
+      alert("Something went wrong. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <main className="w-full overflow-hidden bg-white">
 
-      {/* ================= CONTACT TITLE BAR ================= */}
+      {/* ================= SUCCESS POPUP ================= */}
+      {showSuccess && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 px-5"
+          onClick={() => setShowSuccess(false)}
+        >
+          <div
+            className="bg-white w-full max-w-[380px] rounded-md px-8 py-10 text-center shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
+              <svg
+                className="h-9 w-9 text-green-600"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="3"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+            </div>
+
+            <h3 className="text-[22px] font-semibold text-black mb-2">
+              Message Sent Successfully!
+            </h3>
+
+            <p className="text-[14px] text-[#555] mb-6">
+              Thank you for contacting us. Our team will get back to you shortly.
+            </p>
+
+            <button
+              type="button"
+              onClick={() => setShowSuccess(false)}
+              className="bg-[#169bc8] hover:bg-[#087eaa] text-white text-[15px] font-semibold px-8 py-2 rounded-[2px] transition-all duration-300"
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      )}
+
       <section
         className="relative min-h-[145px] md:min-h-[145px] flex items-center justify-center px-5 py-15 
-        bg-[#c9c7c7] bg-cover bg-center overflow-hidden"
+        bg-[#c9c7c7] bg-cover bg-center overflow-hidden pt-30"
         style={{
           backgroundImage:
             "linear-gradient(rgba(195,193,193,0.92),rgba(195,193,193,0.92)),url('/images/floral-bg.png')",
@@ -53,18 +130,13 @@ export default function ContactUs() {
         </div>
 
       </section>
-
-
-      {/* ================= CONTACT SECTION ================= */}
       <section
-        className="relative bg-[#f5f5f5] bg-cover bg-center px-5 py-10 md:py-12 lg:py-10"
+        className="relative bg-[#f5f5f5] bg-fill bg-center px-5 py-10 md:py-12 lg:py-10"
         style={{
           backgroundImage: "url('/contact-us-bann-e.webp')",
         }}
       >
 
-        {/* Background Overlay */}
-        <div className="absolute inset-0 bg-white/55 pointer-events-none" />
 
         <div className="relative z-10 max-w-[950px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 lg:gap-20 items-start">
 
@@ -106,6 +178,19 @@ export default function ContactUs() {
                 name="phone"
                 placeholder="Your Phone Number"
                 required
+                inputMode="numeric"
+                maxLength={10}
+                pattern="\d{10}"
+                title="Enter a valid 10-digit phone number"
+                className="w-full h-[58px] px-5 bg-white/20 border-0 border-b border-black/80 text-[15px] text-black placeholder:text-[#777] outline-none focus:border-[#168fbe] transition-colors"
+              />
+
+              {/* Product */}
+              <input
+                type="text"
+                name="product"
+                placeholder="Product Interested In"
+                required
                 className="w-full h-[58px] px-5 bg-white/20 border-0 border-b border-black/80 text-[15px] text-black placeholder:text-[#777] outline-none focus:border-[#168fbe] transition-colors"
               />
 
@@ -124,6 +209,7 @@ export default function ContactUs() {
                 <input
                   type="checkbox"
                   id="robot"
+                  required
                   className="w-5 h-5 accent-[#168fbe] cursor-pointer"
                 />
 
@@ -148,9 +234,10 @@ export default function ContactUs() {
               {/* Submit */}
               <button
                 type="submit"
-                className="bg-[#169bc8] hover:bg-[#087eaa] text-white text-[15px] font-semibold px-7 py-2 mt-2 rounded-[2px] transition-all duration-300"
+                disabled={loading}
+                className="bg-[#169bc8] hover:bg-[#087eaa] disabled:opacity-60 disabled:cursor-not-allowed text-white text-[15px] font-semibold px-7 py-2 mt-2 rounded-[2px] transition-all duration-300"
               >
-                Send
+                {loading ? "Sending..." : "Send"}
               </button>
 
             </form>
@@ -158,16 +245,21 @@ export default function ContactUs() {
           </div>
 
 
-          {/* ================= RIGHT: CONTACT INFORMATION ================= */}
-          <div
-            className="relative w-full min-h-[490px] md:min-h-[490px] bg-[#191919] text-white px-7 sm:px-10 py-10 md:py-16 overflow-hidden"
-            style={{
-              backgroundImage:
-                "linear-gradient(rgba(20,20,20,0.92),rgba(20,20,20,0.92)),url('/images/blueprint-bg.png')",
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-          >
+<div
+  className="relative w-full min-h-[490px] md:min-h-[490px] bg-[#191919] text-white px-7 sm:px-10 py-10 md:py-16 overflow-hidden"
+  style={{
+    backgroundImage: `
+      linear-gradient(
+        rgba(20,20,20,0.72),
+        rgba(20,20,20,0.82)
+      ),
+      url('/contact_detail.webp')
+    `,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+  }}
+>
 
             <div className="relative z-10">
 
@@ -257,17 +349,12 @@ export default function ContactUs() {
 
               </div>
 
-
-             
-
             </div>
 
           </div>
 
         </div>
-
       </section>
-
     </main>
   );
 }

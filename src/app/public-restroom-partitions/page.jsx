@@ -1,7 +1,11 @@
-
 "use client";
 
 import FlowerBackdrop from "@/components/FlowerBackdrop";
+import {
+  FadeInUp,
+  Stagger,
+  StaggerItem,
+} from "@/components/MotionWrappers";
 
 const products = [
   {
@@ -45,14 +49,11 @@ const products = [
 export default function PublicRestroomProducts() {
   return (
     <section className="relative w-full bg-[#e8e4d0] overflow-hidden py-12 md:py-28">
-
       <FlowerBackdrop />
 
       <div className="relative z-10 max-w-[1350px] mx-auto px-5 py-6 md:px-8">
-
         {/* Heading */}
-        <div className="text-center mb-3 md:mb-8">
-
+        <FadeInUp className="text-center mb-3 md:mb-8">
           <h2 className="text-[36px] sm:text-[48px] md:text-[64px] lg:text-[68px] font-semibold text-black leading-[1.05] tracking-[-2px]">
             Public Restroom Partitions
           </h2>
@@ -62,58 +63,47 @@ export default function PublicRestroomProducts() {
             partition systems offer modern design, easy maintenance,
             and robust functionality.
           </p>
-
-        </div>
+        </FadeInUp>
 
         {/* Product Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-[14px] gap-y-8 md:gap-y-6">
-
+        <Stagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-[14px] gap-y-8 md:gap-y-6">
           {products.map((product, index) => (
-            <a
-              href={product.href}
+            <StaggerItem
               key={product.name}
-              className={`group block min-w-0 ${
-                product.featured
-                  ? "lg:-mt-[10px] lg:mb-[10px]"
-                  : ""
-              }`}
+              custom={index}
+              className={product.featured ? "lg:-mt-[10px] lg:mb-[10px]" : ""}
             >
+              <a href={product.href} className="group block min-w-0">
+                {/* Product Image */}
+                <div
+                  className={`relative w-full overflow-hidden rounded-[6px] bg-[#e2e4df] ${
+                    product.featured
+                      ? "h-[215px] md:h-[233px] lg:h-[233px]"
+                      : "h-[200px] md:h-[215px]"
+                  }`}
+                >
+                  <img
+                    src={product.image}
+                    alt={`${product.name} Public Restroom Partitions`}
+                    loading="lazy"
+                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.045]"
+                  />
 
-              {/* Product Image */}
-              <div
-                className={`relative w-full overflow-hidden rounded-[6px] bg-[#e2e4df] ${
-                  product.featured
-                    ? "h-[215px] md:h-[233px] lg:h-[233px]"
-                    : "h-[200px] md:h-[215px]"
-                }`}
-              >
+                  {/* Hover Overlay */}
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-500" />
+                </div>
 
-                <img
-                  src={product.image}
-                  alt={`${product.name} Public Restroom Partitions`}
-                  loading="lazy"
-                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.045]"
-                />
-
-                {/* Hover Overlay */}
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-500" />
-
-              </div>
-
-              {/* Product Name */}
-              <div className="text-center pt-4 md:pt-5">
-                <h3 className="text-[17px] md:text-[19px] font-medium text-black group-hover:text-[#755d24] transition-colors duration-300">
-                  {product.name}
-                </h3>
-              </div>
-
-            </a>
+                {/* Product Name */}
+                <div className="text-center pt-4 md:pt-5">
+                  <h3 className="text-[17px] md:text-[19px] font-medium text-black group-hover:text-[#755d24] transition-colors duration-300">
+                    {product.name}
+                  </h3>
+                </div>
+              </a>
+            </StaggerItem>
           ))}
-
-        </div>
-
+        </Stagger>
       </div>
-
     </section>
   );
 }

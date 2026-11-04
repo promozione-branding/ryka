@@ -61,7 +61,7 @@ export default function HomeHeader() {
         className={`fixed top-0 left-0 z-[9999] w-full transition-all duration-300 ${
           isHome && !scrolled
             ? "bg-black border-b border-white/10"
-            : "bg-[#FDF8F0]/95 backdrop-blur-md shadow-sm border-b border-black/5"
+            : "bg-[#FDF8F0]/55 shadow-sm border-b border-black/5"
         }`}
       >
         <div className="mx-auto flex h-[90px] max-w-[1600px] items-center justify-between px-5 sm:px-8 lg:px-12">
@@ -144,7 +144,7 @@ export default function HomeHeader() {
               href="/contact-us"
               className={`text-[13px] font-semibold uppercase tracking-[0.12em] ${textColor} transition-colors ${hoverColor}`}
             >
-              Contacts
+              Contact
             </Link>
           </nav>
 
