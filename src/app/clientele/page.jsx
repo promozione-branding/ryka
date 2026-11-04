@@ -1,4 +1,3 @@
-
 "use client";
 
 const clients = [
@@ -13,72 +12,69 @@ const clients = [
   { name: "Nirala Estate", image: "brand-32.webp" },
   { name: "CRC", image: "crc-1.webp" },
   { name: "Vatika", image: "brand-30.webp" },
-  { name: "Skootr", image: "skooter.webp", folder: "2025/07" },
+  { name: "Skootr", image: "skooter.webp" },
   { name: "Supertech", image: "brand-29.webp" },
   { name: "Ganga Realty", image: "ganga.webp" },
   { name: "Emaar MGF", image: "mgf.webp" },
   { name: "Ansal API", image: "brand-20.webp" },
   { name: "Gurjar Properties", image: "brand-38.webp" },
   { name: "Tata Realty", image: "brand-34.webp" },
-  { name: "TDI", image: "tdi.webp", folder: "2025/07" },
+  { name: "TDI", image: "tdi.webp" },
   { name: "DPS", image: "brand-14.webp" },
   { name: "K R Mangalam University", image: "brand-12.webp" },
   { name: "Rishihood University", image: "Rishihood-1.webp" },
-  { name: "Ashoka University", image: "Ashoka.webp", folder: "2025/07" },
-  { name: "Bharati Vidyapeeth", image: "bharti.webp", folder: "2025/07" },
-  { name: "Summer Fields School", image: "Summer.webp", folder: "2025/07" },
-  { name: "Vasant Valley School", image: "vasant-valley.webp", folder: "2025/07" },
-  { name: "Apollo International School", image: "Apollo.webp", folder: "2025/07" },
-  { name: "Him Academy", image: "Him.webp", folder: "2025/07" },
-  { name: "Army Public School", image: "0oaXAG-j_400x400.jpg", folder: "2025/07" },
-  { name: "DAV College", image: "dav-college.webp", folder: "2025/07" },
+  { name: "Ashoka University", image: "Ashoka.webp" },
+  { name: "Bharati Vidyapeeth", image: "bharti.webp" },
+  { name: "Summer Fields School", image: "Summer.webp" },
+  { name: "Vasant Valley School", image: "vasant-valley.webp" },
+  { name: "Apollo International School", image: "Apollo.webp" },
+  { name: "Him Academy", image: "Him.webp" },
+  { name: "Army Public School", image: "indian-Army.webp" }, // closest match available
+  { name: "DAV College", image: "dav-college.webp" },
   { name: "Rich Harvest School", image: "Rich-Harvest.webp" },
   { name: "Shri Ram Global School", image: "brand-19.webp" },
   { name: "Toyota", image: "logo-7.webp" },
   { name: "Maruti Suzuki", image: "logo-3.webp" },
   { name: "Honda", image: "logo-5.webp" },
-  { name: "Yamaha", image: "yamaha.webp", folder: "2025/07" },
+  { name: "Yamaha", image: "yamaha.webp" },
   { name: "Mercedes Benz", image: "Mercedes.webp" },
-  { name: "FCC Technology", image: "fcc.webp", folder: "2025/07" },
+  { name: "FCC Technology", image: "fcc.webp" },
   { name: "Samsung", image: "logo-6.webp" },
   { name: "Daikin", image: "Daikin.webp" },
   { name: "IndiGo", image: "brand-40.webp" },
   { name: "Zudio", image: "Zudio.webp" },
   { name: "Airtel", image: "logo-4.webp" },
-  { name: "Lenskart", image: "lenskart.webp", folder: "2025/07" },
+  { name: "Lenskart", image: "lenskart.webp" },
   { name: "Policy Bazaar", image: "brand-43-1.webp" },
-  { name: "ABP News", image: "abp-news.webp", folder: "2025/07" },
+  { name: "ABP News", image: "abp-news.webp" },
   { name: "Siemens", image: "Siemens.webp" },
   { name: "Bikanervala", image: "brand-52.webp" },
-  { name: "Skyline Airlines", image: "skyline.webp", folder: "2025/07" },
+  { name: "Skyline Airlines", image: "skyline.webp" },
   { name: "Whirlpool", image: "brand-10.webp" },
   { name: "M2K", image: "m2k.webp" },
-  { name: "Maxxis", image: "Maxxis.webp", folder: "2025/07" },
-  { name: "Allcargo Logistics", image: "All-cargo.webp", folder: "2025/07" },
-  { name: "Uno Minda", image: "brands.webp", folder: "2025/07" },
-  { name: "SMCC", image: "smcc.webp", folder: "2025/07" },
-  { name: "YKK", image: "Ykk.webp", folder: "2025/07" },
-  { name: "Mitsubishi", image: "Mistsubishi.webp", folder: "2025/07" },
+  { name: "Maxxis", image: "Maxxis.webp" },
+  { name: "Allcargo Logistics", image: "All-cargo.webp" },
+  { name: "Uno Minda", image: "brands.webp" },
+  { name: "SMCC", image: "smcc.webp" },
+  { name: "YKK", image: "Ykk.webp" },
+  { name: "Mitsubishi", image: "Mistsubishi.webp" },
   { name: "Kidzania", image: "Kidzania.webp" },
   { name: "Jurassic Park", image: "Jurassic-Park.webp" },
-  { name: "Crystal World", image: "crystal-World.webp", folder: "2025/07" },
+  { name: "Crystal World", image: "crystal-World.webp" },
   { name: "Getwell", image: "brand-47.webp" },
   { name: "GSK", image: "brand-48.webp" },
-  { name: "Motherhood Hospital", image: "motherhood.webp", folder: "2025/07" },
-  { name: "Vedantaa Hospital", image: "vedanta.webp", folder: "2025/07" },
-  { name: "Tarak Hospital", image: "Tarak-hospital.webp", folder: "2025/07" },
+  { name: "Motherhood Hospital", image: "motherhood.webp" },
+  { name: "Vedantaa Hospital", image: "vedanta.webp" },
+  { name: "Tarak Hospital", image: "Tarak-hospital.webp" },
 ];
 
 const getLogoUrl = (client) => {
-  const folder = client.folder || "2025/06";
-
-  return `https://teaminteriorsolutions.com/wp-content/uploads/${folder}/${client.image}`;
+  return `/clientele/${client.image}`;
 };
 
 export default function Clientele() {
   return (
     <main className="w-full bg-[#D8F3F9] min-h-screen">
-
       {/* Heading Section */}
       <section className="px-5 pt-16 pb-10 md:pt-20 md:pb-14 text-center">
         <span className="text-sm tracking-[4px] uppercase text-[#b49a55] font-semibold">
@@ -94,9 +90,7 @@ export default function Clientele() {
 
       {/* Client Logos */}
       <section className="max-w-[1350px] mx-auto px-5 md:px-8 pb-20">
-
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-2 md:gap-3">
-
           {clients.map((client, index) => (
             <div
               key={index}
@@ -114,10 +108,8 @@ export default function Clientele() {
               />
             </div>
           ))}
-
         </div>
       </section>
-
     </main>
   );
 }
