@@ -60,7 +60,7 @@ export default function HomeHeader() {
             : "bg-[#FDF8F0] border-b border-black/5"
         }`}
       >
-        <div className="mx-auto flex h-[90px] max-w-[1440px] items-center justify-between px-5 sm:px-8 lg:px-12">
+        <div className="mx-auto flex h-[90px] max-w-[1600px] items-center justify-between px-5 sm:px-8 lg:px-12">
           {/* LOGO */}
           <Link href="/" className="flex shrink-0 items-center">
             <Image
@@ -145,7 +145,7 @@ export default function HomeHeader() {
           </nav>
 
           {/* RIGHT ACTIONS */}
-          <div className="flex items-center gap-4 sm:gap-5">
+          <div className="flex items-center gap-4 sm:gap-12">
             <Link
               href="/"
               className="hidden sm:block"
