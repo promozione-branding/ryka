@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -10,6 +9,7 @@ import {
   Building2,
   Send,
 } from "lucide-react";
+import axios from "axios";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 25 },
@@ -25,23 +25,63 @@ const fadeUp = {
 
 export default function ContactSection() {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const inputClass =
     "h-[46px] w-full rounded-[3px] border-2 border-[#c8c8c8] bg-white px-4 text-[13px] text-[#222] placeholder:text-[#888] shadow-sm outline-none transition-all duration-300 hover:border-[#999] focus:border-[#0B2E63] focus:ring-2 focus:ring-[#0B2E63]/15";
 
-  const labelClass =
-    "mb-1.5 block text-[11px] font-semibold tracking-wide text-[#444]";
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
+    setSubmitted(false);
+    setLoading(true);
 
-    // Connect your API here
-    setSubmitted(true);
+    const form = e.target;
+    const firstName = form.firstName.value.trim();
+    const lastName = form.lastName.value.trim();
+    const phone = form.phone.value.trim();
+    const email = form.email.value.trim();
+    const product = form.projectType.value;
+    const place = form.location.value.trim();
+    const message = form.description.value.trim();
+
+const formData = {
+      platform: "Ryka Restroom Cubicles",
+      supplierToken: "6a9bb67ac077e066ff1e0d9e",
+      platformEmail: "rykarestroomcubicle@gmail.com",
+      name,
+      phone,
+      email,
+      product,
+      message,
+      place: "N/A",
+    };
+
+    if (!/^\d{10}$/.test(formData.phone)) {
+      setLoading(false);
+      setError("Enter a valid 10-digit phone number");
+      return;
+    }
+
+    try {
+      const { data } = await axios.post(
+        "https://brandbnalo.com/api/form/add",
+        formData
+      );
+
+      setSubmitted(true);
+      form.reset();
+    } catch (err) {
+      console.error(err);
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <section className="relative isolate flex min-h-screen w-full items-center overflow-hidden bg-[#101820] px-4 py-8 sm:px-7 lg:px-10">
-
       {/* BACKGROUND IMAGE */}
       <div
         className="absolute inset-0 -z-20 bg-cover bg-center"
@@ -63,7 +103,6 @@ export default function ContactSection() {
       <div className="pointer-events-none absolute -bottom-40 left-[-100px] -z-10 h-[350px] w-[350px] rounded-full bg-[#FFA21A]/10 blur-[100px]" />
 
       <div className="mx-auto w-full max-w-[1400px]">
-
         {/* ================= HEADER ================= */}
         <motion.div
           variants={fadeUp}
@@ -94,7 +133,6 @@ export default function ContactSection() {
 
         {/* ================= MAIN GRID ================= */}
         <div className="grid grid-cols-1 items-stretch gap-5 lg:grid-cols-[0.92fr_1.08fr] lg:gap-7">
-
           {/* ================= LEFT: MAP ================= */}
           <motion.div
             variants={fadeUp}
@@ -103,7 +141,6 @@ export default function ContactSection() {
             viewport={{ once: true }}
             className="flex flex-col overflow-hidden border border-white/20 bg-white/[0.07] p-4 backdrop-blur-sm sm:p-5"
           >
-
             {/* MAP HEADER */}
             <div className="mb-4 flex items-center justify-between">
               <div>
@@ -199,12 +236,10 @@ export default function ContactSection() {
             viewport={{ once: true }}
             className="relative overflow-hidden border border-black/10 bg-[#f7f7f5] px-5 py-6 shadow-[0_20px_60px_rgba(0,0,0,0.15)] sm:px-7 sm:py-7 lg:px-9"
           >
-
             {/* FORM DECORATION */}
             <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full border border-[#0B2E63]/[0.06]" />
 
             <div className="relative z-10">
-
               {/* FORM HEADER */}
               <div className="mb-6 flex items-center justify-between border-b border-black/10 pb-5">
                 <div>
@@ -231,7 +266,6 @@ export default function ContactSection() {
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-5">
-
                 {/* PERSONAL INFORMATION */}
                 <div>
                   <div className="mb-3 flex items-center gap-3">
@@ -247,7 +281,6 @@ export default function ContactSection() {
                   </div>
 
                   <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-
                     <div>
                       <label className="mb-1.5 block text-[11px] font-semibold text-[#444]">
                         First Name *
@@ -307,7 +340,6 @@ export default function ContactSection() {
                         className={inputClass}
                       />
                     </div>
-
                   </div>
                 </div>
 
@@ -326,7 +358,6 @@ export default function ContactSection() {
                   </div>
 
                   <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-
                     <div>
                       <label className="mb-1.5 block text-[11px] font-semibold text-[#444]">
                         Project Type *
@@ -342,21 +373,19 @@ export default function ContactSection() {
                           Select project type
                         </option>
 
-                        <option value="Public Restroom Parrtition">
-                        Public Restroom Parrtition 
+                        <option value="Public Restroom Partition">
+                          Public Restroom Partition
                         </option>
 
-                        <option value="Kids Restroom Parrtition ">
-                        Kids Restroom Parrtition 
+                        <option value="Kids Restroom Partition">
+                          Kids Restroom Partition
                         </option>
 
-                         <option value="Urinal Parrtition">
-                   Urinal Parrtition 
+                        <option value="Urinal Partition">
+                          Urinal Partition
                         </option>
 
-                        <option value="Other">
-                          Other
-                        </option>
+                        <option value="Other">Other</option>
                       </select>
                     </div>
 
@@ -373,7 +402,6 @@ export default function ContactSection() {
                         className={inputClass}
                       />
                     </div>
-
                   </div>
 
                   {/* DESCRIPTION */}
@@ -410,10 +438,11 @@ export default function ContactSection() {
                 {/* SUBMIT BUTTON */}
                 <button
                   type="submit"
-                  className="group flex w-full items-center justify-between bg-[#111820] px-5 py-3.5 text-white transition-all duration-300 hover:bg-[#FFA21A] hover:text-[#111820]"
+                  disabled={loading}
+                  className="group flex w-full items-center justify-between bg-[#111820] px-5 py-3.5 text-white transition-all duration-300 hover:bg-[#FFA21A] hover:text-[#111820] disabled:cursor-not-allowed disabled:opacity-70"
                 >
                   <span className="text-[11px] font-semibold uppercase tracking-[0.16em]">
-                    Submit Your Enquiry
+                    {loading ? "Submitting..." : "Submit Your Enquiry"}
                   </span>
 
                   <span className="flex h-8 w-8 items-center justify-center border border-white/30 transition-all duration-300 group-hover:rotate-45 group-hover:border-black/30">
@@ -428,6 +457,12 @@ export default function ContactSection() {
                   </p>
                 )}
 
+                {/* ERROR MESSAGE */}
+                {error && (
+                  <p className="rounded-sm border border-red-200 bg-red-50 p-3 text-[12px] text-red-700">
+                    {error}
+                  </p>
+                )}
               </form>
 
               {/* FORM FOOTER */}
@@ -440,12 +475,9 @@ export default function ContactSection() {
                   Let's Build Better Spaces
                 </span>
               </div>
-
             </div>
           </motion.div>
-
         </div>
-
       </div>
     </section>
   );
