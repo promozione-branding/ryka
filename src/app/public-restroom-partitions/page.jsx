@@ -1,6 +1,8 @@
 
 "use client";
 
+import FlowerBackdrop from "@/components/FlowerBackdrop";
+
 const products = [
   {
     name: "Floatex",
@@ -42,9 +44,11 @@ const products = [
 
 export default function PublicRestroomProducts() {
   return (
-    <section className="relative w-full bg-[#cad6c1] overflow-hidden py-12 md:py-28">
+    <section className="relative w-full bg-[#e8e4d0] overflow-hidden py-12 md:py-28">
 
-      <div className="max-w-[1350px] mx-auto px-5 md:px-8">
+      <FlowerBackdrop />
+
+      <div className="relative z-10 max-w-[1350px] mx-auto px-5 py-6 md:px-8">
 
         {/* Heading */}
         <div className="text-center mb-3 md:mb-8">

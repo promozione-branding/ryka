@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ChevronDown, Menu, Search } from "lucide-react";
+import { ChevronDown, Menu } from "lucide-react";
 import MenuPopup from "@/components/MenuPopup";
 
 const solutionHrefs = [
@@ -16,7 +16,7 @@ const solutionHrefs = [
 ];
 
 const underline =
-  "after:absolute after:bottom-0 after:left-0 after:h-[3px] after:w-full after:bg-[#FFA21A]";
+  "after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-[#FFA21A]";
 
 export default function HomeHeader() {
   const pathname = usePathname();
@@ -40,7 +40,6 @@ export default function HomeHeader() {
   }, []);
 
   const solutions = [
-    { name: "All Products", href: "/products" },
     { name: "Public Restroom Partitions", href: "/public-restroom-partitions" },
     { name: "Luxe Partition Systems", href: "/luxe-partition-systems" },
     { name: "Kids Restroom Partitions", href: "/kids-restrooms-partitions" },
@@ -54,143 +53,127 @@ export default function HomeHeader() {
 
   return (
     <>
-    <header
-      className={`fixed top-0 left-0 z-[9999] w-full transition-all duration-300 ${
-        isHome ? "text-white" : "text-black"
-      } ${
-        scrolled
-          ? isHome
-            ? "bg-black/80 backdrop-blur-xl shadow-lg border-b border-white/10 h-24"
-            : "bg-white/90 backdrop-blur-xl shadow-lg border-b border-black/10 h-24"
-          : "bg-white/20 backdrop-blur-xl shadow-lg border-b border-black/10 h-24"
-      }`}
-    >
-      <div className="flex h-[65px] lg:h-[75px] items-center px-5 sm:px-8 lg:px-12">
- 
-        {/* LOGO */}
-        <Link href="/" className="flex shrink-0 items-center gap-5">
-          <Image
-            src={isHome ? "/logo-10 (2).webp" : "/logo_transp.webp"}
-            alt="RYKA Restroom Cubicles"
-            width={270}
-            height={90}
-            priority
-            className="w-[135px] sm:w-[160px] lg:w-[200px] h-auto object-contain mt-7 mb-3"
-          />
-
-          <span
-            className={`hidden lg:block h-10 w-px ${
-              isHome ? "bg-white/40" : "bg-black/20"
-            }`}
-          />
-        </Link>
-
-        {/* DESKTOP NAVIGATION */}
-        <nav className="hidden lg:flex items-center gap-12 ml-16">
-
-          <Link
-            href="/"
-            className={`relative py-3 text-sm font-semibold uppercase tracking-wide hover:text-[#FFA21A] transition-colors ${
-              isHome ? underline : ""
-            }`}
-          >
-            Home
+      <header
+        className={`fixed top-0 left-0 z-[9999] w-full transition-all duration-300 ${
+          scrolled
+            ? "bg-[#FDF8F0]/95 backdrop-blur-md shadow-sm border-b border-black/5"
+            : "bg-[#FDF8F0] border-b border-black/5"
+        }`}
+      >
+        <div className="mx-auto flex h-[90px] max-w-[1440px] items-center justify-between px-5 sm:px-8 lg:px-12">
+          {/* LOGO */}
+          <Link href="/" className="flex shrink-0 items-center">
+            <Image
+              src={isHome ? "/logo-10 (2).webp" : "/logo_transp.webp"}
+              alt="RYKA Restroom Cubicles"
+              width={220}
+              height={70}
+              priority
+              className="h-[58px] w-auto object-contain sm:h-[64px]"
+            />
           </Link>
 
-          <div
-            className="relative"
-            onMouseEnter={() => setSolutionsOpen(true)}
-            onMouseLeave={() => setSolutionsOpen(false)}
-          >
-            <div
-              className={`relative flex items-center gap-2 py-3 ${
-                solutionsActive ? underline : ""
+          {/* DESKTOP NAVIGATION */}
+          <nav className="hidden lg:flex items-center gap-10 xl:gap-14">
+            <Link
+              href="/"
+              className={`relative py-2 text-[13px] font-semibold uppercase tracking-[0.12em] text-[#1a1a1a] transition-colors hover:text-[#FFA21A] ${
+                isHome ? underline : ""
               }`}
             >
-              {/* Label goes to the all-products page */}
-              <Link
-                href="/products"
-                onClick={() => setSolutionsOpen(false)}
-                className="text-sm font-semibold uppercase tracking-wide hover:text-[#FFA21A] transition-colors"
-              >
-                Solutions
-              </Link>
+              Home
+            </Link>
 
-              {/* Chevron toggles the quick-links dropdown */}
-              <button
-                type="button"
-                onClick={() => setSolutionsOpen(!solutionsOpen)}
-                aria-label="Toggle solutions menu"
-                aria-expanded={solutionsOpen}
-                className="hover:text-[#FFA21A] transition-colors"
+            <div
+              className="relative"
+              onMouseEnter={() => setSolutionsOpen(true)}
+              onMouseLeave={() => setSolutionsOpen(false)}
+            >
+              <div
+                className={`relative flex items-center gap-1.5 py-2 ${
+                  solutionsActive ? underline : ""
+                }`}
               >
-                <ChevronDown
-                  size={16}
-                  className={`transition-transform ${
-                    solutionsOpen ? "rotate-180" : ""
-                  }`}
-                />
-              </button>
+                <Link
+                  href="/products"
+                  onClick={() => setSolutionsOpen(false)}
+                  className="text-[13px] font-semibold uppercase tracking-[0.12em] text-[#1a1a1a] transition-colors hover:text-[#FFA21A]"
+                >
+                  Solutions
+                </Link>
+
+                <button
+                  type="button"
+                  onClick={() => setSolutionsOpen(!solutionsOpen)}
+                  aria-label="Toggle solutions menu"
+                  aria-expanded={solutionsOpen}
+                  className="text-[#1a1a1a] transition-colors hover:text-[#FFA21A]"
+                >
+                  <ChevronDown
+                    size={15}
+                    className={`transition-transform duration-200 ${
+                      solutionsOpen ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+              </div>
+
+              {solutionsOpen && (
+                <div className="absolute left-1/2 top-full z-50 w-64 -translate-x-1/2 pt-3">
+                  <div className="overflow-hidden rounded-xl border border-black/10 bg-white py-2 shadow-xl">
+                    {solutions.map((item) => (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        onClick={() => setSolutionsOpen(false)}
+                        className="block px-5 py-2.5 text-sm text-[#1a1a1a] transition-colors hover:bg-[#FFF5E6] hover:text-[#FFA21A]"
+                      >
+                        {item.name}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
 
-            {solutionsOpen && (
-              <div className="absolute left-0 top-full w-64 pt-2">
-                <div className="overflow-hidden rounded-xl border border-white/15 bg-[#101820]/95 py-2 text-white shadow-2xl backdrop-blur-xl">
-                  {solutions.map((item) => (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      onClick={() => setSolutionsOpen(false)}
-                      className="block px-5 py-3 text-sm hover:bg-white/10 hover:text-[#FFA21A] transition-colors"
-                    >
-                      {item.name}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            )}
+            <Link
+              href="/contact-us"
+              className="text-[13px] font-semibold uppercase tracking-[0.12em] text-[#1a1a1a] transition-colors hover:text-[#FFA21A]"
+            >
+              Contacts
+            </Link>
+          </nav>
+
+          {/* RIGHT ACTIONS */}
+          <div className="flex items-center gap-4 sm:gap-5">
+            <Link
+              href="/"
+              className="hidden sm:block"
+              aria-label="Team Interior Solutions"
+            >
+              <Image
+                src="/logoes.webp"
+                alt="Team Interior Solutions"
+                width={56}
+                height={56}
+                className="h-18 w-18 rounded-full object-contain sm:h-[52px] sm:w-[52px]"
+              />
+            </Link>
+
+            <button
+              onClick={() => setMenuOpen(true)}
+              aria-label="Open menu"
+              aria-expanded={menuOpen}
+              className="flex items-center justify-center text-[#1a1a1a] transition-colors hover:text-[#FFA21A]"
+            >
+              <Menu size={28} strokeWidth={1.8} />
+            </button>
           </div>
-
-          <Link
-            href="/contact-us"
-            className="text-sm font-semibold uppercase tracking-wide hover:text-[#FFA21A] transition-colors"
-          >
-            Contacts
-          </Link>
-        </nav>
-
-        {/* RIGHT ACTIONS */}
-        <div className="ml-auto flex items-center gap-5 lg:gap-7">
-
-          <Link
-            href="/search"
-            aria-label="Search"
-            className={`flex h-12 w-12 items-center justify-center rounded-full border backdrop-blur-sm hover:bg-[#FFA21A] hover:border-[#FFA21A] hover:text-white transition-all ${
-              isHome
-                ? "border-white/50 bg-black/30"
-                : "border-[#1680b8]/60 bg-white/60 text-[#1680b8]"
-            }`}
-          >
-            <Search size={26} />
-          </Link>
-
-          <button
-            onClick={() => setMenuOpen(true)}
-            aria-label="Open menu"
-            aria-expanded={menuOpen}
-            className={`hover:text-[#FFA21A] transition-colors ${
-              isHome ? "text-white" : "text-[#1680b8]"
-            }`}
-          >
-            <Menu size={34} />
-          </button>
         </div>
-      </div>
-    </header>
+      </header>
 
-    {/* FULL-SCREEN MENU (outside <header> so the header's backdrop-blur
-        doesn't turn it into the containing block for the fixed layer) */}
-    <MenuPopup open={menuOpen} onClose={closeMenu} />
+      {/* FULL-SCREEN MENU */}
+      <MenuPopup open={menuOpen} onClose={closeMenu} />
     </>
   );
 }

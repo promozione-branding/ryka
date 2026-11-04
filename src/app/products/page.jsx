@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import FlowerBackdrop from "@/components/FlowerBackdrop";
 import {
   CATEGORIES,
   getProductHref,
@@ -15,12 +16,14 @@ export const metadata = {
 
 export default function ProductsPage() {
   return (
-    <section className="w-full bg-[#e8e4d0] pb-16 pt-32 md:pb-24 md:pt-40">
-      <div className="mx-auto max-w-[1350px] px-5 md:px-8">
+    <section className="relative w-full overflow-hidden bg-[#e8e4d0] pb-16 pt-32 md:pb-24 md:pt-40">
+      <FlowerBackdrop />
+
+      <div className="relative z-10 mx-auto max-w-[1350px] px-5 md:px-8">
         {/* PAGE INTRO */}
         <div className="mb-12 text-center md:mb-16">
           <h1 className="text-[40px] font-bold leading-[1.05] tracking-tight text-black sm:text-[52px] md:text-[64px]">
-            Our Products
+            Solutions
           </h1>
           <p className="mx-auto mt-4 max-w-[720px] text-[14px] leading-6 text-[#242424] md:text-[15px]">
             Explore every Ryka partition range, organised by category.
