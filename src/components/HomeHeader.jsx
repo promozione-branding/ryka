@@ -50,7 +50,7 @@ export default function HomeHeader() {
       }`}
     >
       <div className="flex h-[65px] lg:h-[75px] items-center px-5 sm:px-8 lg:px-12">
-
+ 
         {/* LOGO */}
         <Link href="/" className="flex shrink-0 items-center gap-5">
           <Image
