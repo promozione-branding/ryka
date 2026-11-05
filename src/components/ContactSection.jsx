@@ -209,7 +209,6 @@ const formData = {
                   size={16}
                   className="mt-1 shrink-0 text-[#FFA21A]"
                 />
-
                 <p className="max-w-[350px] text-[11px] leading-[1.7] text-white/75">
                   H3/216, Vardhman Plaza Tower, Netaji Subhash Place,
                   Pitampura, New Delhi - 110034

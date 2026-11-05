@@ -31,11 +31,12 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-playfair), serif;
+  font-family: var(--font-titillium), sans-serif;
 }
 
+.font-titillium,
 .font-playfair {
-  font-family: var(--font-playfair), serif;
+  font-family: var(--font-titillium), sans-serif;
 }
 
 .font-raleway {

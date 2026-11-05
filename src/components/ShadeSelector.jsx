@@ -1,7 +1,7 @@
-
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import { motion, AnimatePresence } from "framer-motion";
 
 const shades = [
@@ -39,32 +39,65 @@ const finishes = [
 export default function ShadeSelector() {
   const [selectedShade, setSelectedShade] = useState(16);
   const [selectedFinish, setSelectedFinish] = useState("Woodgrain");
+const [showModal, setShowModal] = useState(false);
+const [loading, setLoading] = useState(false);
+const [success, setSuccess] = useState(false);
+const shade = shades[selectedShade];
 
-  const shade = shades[selectedShade];
-
-  const handleQuote = () => {
-    const quoteDetails = {
-      shade: shade.name,
-      shadeCode: shade.code,
-      color: shade.color,
-      finish: selectedFinish,
-    };
-
-    window.dispatchEvent(
-      new CustomEvent("shadeQuote", {
-        detail: quoteDetails,
-      })
-    );
-
-    const form = document.querySelector("#quote-form");
-
-    if (form) {
-      form.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-      });
-    }
+// close on Escape + lock page scroll while modal is open
+useEffect(() => {
+  if (!showModal) return;
+  const onKey = (e) => e.key === "Escape" && setShowModal(false);
+  document.body.style.overflow = "hidden";
+  window.addEventListener("keydown", onKey);
+  return () => {
+    document.body.style.overflow = "";
+    window.removeEventListener("keydown", onKey);
   };
+}, [showModal]);
+
+const handleQuote = () => {
+  setSuccess(false);
+  setShowModal(true);
+};
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  const form = e.currentTarget;
+  const fd = new FormData(form);
+
+  const phone = fd.get("phone")?.toString().trim();
+  if (!/^\d{10}$/.test(phone)) {
+    return alert("Enter a valid 10-digit phone number");
+  }
+
+  const extra = fd.get("message")?.toString().trim();
+  const formData = {
+    platform: "Ryka Restroom Cubicles",
+    supplierToken: "6a9bb67ac077e066ff1e0d9e",
+    platformEmail: "rykarestroomcubicle@gmail.com",
+    name: fd.get("name")?.toString().trim(),
+    email: fd.get("email")?.toString().trim(),
+    phone,
+    product: "Restroom Cubicles",
+    message: `Shade: ${shade.name} (${shade.code}) | Finish: ${selectedFinish}${
+      extra ? ` | ${extra}` : ""
+    }`,
+    place: "N/A",
+  };
+
+  try {
+    setLoading(true);
+    await axios.post("https://brandbnalo.com/api/form/add", formData);
+    form.reset();
+    setSuccess(true);
+  } catch (err) {
+    console.error(err);
+    alert("Something went wrong. Please try again later.");
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <section className="w-full bg-[#f4f5f8] py-10 md:py-16 px-4">
@@ -137,8 +170,10 @@ export default function ShadeSelector() {
                     }}
                   >
 
-                    {/* Panel Handle */}
-                    <div className="absolute top-1/2 right-[16%] -translate-y-1/2 w-[11px] h-[11px] rounded-full bg-gradient-to-br from-[#fff0a0] via-[#caa74a] to-[#7e6224] shadow-[0_1px_5px_rgba(0,0,0,0.5)] border border-[#a48737]" />
+{/* Panel Handle (wide panels only) */}
+{index % 2 === 1 && (
+  <div className="absolute top-1/2 right-[16%] -translate-y-1/2 w-[11px] h-[11px] rounded-full bg-gradient-to-br from-[#fff0a0] via-[#caa74a] to-[#7e6224] shadow-[0_1px_5px_rgba(0,0,0,0.5)] border border-[#a48737]" />
+)}
 
                     {selectedFinish === "Printed / Branded" && (
                       <div className="absolute inset-0 flex items-center justify-center">
@@ -159,30 +194,37 @@ export default function ShadeSelector() {
             </div>
 
             {/* Selected Shade Information */}
-            <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
+            <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
 
-              <div>
+              {/* fixed-height text block so long names never change the layout */}
+              <div className="min-w-0 flex-1">
                 <p className="text-[10px] text-[#c2a24e] font-bold tracking-[2px] uppercase mb-1">
                   Now Previewing
                 </p>
 
-                <AnimatePresence mode="wait">
-                  <motion.h3
-                    key={shade.code + selectedFinish}
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -8 }}
-                    transition={{ duration: 0.2 }}
-                    className="font-serif text-[23px] md:text-[25px] font-bold"
-                  >
-                    {shade.name} · {shade.code} · {selectedFinish}
-                  </motion.h3>
-                </AnimatePresence>
+                <div className="h-[58px] overflow-hidden">
+                  <AnimatePresence mode="wait" initial={false}>
+                    <motion.div
+                      key={shade.code + selectedFinish}
+                      initial={{ opacity: 0, y: 6 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -6 }}
+                      transition={{ duration: 0.18 }}
+                    >
+                      <h3 className="font-serif text-[23px] md:text-[25px] font-bold leading-[30px] truncate">
+                        {shade.name}
+                      </h3>
+                      <p className="text-[13px] leading-[22px] text-[#c5cbd4] truncate">
+                        {shade.code} · {selectedFinish}
+                      </p>
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
               </div>
 
               <button
                 onClick={handleQuote}
-                className="bg-[#d9b431] text-[#111827] px-5 py-4 text-[11px] font-bold tracking-[1.5px] hover:bg-[#f0cd4b] transition-all duration-300"
+                className="shrink-0 whitespace-nowrap self-start sm:self-center bg-[#d9b431] text-[#111827] px-5 py-4 text-[11px] font-bold tracking-[1.5px] hover:bg-[#f0cd4b] transition-colors duration-300"
               >
                 QUOTE IN THIS SHADE →
               </button>
@@ -214,7 +256,7 @@ export default function ShadeSelector() {
           <div>
 
             {/* Colour Swatches */}
-            <div className="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-8 gap-[9px]">
+            <div className="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-8 gap-[9px] mt-50">
 
               {shades.map((item, index) => (
                 <motion.button
@@ -288,6 +330,99 @@ export default function ShadeSelector() {
 
         </div>
       </div>
+      <AnimatePresence>
+  {showModal && (
+    <motion.div
+      className="fixed inset-0 z-[99999] flex items-center justify-center bg-black/70 px-4"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      onClick={() => setShowModal(false)}
+    >
+<motion.div
+  initial={{ y: 20, scale: 0.97, opacity: 0 }}
+  animate={{ y: 0, scale: 1, opacity: 1 }}
+  exit={{ y: 20, scale: 0.97, opacity: 0 }}
+  onClick={(e) => e.stopPropagation()}
+  className="relative w-full max-w-[440px] max-h-[90vh] overflow-y-auto rounded-[4px] border border-[#d5ad35] bg-white text-[#111827] px-5 py-4"
+>
+        <button
+          type="button"
+          onClick={() => setShowModal(false)}
+          aria-label="Close"
+          className="absolute right-4 top-3 text-2xl leading-none text-gray-500 hover:text-black"
+        >
+          ×
+        </button>
+
+        {success ? (
+          <div className="text-center py-8">
+            <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-green-100">
+              <svg className="h-8 w-8 text-green-600" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <h3 className="text-xl font-semibold mb-2">Quote Request Sent!</h3>
+            <p className="text-sm text-gray-600 mb-5">
+              Our team will contact you shortly.
+            </p>
+            <button
+              onClick={() => setShowModal(false)}
+              className="bg-[#d9b431] px-6 py-2 text-[12px] font-bold tracking-[1.5px] hover:bg-[#f0cd4b]"
+            >
+              CLOSE
+            </button>
+          </div>
+        ) : (
+<>
+  <h3 className="font-serif text-[20px] font-bold mb-2 pr-6">
+    Get a Quote
+  </h3>
+
+  {/* Auto-selected product + shade (single compact row) */}
+  <div className="flex items-center gap-3 mb-3 rounded-[2px] border border-gray-200 bg-gray-50 px-3 py-2">
+    <div
+      className="h-9 w-9 shrink-0 rounded-sm border border-black/20"
+      style={{ backgroundColor: shade.color }}
+    />
+    <div className="text-[12px] leading-4">
+      <p className="font-semibold">Restroom Cubicles</p>
+      <p className="text-gray-600">
+        {shade.name} · {shade.code} · {selectedFinish}
+      </p>
+    </div>
+  </div>
+
+  <form onSubmit={handleSubmit} className="space-y-2">
+    <div className="grid grid-cols-2 gap-2">
+      <input name="name" type="text" required placeholder="Your Name"
+        className="w-full h-10 px-3 border border-gray-300 text-[13px] outline-none focus:border-[#d9b431]" />
+      <input name="phone" type="tel" required placeholder="Phone Number"
+        inputMode="numeric" maxLength={10} pattern="\d{10}"
+        title="Enter a valid 10-digit phone number"
+        className="w-full h-10 px-3 border border-gray-300 text-[13px] outline-none focus:border-[#d9b431]" />
+    </div>
+
+    <input name="email" type="email" required placeholder="Your Email"
+      className="w-full h-10 px-3 border border-gray-300 text-[13px] outline-none focus:border-[#d9b431]" />
+
+    <textarea name="message" rows={2} placeholder="Additional requirements (optional)"
+      className="w-full px-3 py-2 border border-gray-300 text-[13px] outline-none resize-none focus:border-[#d9b431]" />
+
+    <button
+      type="submit"
+      disabled={loading}
+      className="w-full bg-[#d9b431] py-2.5 text-[12px] font-bold tracking-[1.5px] hover:bg-[#f0cd4b] disabled:opacity-60 disabled:cursor-not-allowed transition-all"
+    >
+      {loading ? "SENDING..." : "REQUEST QUOTE"}
+    </button>
+  </form>
+</>
+        )}
+      </motion.div>
+    </motion.div>
+  )}
+</AnimatePresence>
     </section>
   );
 }

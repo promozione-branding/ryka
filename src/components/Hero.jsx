@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect } from "react";
@@ -82,6 +81,42 @@ const products = [
     image: "/product/imgi_8_top-hung-2.webp",
     href: "/public-restroom-partitions/sky-hung",
   },
+  {
+    name: "Miniput",
+    image: "/product/imgi_16_kids-cubicles.webp",
+    href: "/kids-restrooms-partitions/miniput",
+  },
+  {
+    name: "Lil-Waves",
+    image: "/product/imgi_17_petar-pan.webp",
+    href: "/kids-restrooms-partitions/lil-waves",
+    featured: true,
+  },
+  {
+    name: "Lil-Shine",
+    image: "/product/imgi_18_Lil-Shine.webp",
+    href: "/kids-restrooms-partitions/lil-shine",
+  },
+  {
+    name: "Aero Kids",
+    image: "/product/aero-kids.webp",
+    href: "/kids-restrooms-partitions/aero-kids",
+  },
+  {
+    name: "Half Round",
+    image: "/product/imgi_20_Hansel-Gretel.webp",
+    href: "/kids-restrooms-partitions/half-round",
+  },
+  {
+    name: "Slice Cut",
+    image: "/product/imgi_21_Slice-Cut-2.webp",
+    href: "/kids-restrooms-partitions/slice-cut",
+  },
+  {
+    name: "Straight",
+    image: "/product/straight.webp",
+    href: "/kids-restrooms-partitions/straight",
+  },
 ];
 
 const features = [
@@ -96,6 +131,8 @@ const ease = [0.22, 1, 0.36, 1];
 export default function Hero() {
   const [current, setCurrent] = useState(0);
   const [productStart, setProductStart] = useState(0);
+  // how many cards are visible: 2 on mobile, 4 on lg+
+  const [perView, setPerView] = useState(4);
 
   // HERO AUTOPLAY
   useEffect(() => {
@@ -106,8 +143,22 @@ export default function Hero() {
     return () => clearInterval(timer);
   }, []);
 
-  // PRODUCT SLIDER - ONE BY ONE
-  const maxProductStart = Math.max(products.length - 4, 0);
+  // RESPONSIVE CARDS PER VIEW
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 1024px)");
+    const update = () => setPerView(mq.matches ? 4 : 2);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
+  // PRODUCT SLIDER - one card at a time, continuous track
+  const maxProductStart = Math.max(products.length - perView, 0);
+
+  // keep position valid if screen size changes
+  useEffect(() => {
+    setProductStart((prev) => Math.min(prev, maxProductStart));
+  }, [maxProductStart]);
 
   const nextProducts = () => {
     setProductStart((prev) => (prev >= maxProductStart ? 0 : prev + 1));
@@ -116,11 +167,6 @@ export default function Hero() {
   const previousProducts = () => {
     setProductStart((prev) => (prev <= 0 ? maxProductStart : prev - 1));
   };
-
-  const visibleProducts = products.slice(
-    productStart,
-    productStart + 4
-  );
 
   return (
     <section className="relative isolate min-h-screen w-full overflow-hidden bg-[#07111d] lg:h-full">
@@ -417,53 +463,30 @@ export default function Hero() {
               <ArrowLeft size={22} />
             </motion.button>
 
-            {/* PRODUCT CARDS */}
+            {/* PRODUCT TRACK (all products rendered once, track slides smoothly) */}
 
-            <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4 lg:gap-5">
+            <div className="overflow-hidden px-0 py-2">
 
-              <AnimatePresence mode="wait" initial={false}>
+              <motion.div
+                className="flex"
+                animate={{ x: `-${productStart * (100 / perView)}%` }}
+                transition={{
+                  type: "tween",
+                  duration: 0.6,
+                  ease,
+                }}
+              >
 
-                <motion.div
-                  key={productStart}
-                  initial={{
-                    opacity: 0,
-                    x: 35,
-                  }}
-                  animate={{
-                    opacity: 1,
-                    x: 0,
-                  }}
-                  exit={{
-                    opacity: 0,
-                    x: -35,
-                  }}
-                  transition={{
-                    duration: 0.45,
-                    ease,
-                  }}
-                  className="col-span-2 grid grid-cols-2 gap-3 sm:gap-4 lg:col-span-4 lg:grid-cols-4 lg:gap-5"
-                >
+                {products.map((product) => (
 
-                  {visibleProducts.map((product, index) => (
+                  <div
+                    key={product.name}
+                    className="w-1/2 flex-none px-1.5 sm:px-2 lg:w-1/4 lg:px-2.5"
+                  >
 
                     <motion.div
-                      key={product.name}
-                      initial={{
-                        opacity: 0,
-                        y: 15,
-                      }}
-                      animate={{
-                        opacity: 1,
-                        y: 0,
-                      }}
-                      transition={{
-                        duration: 0.4,
-                        delay: index * 0.05,
-                        ease,
-                      }}
-                      whileHover={{
-                        y: -5,
-                      }}
+                      whileHover={{ y: -5 }}
+                      transition={{ duration: 0.25 }}
                       className="group overflow-hidden rounded-xl border border-white/70 bg-white shadow-xl sm:rounded-2xl"
                     >
 
@@ -479,6 +502,7 @@ export default function Hero() {
                           <motion.img
                             src={product.image}
                             alt={product.name}
+                            draggable={false}
                             className="h-full w-full object-cover"
                             whileHover={{
                               scale: 1.08,
@@ -509,11 +533,11 @@ export default function Hero() {
 
                     </motion.div>
 
-                  ))}
+                  </div>
 
-                </motion.div>
+                ))}
 
-              </AnimatePresence>
+              </motion.div>
 
             </div>
 
@@ -537,19 +561,15 @@ export default function Hero() {
 
           </div>
 
-          {/* PRODUCT SLIDER INDICATORS */}
+          {/* PRODUCT SLIDER INDICATORS (one dot per slide position) */}
 
           <div className="mt-4 flex items-center justify-center gap-2">
 
-            {products.map((product, index) => (
+            {Array.from({ length: maxProductStart + 1 }).map((_, index) => (
               <button
-                key={product.name}
-                onClick={() =>
-                  setProductStart(
-                    Math.min(index, maxProductStart)
-                  )
-                }
-                aria-label={`Show ${product.name}`}
+                key={index}
+                onClick={() => setProductStart(index)}
+                aria-label={`Show products from ${products[index].name}`}
                 className={`h-2.5 rounded-full transition-all duration-300 ${
                   productStart === index
                     ? "w-8 bg-black"

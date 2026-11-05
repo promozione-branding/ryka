@@ -85,7 +85,7 @@ export default function HomeHeader() {
           <nav className="hidden lg:flex items-center gap-10 xl:gap-14">
             <Link
               href="/"
-              className={`relative py-2 text-[13px] font-semibold uppercase tracking-[0.12em] ${textColor} transition-colors ${hoverColor} ${
+              className={`relative py-2 text-[16px] font-semibold uppercase tracking-[0.12em] ${textColor} transition-colors ${hoverColor} ${
                 isHome ? underline : ""
               }`}
             >
@@ -105,7 +105,7 @@ export default function HomeHeader() {
                 <Link
                   href="/products"
                   onClick={() => setSolutionsOpen(false)}
-                  className={`text-[13px] font-semibold uppercase tracking-[0.12em] ${textColor} transition-colors ${hoverColor}`}
+                  className={`text-[16px] font-semibold uppercase tracking-[0.12em] ${textColor} transition-colors ${hoverColor}`}
                 >
                   Solutions
                 </Link>
@@ -146,7 +146,7 @@ export default function HomeHeader() {
 
             <Link
               href="/contact-us"
-              className={`text-[13px] font-semibold uppercase tracking-[0.12em] ${textColor} transition-colors ${hoverColor}`}
+              className={`text-[16px] font-semibold uppercase tracking-[0.12em] ${textColor} transition-colors ${hoverColor}`}
             >
               Contact
             </Link>

@@ -91,7 +91,7 @@ export default function Counter() {
   return (
     <section
       ref={sectionRef}
-      className="w-full bg-[#f5f5f7] px-0 py-7"
+      className="w-full bg-[#f5f5f7] px-0 "
     >
       <div className="relative w-full overflow-hidden border-t-[3px]
        border-[#D6A927] bg-gradient-to-r from-[#0B2147] via-[#123C79] to-[#174A96]">
