@@ -80,7 +80,7 @@ export default function DesigningProcess() {
 
               <div className="relative  overflow-hidden">
                 <img
-                  src="/design-process-1.webp"
+                  src="/design-process-1_.webp"
                   alt="Restroom cubicle planning"
                   className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                 />
