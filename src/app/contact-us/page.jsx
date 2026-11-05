@@ -6,6 +6,7 @@ import {
   MapPin,
   Mail,
   Phone,
+  Navigation,
 } from "lucide-react";
 import FlowerBackdrop from "@/components/FlowerBackdrop";
 
@@ -353,7 +354,46 @@ const formData = {
           </div>
 
         </div>
+               
       </section>
+           <div className="group relative min-h-[280px] flex-1 overflow-hidden border border-white/15 lg:min-h-0">
+              <iframe
+                title="Ryka Restroom Cubicles Head Office"
+                src="https://www.google.com/maps?q=Ryka+Restroom+Cubicles,+H3/216,+Vardhman+Plaza+Tower,+Netaji+Subhash+Place,+Pitampura,+New+Delhi&output=embed"
+                width="100%"
+                height="100%"
+                style={{
+                  border: 0,
+                  minHeight: "600px",
+                  filter: "grayscale(100%) contrast(0.9)",
+                }}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              />
+
+              {/* FLOATING MAP INFO */}
+              <div className="pointer-events-none absolute bottom-3 left-3 flex items-center gap-3 border border-white/20 bg-[#101820]/95 px-3 py-2.5 shadow-xl">
+                <div className="flex h-9 w-9 items-center justify-center bg-[#FFA21A] text-[#101820]">
+                  <MapPin size={18} />
+                </div>
+
+                <div>
+                  <p className="text-[11px] font-semibold text-white">
+                    Ryka Restroom Cubicles
+                  </p>
+
+                  <p className="mt-0.5 text-[10px] text-white/55">
+                    New Delhi, India
+                  </p>
+                </div>
+              </div>
+
+              {/* MAP ICON */}
+              <div className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center border border-white/30 bg-[#101820]/90 text-white">
+                <Navigation size={16} />
+              </div>
+            </div>
     </main>
   );
 }
