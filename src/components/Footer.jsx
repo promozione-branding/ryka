@@ -5,13 +5,10 @@ import { usePathname } from "next/navigation";
 const pages = [
   "Blogs",
   "About Us",
-  "Why Choose Us",
+  "Why-Choose-Us",
   "Our Clientele",
-  "Latest Creations",
   "Careers",
-  "Privacy Policy",
-  "Terms and Conditions",
-  "Sitemap",
+  "Gallery",
 ];
 
 const categories = [
@@ -40,8 +37,7 @@ export default function Footer() {
     <footer className="relative bg-[#050505] text-white overflow-hidden">
 
       {/* Background Watermark */}
-      <div className="absolute inset-0 pointer-events-none select-none flex items-center 
-      justify-center overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none select-none flex items-center justify-center overflow-hidden">
         <div className="text-center opacity-[0.19] whitespace-nowrap">
           <h1 className="text-[130px] sm:text-[190px] lg:text-[290px] font-black leading-[0.8] tracking-[-12px]">
             RYKA

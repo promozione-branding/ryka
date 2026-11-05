@@ -1,6 +1,7 @@
 
 "use client";
 
+import FlowerBackdrop from "@/components/FlowerBackdrop";
 import {
   UsersRound,
   UserRoundCheck,
@@ -106,7 +107,8 @@ export default function WhyChooseUs() {
     <>
     <section className="relative overflow-hidden bg-[#dfc98d] px-5 md:px-[5.5%] py-16 md:py-12 min-h-[650px]">
 
-      <div className="relative z-10 max-w-[1250px] mx-auto">
+<FlowerBackdrop/>
+      <div className="relative z-10 max-w-[1250px] mx-auto pt-22">
 
         {/* Heading */}
         <div className="text-center mb-10 md:mb-11">

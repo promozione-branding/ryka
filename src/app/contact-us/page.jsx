@@ -7,6 +7,7 @@ import {
   Mail,
   Phone,
 } from "lucide-react";
+import FlowerBackdrop from "@/components/FlowerBackdrop";
 
 export default function ContactUs() {
   const [loading, setLoading] = useState(false);
@@ -62,7 +63,6 @@ const formData = {
   return (
     <main className="w-full overflow-hidden bg-white">
 
-      {/* ================= SUCCESS POPUP ================= */}
       {showSuccess && (
         <div
           className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 px-5"
@@ -115,7 +115,7 @@ const formData = {
             "linear-gradient(rgba(195,193,193,0.92),rgba(195,193,193,0.92)),url('/images/floral-bg.png')",
         }}
       >
-
+<FlowerBackdrop/>
         <div className="relative z-10 text-center">
 
           <h1 className="text-black text-[43px] sm:text-[55px] md:text-[65px] font-semibold leading-none tracking-tight">

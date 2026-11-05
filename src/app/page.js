@@ -13,6 +13,7 @@ import SpaceMarquee from "@/components/SpaceMarquee";
 import Before from "../components/Before";
 import ContactSection from "@/components/ContactSection";
 import { getProductByName, getProductHref } from "@/lib/catalog";
+import FAQSection from "@/components/FAQSection";
 
 const HERO_PRODUCT_NAMES = [
   "Nexus Evo",
@@ -47,6 +48,7 @@ export default function Home() {
          <Before />
       <Transformation />
       <Testimonials />
+      <FAQSection/>
       <ContactSection/>
    
     { /* <Products />

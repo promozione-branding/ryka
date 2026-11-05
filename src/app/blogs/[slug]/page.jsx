@@ -30,13 +30,7 @@ export default async function BlogDetailPage({ params }) {
   return (
     <>
       <section className="relative isolate flex min-h-[46svh] items-end justify-center overflow-hidden bg-[#253970] px-6 pb-24 pt-40 text-center text-white max-[720px]:pt-36">
-        <img
-          src={thumb(blog.image, 1600)}
-          alt=""
-          aria-hidden="true"
-          fetchPriority="high"
-          className="absolute inset-0 -z-[2] h-full w-full object-cover object-center"
-        />
+        
         <div className="absolute inset-0 -z-[1] bg-[linear-gradient(180deg,rgba(11,42,91,0.55)_0%,rgba(11,42,91,0.75)_100%)]" aria-hidden="true" />
 
         <div className="mx-auto w-full max-w-[860px]">

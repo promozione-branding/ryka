@@ -192,7 +192,7 @@ export default function AboutUs() {
     <main className="w-full overflow-hidden bg-white text-[#102b55]">
 
       {/* ================= TITLE BAR ================= */}
-      <section className="relative w-full bg-[#c5c3c3] min-h-[136px] flex items-center justify-center px-5 py-7 overflow-hidden">
+      <section className="relative w-full bg-[#c5c3c3] min-h-[136px] flex items-center justify-center px-5 py-7 overflow-hidden  pt-32">
 
         <div className="absolute inset-0 pointer-events-none opacity-30">
           <div className="absolute -top-20 left-10 w-40 h-40 border border-white rounded-full" />
