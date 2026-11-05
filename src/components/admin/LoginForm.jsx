@@ -34,7 +34,7 @@ export default function LoginForm() {
     <form onSubmit={submit} className="w-full max-w-sm rounded-2xl bg-white p-8 shadow-[0_18px_50px_rgba(15,40,90,0.12)]">
       <span className="block h-1 w-12 rounded-full bg-brand" />
       <h1 className="mt-3 text-2xl font-extrabold text-navy">Admin login</h1>
-      <p className="mt-1 text-sm text-slate-500">R.V. Infrastructural – blog management</p>
+      <p className="mt-1 text-sm text-slate-500">Ryka Cubicles – blog management</p>
 
       <label className="mt-6 block text-xs font-bold uppercase tracking-wider text-slate-500">Username</label>
       <input className="input mt-1" autoComplete="username" required value={form.username} onChange={set("username")} />

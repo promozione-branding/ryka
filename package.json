@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "seed": "node --no-warnings --env-file=.env scripts/seed.js",
+    "seed:export": "node --no-warnings scripts/seed.js --export"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1161.0",
@@ -24,6 +26,7 @@
   "devDependencies": {
     "@tailwindcss/turbopack": "^4",
     "babel-plugin-react-compiler": "1.0.0",
+    "cheerio": "^1.2.0",
     "eslint": "^9",
     "eslint-config-next": "16.4.3",
     "tailwindcss": "^4"

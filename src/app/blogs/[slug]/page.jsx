@@ -11,7 +11,7 @@ export async function generateMetadata({ params }) {
   const blog = await getBlog(slug)
   if (!blog) return {}
   return {
-    title: blog.metaTitle || `${blog.title} | R.V. Infrastructural`,
+    title: blog.metaTitle || `${blog.title} | Ryka Cubicles`,
     description: blog.metaDescription || plainText(blog.content).slice(0, 160),
     openGraph: { images: [blog.image] },
   }
@@ -47,7 +47,7 @@ export default async function BlogDetailPage({ params }) {
         </div>
       </section>
 
-      <article className="relative z-10 mx-auto -mt-30 mb-16 w-full max-w-[1180px] px-4 bg-[#ffffff]">
+      <article className="relative z-10 mx-auto mt-20 mb-16 w-full max-w-[1180px] px-4 bg-[#ffffff]">
         <div className="rounded-[28px] bg-white p-6 shadow-[0_18px_50px_rgba(15,40,90,0.12)] md:p-12">
           <div className="grid items-start gap-8 md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] md:gap-12">
             <div className="md:sticky md:top-28 md:self-start">

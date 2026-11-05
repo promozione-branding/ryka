@@ -39,3 +39,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# NOTE: scripts/blog-data/ (the exported blog snapshot) is intentionally NOT ignored - commit it as your backup.
