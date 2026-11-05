@@ -51,7 +51,7 @@ export default function PublicRestroomProducts() {
     <section className="relative w-full bg-[#e8e4d0] overflow-hidden py-12 md:py-28">
       <FlowerBackdrop />
 
-      <div className="relative z-10 max-w-[1350px] mx-auto px-5 py-6 md:px-8">
+      <div className="relative z-10 max-w-[1350px] mx-auto px-5 md:px-8 py-20">
         {/* Heading */}
         <FadeInUp className="text-center mb-3 md:mb-8">
           <h2 className="text-[36px] sm:text-[48px] md:text-[64px] lg:text-[68px] font-semibold text-black leading-[1.05] tracking-[-2px]">

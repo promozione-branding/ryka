@@ -65,10 +65,6 @@ function SpecRow({ spec, measurement, highlight, unit }) {
   );
 }
 
-/* ---------------------------------- */
-/* Dynamic Product Page               */
-/* ---------------------------------- */
-
 export default function Page() {
   const params = useParams();
 
@@ -185,7 +181,6 @@ ${message}`
         </div>
       </section>
 
-      {/* ============ OVERVIEW ============ */}
 
       <section className="mx-auto max-w-7xl px-6 py-16">
         <SectionHeading title={`About ${productName}`} />
@@ -196,8 +191,6 @@ ${message}`
           </p>
         </FadeInUp>
       </section>
-
-      {/* ============ KEY FEATURES ============ */}
 
       {keyFeatures.length > 0 && (
         <section className="max-w-7xl mx-auto px-6 pb-16">

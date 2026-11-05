@@ -14,23 +14,24 @@ import {
 const slides = [
   {
     title: "Delhi Metro.",
- highlight: "Scalable Privacy & Hygiene.",
-     subtitle:  "THOUGHTFULLY DESIGNED FEMALE FRISKING BOOTHS AND DURABLE RESTROOM CUBICLES FOR HIGH-TRAFFIC PUBLIC SPACES.",
+    highlight: "Scalable Privacy & Hygiene.",
+    subtitle: "THOUGHTFULLY DESIGNED FEMALE FRISKING BOOTHS AND DURABLE RESTROOM CUBICLES FOR HIGH-TRAFFIC PUBLIC SPACES.",
     video: "/metro-map-1.mp4",
+    mobileImage: "/metro-mobile.webp",
   },
   {
     title: "Indigo.",
-   highlight: "IndiGo Approved",
-    subtitle:
-      "WE DESIGN, BUILD & INSTALL RESTROOM CUBICLES THAT PRIORITIZE USER COMFORT, HYGIENE, AND SAFETY.",
-      image: "/indigo-1 (1).webp",
+    highlight: "IndiGo Approved",
+    subtitle: "WE DESIGN, BUILD & INSTALL RESTROOM CUBICLES THAT PRIORITIZE USER COMFORT, HYGIENE, AND SAFETY.",
+    image: "/indigo-1 (1).webp",
+    mobileImage: "/indigi-mobile.webp",
   },
   {
     title: "Architect Approved.",
     highlight: "M3M Preferred.",
-    subtitle:
-      "PREMIUM TOILET CUBICLES CRAFTED FOR LUXURY COMMERCIAL AND RESIDENTIAL PROJECTS.",
+    subtitle: "PREMIUM TOILET CUBICLES CRAFTED FOR LUXURY COMMERCIAL AND RESIDENTIAL PROJECTS.",
     image: "/m3m-hotels-1 (1).webp",
+    mobileImage: "/m3m-mobile.webp",
   },
   {
     title: "Roaring Crowds.",
@@ -38,6 +39,7 @@ const slides = [
     subtitle:
       "RELIABLE RESTROOM SOLUTIONS DESIGNED FOR ENTERTAINMENT VENUES AND HIGH-FOOTFALL SPACES.",
     image: "/jurasic-park (1).webp",
+    mobileImage: "/imgi_167_Jurassic-mobile.webp",
   },
   {
     title: "Comfort Where It Counts.",
@@ -45,11 +47,10 @@ const slides = [
     subtitle:
       "ERGONOMIC, DURABLE AND EASY-TO-MAINTAIN CUBICLE SOLUTIONS FOR MODERN EDUCATIONAL INSTITUTIONS.",
     image: "/school (2).webp",
+    mobileImage: "/imgi_168_kr-mangalam-mobile.webp",
   },
 ];
 
-// Hero product carousel. Each `href` is a real, existing route:
-//   /public-restroom-partitions/[slug]  ->  slug = product url in src/lib/data.js
 const products = [
   {
     name: "Nexus Evo",
@@ -158,11 +159,11 @@ export default function Hero() {
         {/* HERO GRID */}
 
         <div className="grid flex-none grid-cols-1 items-start gap-5 lg:grid-cols-[minmax(0,1fr)_255px] 
-        xl:grid-cols-[minmax(0,1fr)_270px] xl:gap-7">
+        xl:grid-cols-[minmax(0,1fr)_270px] xl:gap-7 mt-6">
 
           {/* MAIN SLIDER */}
 
-          <div className="relative h-[700px] overflow-hidden rounded-[25px] border
+          <div className="relative h-[500px] overflow-hidden rounded-[25px] border
            border-white/50 bg-[#07111d] shadow-2xl sm:h-[450px] lg:h-[460px]">
 
           {/* VIDEO / IMAGE BACKGROUND */}
@@ -215,26 +216,7 @@ export default function Hero() {
 
 </div>
 
-            {/* LEFT SOCIAL SIDEBAR */}
 
-            <div className="absolute bottom-0 left-0 top-0 z-20 flex w-[58px] flex-col items-center justify-center gap-7 border-r border-white/10 bg-black/45 backdrop-blur-sm sm:w-[70px]">
-
-              {["LINKEDIN", "FACEBOOK", "INSTAGRAM"].map(
-                (social) => (
-                  <a
-                    key={social}
-                    href="#"
-                    className="rotate-180 text-[10px] font-semibold tracking-widest text-white transition-colors hover:text-white sm:text-xs"
-                    style={{
-                      writingMode: "vertical-rl",
-                    }}
-                  >
-                    {social}
-                  </a>
-                )
-              )}
-
-            </div>
 
             {/* SLIDER CONTENT */}
 
