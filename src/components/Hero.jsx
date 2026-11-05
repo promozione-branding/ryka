@@ -50,7 +50,8 @@ const slides = [
   },
 ];
 
-const products = [
+// fallback list, used only if no `products` prop is passed
+const defaultProducts = [
   {
     name: "Nexus Evo",
     image: "/product/imgi_9_Nexus-Evos.webp",
@@ -128,9 +129,12 @@ const features = [
 
 const ease = [0.22, 1, 0.36, 1];
 
-export default function Hero() {
+export default function Hero({ products: productsProp }) {
+  const products = productsProp?.length ? productsProp : defaultProducts;
+
   const [current, setCurrent] = useState(0);
   const [productStart, setProductStart] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
   // how many cards are visible: 2 on mobile, 4 on lg+
   const [perView, setPerView] = useState(4);
 
@@ -143,7 +147,6 @@ export default function Hero() {
     return () => clearInterval(timer);
   }, []);
 
-  // RESPONSIVE CARDS PER VIEW
   useEffect(() => {
     const mq = window.matchMedia("(min-width: 1024px)");
     const update = () => setPerView(mq.matches ? 4 : 2);
@@ -152,13 +155,22 @@ export default function Hero() {
     return () => mq.removeEventListener("change", update);
   }, []);
 
-  // PRODUCT SLIDER - one card at a time, continuous track
   const maxProductStart = Math.max(products.length - perView, 0);
 
-  // keep position valid if screen size changes
   useEffect(() => {
     setProductStart((prev) => Math.min(prev, maxProductStart));
   }, [maxProductStart]);
+
+  // PRODUCT AUTOPLAY
+  useEffect(() => {
+    if (isPaused || maxProductStart === 0) return;
+
+    const timer = setInterval(() => {
+      setProductStart((prev) => (prev >= maxProductStart ? 0 : prev + 1));
+    }, 3000);
+
+    return () => clearInterval(timer);
+  }, [isPaused, maxProductStart, productStart]);
 
   const nextProducts = () => {
     setProductStart((prev) => (prev >= maxProductStart ? 0 : prev + 1));
@@ -170,9 +182,6 @@ export default function Hero() {
 
   return (
     <section className="relative isolate min-h-screen w-full overflow-hidden bg-[#07111d] lg:h-full">
-
-      {/* BACKGROUND */}
-
       <div className="absolute inset-0 -z-10">
 
         <div
@@ -190,79 +199,64 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/30" />
 
       </div>
-
-      {/* ORANGE DECORATION */}
-
       <div className="pointer-events-none absolute left-0 top-0 z-0 h-32 w-32 rounded-tl-[90px] border-l-[8px] border-t-[8px] border-white" />
 
       <div className="pointer-events-none absolute bottom-20 right-0 z-0 h-32 w-40 rounded-br-[100px] border-b-[8px] 
       border-r-[8px] border-white" />
 
-      {/* MAIN CONTENT */}
 
       <div className="relative z-10 mx-auto flex min-h-screen max-w-[1800px] flex-col px-5 pb-6 pt-[90px] sm:px-8 lg:h-full lg:min-h-0 lg:px-10 lg:pb-5 xl:px-12">
-
-        {/* HERO GRID */}
-
         <div className="grid flex-none grid-cols-1 items-start gap-5 lg:grid-cols-[minmax(0,1fr)_255px] 
         xl:grid-cols-[minmax(0,1fr)_270px] xl:gap-7 mt-6">
-
-          {/* MAIN SLIDER */}
-
           <div className="relative h-[500px] overflow-hidden rounded-[25px] border
            border-white/50 bg-[#07111d] shadow-2xl sm:h-[450px] lg:h-[460px]">
+            <div className="absolute inset-0">
 
-          {/* VIDEO / IMAGE BACKGROUND */}
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.div
+                  key={current}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.6 }}
+                  className="absolute inset-0"
+                >
+                  {current === 0 ? (
+                    <video
+                      key={slides[0].video}
+                      src="/metro-map-1.mp4"
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      preload="auto"
+                      controls={false}
+                      onError={(e) => {
+                        console.error(
+                          "Video loading error:",
+                          e.currentTarget.error
+                        );
+                      }}
+                      className="absolute inset-0 h-full w-full object-cover"
+                    />
+                  ) : (
+                    <Image
+                      src={slides[current].image}
+                      alt={slides[current].title}
+                      fill
+                      priority={current === 1}
+                      sizes="(max-width: 1024px) 100vw, 80vw"
+                      className="object-cover"
+                    />
+                  )}
+                </motion.div>
+              </AnimatePresence>
 
-<div className="absolute inset-0">
+              <div className="pointer-events-none absolute inset-0 bg-[#06111c]/40" />
 
-  <AnimatePresence mode="wait" initial={false}>
-    <motion.div
-      key={current}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.6 }}
-      className="absolute inset-0"
-    >
-      {current === 0 ? (
-        <video
-          key={slides[0].video}
-          src="/metro-map-1.mp4"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          controls={false}
-          onError={(e) => {
-            console.error(
-              "Video loading error:",
-              e.currentTarget.error
-            );
-          }}
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-      ) : (
-        <Image
-          src={slides[current].image}
-          alt={slides[current].title}
-          fill
-          priority={current === 1}
-          sizes="(max-width: 1024px) 100vw, 80vw"
-          className="object-cover"
-        />
-      )}
-    </motion.div>
-  </AnimatePresence>
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/50 via-black/15 to-black/30" />
 
-  <div className="pointer-events-none absolute inset-0 bg-[#06111c]/40" />
-
-  <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/50 via-black/15 to-black/30" />
-
-</div>
-
-
+            </div>
 
             {/* SLIDER CONTENT */}
 
@@ -443,7 +437,14 @@ export default function Hero() {
 
         <div className="relative mt-8 pb-2 lg:mt-auto lg:pt-8">
 
-          <div className="relative">
+          {/* pause autoplay on hover / touch */}
+          <div
+            className="relative"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+            onTouchStart={() => setIsPaused(true)}
+            onTouchEnd={() => setIsPaused(false)}
+          >
 
             {/* PREVIOUS BUTTON */}
 
