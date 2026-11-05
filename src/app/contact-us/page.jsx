@@ -140,7 +140,6 @@ const formData = {
 
         <div className="relative z-10 max-w-[950px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 lg:gap-20 items-start">
 
-          {/* ================= LEFT: CONTACT FORM ================= */}
           <div className="w-full">
 
             <h2
@@ -253,7 +252,7 @@ const formData = {
         rgba(20,20,20,0.72),
         rgba(20,20,20,0.82)
       ),
-      url('/contact_detail.webp')
+      url('/contact_detail_.webp')
     `,
     backgroundSize: "cover",
     backgroundPosition: "center",
