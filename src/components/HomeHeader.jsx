@@ -155,20 +155,14 @@ export default function HomeHeader() {
 
           {/* RIGHT ACTIONS */}
           <div className="flex items-center gap-4 sm:gap-12">
-            <Link
-              href="/"
-              className="hidden sm:block"
-              aria-label="Team Interior Solutions"
-            >
+           
               <Image
                 src="/logoes.webp"
                 alt="Team Interior Solutions"
                 width={56}
                 height={56}
-                className="h-18 w-18 rounded-full object-contain sm:h-[52px] sm:w-[52px]"
+                className="h-18 w-18 rounded-full object-contain sm:h-[52px] sm:w-[52px] hidden sm:block"
               />
-            </Link>
-
             <button
               onClick={() => setMenuOpen(true)}
               aria-label="Open menu"

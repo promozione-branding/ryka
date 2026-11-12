@@ -4,6 +4,15 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { motion, AnimatePresence } from "framer-motion";
 
+const projectTypes = [
+  "Public Restroom Partition",
+  "Kids Restroom Partition",
+  "Urinal Partition",
+  "Colors & finished",
+  "Luxe Partition Systems",
+  "Other",
+];
+
 const shades = [
   { name: "Arctic White", code: "1001 AC", color: "#F3F1EA", dark: "#DCD9CF" },
   { name: "Ivory", code: "1002 AC", color: "#EFE6D2", dark: "#D6C9AF" },
@@ -71,20 +80,22 @@ const handleSubmit = async (e) => {
     return alert("Enter a valid 10-digit phone number");
   }
 
-  const extra = fd.get("message")?.toString().trim();
-  const formData = {
-    platform: "Ryka Restroom Cubicles",
-    supplierToken: "6a9bb67ac077e066ff1e0d9e",
-    platformEmail: "rykarestroomcubicle@gmail.com",
-    name: fd.get("name")?.toString().trim(),
-    email: fd.get("email")?.toString().trim(),
-    phone,
-    product: "Restroom Cubicles",
-    message: `Shade: ${shade.name} (${shade.code}) | Finish: ${selectedFinish}${
-      extra ? ` | ${extra}` : ""
-    }`,
-    place: "N/A",
-  };
+const extra = fd.get("message")?.toString().trim();
+const projectType = fd.get("projectType")?.toString();
+
+const formData = {
+  platform: "Ryka Restroom Cubicles",
+  supplierToken: "6a9bb67ac077e066ff1e0d9e",
+  platformEmail: "rykarestroomcubicle@gmail.com",
+  name: fd.get("name")?.toString().trim(),
+  email: fd.get("email")?.toString().trim(),
+  phone,
+  product: projectType || "Restroom Cubicles",
+  message: `Shade: ${shade.name} (${shade.code}) | Finish: ${selectedFinish}${
+    extra ? ` | ${extra}` : ""
+  }`,
+  place: "N/A",
+};
 
   try {
     setLoading(true);
@@ -464,7 +475,21 @@ const handleSubmit = async (e) => {
                   placeholder="Your Email"
                   className="w-full h-11 px-3 border border-gray-300 text-[13px] outline-none focus:border-[#d9b431]"
                 />
-
+<select
+  name="projectType"
+  required
+  defaultValue=""
+  className="w-full h-11 px-3 border border-gray-300 bg-white text-[13px] outline-none cursor-pointer focus:border-[#d9b431] invalid:text-gray-400"
+>
+  <option value="" disabled>
+    Select project type
+  </option>
+  {projectTypes.map((type) => (
+    <option key={type} value={type} className="text-[#111827]">
+      {type}
+    </option>
+  ))}
+</select>
                 <textarea
                   name="message"
                   rows={3}

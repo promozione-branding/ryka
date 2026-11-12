@@ -255,7 +255,7 @@ export default function ContactUs() {
                   />
                 </Field>
 
-                <Field icon={Package} label="Select a Category">
+                <Field icon={Package} label="Select Product Type">
                   <select
                     name="product"
                     required
@@ -263,7 +263,7 @@ export default function ContactUs() {
                     className={`${inputClass} appearance-none pr-11 cursor-pointer invalid:text-[#9a9a9a]`}
                   >
                     <option value="" disabled>
-                      Select a product
+                      Product Type
                     </option>
                     {productOptions.map((option) => (
                       <option key={option} value={option} className="text-black">
