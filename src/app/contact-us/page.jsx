@@ -2,13 +2,59 @@
 
 import { useState } from "react";
 import axios from "axios";
+import Link from "next/link";
 import {
   MapPin,
   Mail,
   Phone,
   Navigation,
+  User,
+  Package,
+  MessageSquare,
+  Send,
+  Loader2,
+  ChevronDown,
 } from "lucide-react";
 import FlowerBackdrop from "@/components/FlowerBackdrop";
+
+/* ================= SHARED STYLES ================= */
+
+const inputClass =
+  "w-full h-[52px] pl-11 pr-4 bg-[#fafafa] border border-[#dcdcdc] rounded-[3px] text-[15px] text-black placeholder:text-[#9a9a9a] outline-none transition-all duration-300 hover:border-[#b8b8b8] focus:bg-white focus:border-[#169bc8] focus:ring-4 focus:ring-[#169bc8]/15";
+
+const productOptions = [
+  "Public Restroom Partitions",
+  "Luxe Partition Systems",
+  "Kids Restroom Partitions",
+  "Urinal Partitions",
+  "Colors & Finishes",
+  "Other",
+];
+
+/* ================= REUSABLE FIELD ================= */
+
+function Field({ icon: Icon, label, alignTop = false, children }) {
+  return (
+    <label className="block group">
+      <span className="block text-[11px] font-semibold tracking-[1.5px] uppercase text-[#555] mb-2 transition-colors group-focus-within:text-[#169bc8]">
+        {label}
+      </span>
+
+      <div className="relative">
+        <Icon
+          size={17}
+          strokeWidth={1.8}
+          className={`absolute left-4 text-[#9a9a9a] transition-colors group-focus-within:text-[#169bc8] pointer-events-none ${
+            alignTop ? "top-[17px]" : "top-1/2 -translate-y-1/2"
+          }`}
+        />
+        {children}
+      </div>
+    </label>
+  );
+}
+
+/* ================= PAGE ================= */
 
 export default function ContactUs() {
   const [loading, setLoading] = useState(false);
@@ -26,7 +72,7 @@ export default function ContactUs() {
     const product = fd.get("product")?.toString().trim();
     const message = fd.get("message")?.toString().trim();
 
-const formData = {
+    const formData = {
       platform: "Ryka Restroom Cubicles",
       supplierToken: "6a9bb67ac077e066ff1e0d9e",
       platformEmail: "rykarestroomcubicle@gmail.com",
@@ -108,15 +154,17 @@ const formData = {
         </div>
       )}
 
+      {/* ================= TITLE BAR ================= */}
       <section
-        className="relative min-h-[145px] md:min-h-[145px] flex items-center justify-center px-5 py-15 
+        className="relative min-h-[145px] md:min-h-[145px] flex items-center justify-center px-5 py-15
         bg-[#c9c7c7] bg-cover bg-center overflow-hidden pt-30"
         style={{
           backgroundImage:
             "linear-gradient(rgba(195,193,193,0.92),rgba(195,193,193,0.92)),url('/images/floral-bg.png')",
         }}
       >
-<FlowerBackdrop/>
+        <FlowerBackdrop />
+
         <div className="relative z-10 text-center">
 
           <h1 className="text-black text-[43px] sm:text-[55px] md:text-[65px] font-semibold leading-none tracking-tight">
@@ -129,144 +177,189 @@ const formData = {
           </p>
 
         </div>
-
       </section>
+
+      {/* ================= FORM + DETAILS ================= */}
       <section
-        className="relative bg-[#f5f5f5] bg-fill bg-center px-5 py-10 md:py-12 lg:py-10"
+        className="relative bg-[#f5f5f5] bg-fill bg-center px-5 py-12 md:py-16"
         style={{
           backgroundImage: "url('/contact-us-bann-e.webp')",
         }}
       >
 
+        <div className="relative z-10 max-w-[1100px] mx-auto grid grid-cols-1 lg:grid-cols-[1.25fr_1fr] gap-8 lg:gap-10 items-stretch">
 
-        <div className="relative z-10 max-w-[950px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 lg:gap-20 items-start">
-
-          <div className="w-full">
+          {/* ---------- FORM CARD ---------- */}
+          <div className="w-full bg-white rounded-[4px] border-t-4 border-[#169bc8] shadow-[0_12px_40px_rgba(0,0,0,0.12)] px-6 sm:px-9 py-8 sm:py-10">
 
             <h2
-              className="text-[39px] sm:text-[46px] md:text-[52px] font-semibold text-transparent leading-tight tracking-tight mb-5"
-              style={{
-                WebkitTextStroke: "1.5px #222222",
-              }}
+              className="text-[36px] sm:text-[42px] font-semibold text-transparent leading-tight tracking-tight"
+              style={{ WebkitTextStroke: "1.5px #222222" }}
             >
               Get in Touch
             </h2>
 
-            <form onSubmit={handleSubmit} className="w-full space-y-2">
+            <div className="w-[60px] h-[1px] bg-[#b5a17b] mt-3 mb-3" />
 
-              {/* Name */}
-              <input
-                type="text"
-                name="name"
-                placeholder="Your Name"
-                required
-                className="w-full h-[58px] px-5 bg-white/20 border-0 border-b border-black/80 text-[15px] text-black placeholder:text-[#777] outline-none focus:border-[#168fbe] transition-colors"
-              />
+            <p className="text-[#555] text-[13px] sm:text-[14px] leading-[1.8] mb-7">
+              Fill in the form below and our team will get back to you shortly.
+            </p>
 
-              {/* Email */}
-              <input
-                type="email"
-                name="email"
-                placeholder="Your Email"
-                required
-                className="w-full h-[58px] px-5 bg-white/20 border-0 border-b border-black/80 text-[15px] text-black placeholder:text-[#777] outline-none focus:border-[#168fbe] transition-colors"
-              />
+            <form onSubmit={handleSubmit} className="w-full space-y-5">
 
-              {/* Phone */}
-              <input
-                type="tel"
-                name="phone"
-                placeholder="Your Phone Number"
-                required
-                inputMode="numeric"
-                maxLength={10}
-                pattern="\d{10}"
-                title="Enter a valid 10-digit phone number"
-                className="w-full h-[58px] px-5 bg-white/20 border-0 border-b border-black/80 text-[15px] text-black placeholder:text-[#777] outline-none focus:border-[#168fbe] transition-colors"
-              />
+              {/* Name + Email */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
 
-              {/* Product */}
-              <input
-                type="text"
-                name="product"
-                placeholder="Product Interested In"
-                required
-                className="w-full h-[58px] px-5 bg-white/20 border-0 border-b border-black/80 text-[15px] text-black placeholder:text-[#777] outline-none focus:border-[#168fbe] transition-colors"
-              />
+                <Field icon={User} label="Your Name">
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Your Name"
+                    required
+                    autoComplete="name"
+                    className={inputClass}
+                  />
+                </Field>
 
-              {/* Message */}
-              <textarea
-                name="message"
-                placeholder="Your Message"
-                rows={4}
-                required
-                className="w-full min-h-[105px] px-5 py-4 bg-white/20 border-0 border-b border-black/80 text-[15px] text-black placeholder:text-[#777] outline-none resize-y focus:border-[#168fbe] transition-colors"
-              />
-
-              {/* Captcha Placeholder */}
-              <div className="flex items-center gap-3 border border-[#d5d5d5] bg-white/80 w-fit px-3 py-3 mt-2">
-
-                <input
-                  type="checkbox"
-                  id="robot"
-                  required
-                  className="w-5 h-5 accent-[#168fbe] cursor-pointer"
-                />
-
-                <label
-                  htmlFor="robot"
-                  className="text-[11px] text-[#333] cursor-pointer"
-                >
-                  I'm not a robot
-                </label>
-
-                <div className="ml-8 text-center">
-                  <span className="text-[25px] leading-none text-[#4285f4]">
-                    ↻
-                  </span>
-                  <p className="text-[8px] text-gray-500">
-                    reCAPTCHA
-                  </p>
-                </div>
+                <Field icon={Mail} label="Your Email">
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="you@example.com"
+                    required
+                    autoComplete="email"
+                    className={inputClass}
+                  />
+                </Field>
 
               </div>
+
+              {/* Phone + Product */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+
+                <Field icon={Phone} label="Phone Number">
+                  <input
+                    type="tel"
+                    name="phone"
+                    placeholder="10-digit mobile number"
+                    required
+                    inputMode="numeric"
+                    autoComplete="tel-national"
+                    maxLength={10}
+                    pattern="\d{10}"
+                    title="Enter a valid 10-digit phone number"
+                    onChange={(e) => {
+                      e.target.value = e.target.value.replace(/\D/g, "");
+                    }}
+                    className={inputClass}
+                  />
+                </Field>
+
+                <Field icon={Package} label="Product Interested In">
+                  <select
+                    name="product"
+                    required
+                    defaultValue=""
+                    className={`${inputClass} appearance-none pr-11 cursor-pointer invalid:text-[#9a9a9a]`}
+                  >
+                    <option value="" disabled>
+                      Select a product
+                    </option>
+                    {productOptions.map((option) => (
+                      <option key={option} value={option} className="text-black">
+                        {option}
+                      </option>
+                    ))}
+                  </select>
+
+                  <ChevronDown
+                    size={17}
+                    strokeWidth={1.8}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-[#9a9a9a] pointer-events-none transition-colors group-focus-within:text-[#169bc8]"
+                  />
+                </Field>
+
+              </div>
+
+              {/* Message */}
+              <Field icon={MessageSquare} label="Your Message" alignTop>
+                <textarea
+                  name="message"
+                  placeholder="Tell us about your project, number of cubicles, location..."
+                  rows={5}
+                  required
+                  className={`${inputClass} h-auto min-h-[130px] py-3.5 resize-y`}
+                />
+              </Field>
+
+              {/* Consent */}
+              <label className="flex items-start gap-3 cursor-pointer">
+                <input
+                  type="checkbox"
+                  required
+                  className="mt-[3px] w-[18px] h-[18px] shrink-0 accent-[#169bc8] cursor-pointer"
+                />
+                <span className="text-[12px] sm:text-[13px] leading-[1.7] text-[#555]">
+                  I agree to be contacted about my enquiry and accept the{" "}
+                  <Link
+                    href="/privacy-policy"
+                    target="_blank"
+                    className="text-[#169bc8] underline hover:text-[#087eaa]"
+                  >
+                    Privacy Policy
+                  </Link>
+                  .
+                </span>
+              </label>
 
               {/* Submit */}
               <button
                 type="submit"
                 disabled={loading}
-                className="bg-[#169bc8] hover:bg-[#087eaa] disabled:opacity-60 disabled:cursor-not-allowed text-white text-[15px] font-semibold px-7 py-2 mt-2 rounded-[2px] transition-all duration-300"
+                className="group w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-[#169bc8] hover:bg-[#087eaa] disabled:opacity-60 disabled:cursor-not-allowed text-white text-[15px] font-semibold tracking-wide px-10 h-[50px] rounded-[3px] shadow-[0_6px_16px_rgba(22,155,200,0.35)] hover:shadow-[0_8px_20px_rgba(8,126,170,0.4)] transition-all duration-300"
               >
-                {loading ? "Sending..." : "Send"}
+                {loading ? (
+                  <>
+                    <Loader2 size={18} className="animate-spin" />
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    Send Message
+                    <Send
+                      size={17}
+                      className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-0.5"
+                    />
+                  </>
+                )}
               </button>
 
             </form>
 
           </div>
 
-
-<div
-  className="relative w-full min-h-[490px] md:min-h-[490px] bg-[#191919] text-white px-7 sm:px-10 py-10 md:py-16 overflow-hidden"
-  style={{
-    backgroundImage: `
-      linear-gradient(
-        rgba(20,20,20,0.72),
-        rgba(20,20,20,0.82)
-      ),
-      url('/contact_detail_.webp')
-    `,
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
-  }}
->
+          {/* ---------- CONTACT DETAILS ---------- */}
+          <div
+            className="relative w-full min-h-[490px] bg-[#191919] text-white px-7 sm:px-10 py-10 md:py-16 overflow-hidden rounded-[4px]"
+            style={{
+              backgroundImage: `
+                linear-gradient(
+                  rgba(20,20,20,0.72),
+                  rgba(20,20,20,0.82)
+                ),
+                url('/contact_detail_.webp')
+              `,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+            }}
+          >
 
             <div className="relative z-10">
 
               <h2 className="text-[29px] sm:text-[33px] font-normal mb-5">
                 Reach Out Today
               </h2>
-
 
               {/* Address */}
               <div className="flex gap-5 mb-6">
@@ -289,7 +382,6 @@ const formData = {
                 </div>
 
               </div>
-
 
               {/* Email */}
               <div className="flex gap-5 mb-6">
@@ -314,7 +406,6 @@ const formData = {
                 </div>
 
               </div>
-
 
               {/* Phone */}
               <div className="flex gap-5">
@@ -354,46 +445,48 @@ const formData = {
           </div>
 
         </div>
-               
       </section>
-           <div className="group relative min-h-[280px] flex-1 overflow-hidden border border-white/15 lg:min-h-0">
-              <iframe
-                title="Ryka Restroom Cubicles Head Office"
-                src="https://www.google.com/maps?q=Ryka+Restroom+Cubicles,+H3/216,+Vardhman+Plaza+Tower,+Netaji+Subhash+Place,+Pitampura,+New+Delhi&output=embed"
-                width="100%"
-                height="100%"
-                style={{
-                  border: 0,
-                  minHeight: "600px",
-                  filter: "grayscale(100%) contrast(0.9)",
-                }}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                allowFullScreen
-              />
 
-              {/* FLOATING MAP INFO */}
-              <div className="pointer-events-none absolute bottom-3 left-3 flex items-center gap-3 border border-white/20 bg-[#101820]/95 px-3 py-2.5 shadow-xl">
-                <div className="flex h-9 w-9 items-center justify-center bg-[#FFA21A] text-[#101820]">
-                  <MapPin size={18} />
-                </div>
+      {/* ================= MAP ================= */}
+      <div className="group relative min-h-[280px] flex-1 overflow-hidden border border-white/15 lg:min-h-0">
+        <iframe
+          title="Ryka Restroom Cubicles Head Office"
+          src="https://www.google.com/maps?q=Ryka+Restroom+Cubicles,+H3/216,+Vardhman+Plaza+Tower,+Netaji+Subhash+Place,+Pitampura,+New+Delhi&output=embed"
+          width="100%"
+          height="100%"
+          style={{
+            border: 0,
+            minHeight: "600px",
+            filter: "grayscale(100%) contrast(0.9)",
+          }}
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          allowFullScreen
+        />
 
-                <div>
-                  <p className="text-[11px] font-semibold text-white">
-                    Ryka Restroom Cubicles
-                  </p>
+        {/* FLOATING MAP INFO */}
+        <div className="pointer-events-none absolute bottom-3 left-3 flex items-center gap-3 border border-white/20 bg-[#101820]/95 px-3 py-2.5 shadow-xl">
+          <div className="flex h-9 w-9 items-center justify-center bg-[#FFA21A] text-[#101820]">
+            <MapPin size={18} />
+          </div>
 
-                  <p className="mt-0.5 text-[10px] text-white/55">
-                    New Delhi, India
-                  </p>
-                </div>
-              </div>
+          <div>
+            <p className="text-[11px] font-semibold text-white">
+              Ryka Restroom Cubicles
+            </p>
 
-              {/* MAP ICON */}
-              <div className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center border border-white/30 bg-[#101820]/90 text-white">
-                <Navigation size={16} />
-              </div>
-            </div>
+            <p className="mt-0.5 text-[10px] text-white/55">
+              New Delhi, India
+            </p>
+          </div>
+        </div>
+
+        {/* MAP ICON */}
+        <div className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center border border-white/30 bg-[#101820]/90 text-white">
+          <Navigation size={16} />
+        </div>
+      </div>
+
     </main>
   );
 }

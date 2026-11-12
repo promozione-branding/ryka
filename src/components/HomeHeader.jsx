@@ -23,7 +23,7 @@ export default function HomeHeader() {
   const isHome = pathname === "/";
   const isAdmin = pathname === "/admin" || pathname.startsWith("/admin/");
   const solutionsActive =
-    pathname === "/products" ||
+    pathname === "/solutions" ||
     solutionHrefs.some((href) => pathname.startsWith(href));
   const [menuOpen, setMenuOpen] = useState(false);
   const [solutionsOpen, setSolutionsOpen] = useState(false);
@@ -103,7 +103,7 @@ export default function HomeHeader() {
                 }`}
               >
                 <Link
-                  href="/products"
+                  href="/solutions"
                   onClick={() => setSolutionsOpen(false)}
                   className={`text-[16px] font-semibold uppercase tracking-[0.12em] ${textColor} transition-colors ${hoverColor}`}
                 >
