@@ -330,7 +330,7 @@ const handleSubmit = async (e) => {
 
         </div>
       </div>
-      <AnimatePresence>
+<AnimatePresence>
   {showModal && (
     <motion.div
       className="fixed inset-0 z-[99999] flex items-center justify-center bg-black/70 px-4"
@@ -339,86 +339,150 @@ const handleSubmit = async (e) => {
       exit={{ opacity: 0 }}
       onClick={() => setShowModal(false)}
     >
-<motion.div
-  initial={{ y: 20, scale: 0.97, opacity: 0 }}
-  animate={{ y: 0, scale: 1, opacity: 1 }}
-  exit={{ y: 20, scale: 0.97, opacity: 0 }}
-  onClick={(e) => e.stopPropagation()}
-  className="relative w-full max-w-[440px] max-h-[90vh] overflow-y-auto rounded-[4px] border border-[#d5ad35] bg-white text-[#111827] px-5 py-4"
->
+      <motion.div
+        initial={{ y: 20, scale: 0.97, opacity: 0 }}
+        animate={{ y: 0, scale: 1, opacity: 1 }}
+        exit={{ y: 20, scale: 0.97, opacity: 0 }}
+        onClick={(e) => e.stopPropagation()}
+        className="relative w-full max-w-[860px] max-h-[90vh] overflow-hidden rounded-[4px] border border-[#d5ad35] bg-white text-[#111827] grid grid-cols-1 md:grid-cols-2"
+      >
+        {/* Close button */}
         <button
           type="button"
           onClick={() => setShowModal(false)}
           aria-label="Close"
-          className="absolute right-4 top-3 text-2xl leading-none text-gray-500 hover:text-black"
+          className="absolute right-4 top-3 z-20 text-2xl leading-none text-gray-500 hover:text-black"
         >
           ×
         </button>
 
-        {success ? (
-          <div className="text-center py-8">
-            <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-green-100">
-              <svg className="h-8 w-8 text-green-600" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-              </svg>
-            </div>
-            <h3 className="text-xl font-semibold mb-2">Quote Request Sent!</h3>
-            <p className="text-sm text-gray-600 mb-5">
-              Our team will contact you shortly.
+        {/* LEFT: Image */}
+        <div className="relative hidden md:block min-h-[460px]">
+          <img
+            src="/golder-cubicles-1536x800.webp"
+            alt="Ryka restroom cubicles"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0b2147]/90 via-[#0b2147]/30 to-transparent" />
+
+          <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+            <p className="text-[10px] font-bold tracking-[2px] uppercase text-[#e2b832] mb-2">
+              Your Selection
             </p>
-            <button
-              onClick={() => setShowModal(false)}
-              className="bg-[#d9b431] px-6 py-2 text-[12px] font-bold tracking-[1.5px] hover:bg-[#f0cd4b]"
-            >
-              CLOSE
-            </button>
+            <div className="flex items-center gap-3">
+              <div
+                className="h-11 w-11 shrink-0 rounded-sm border border-white/40 shadow-lg"
+                style={{ backgroundColor: shade.color }}
+              />
+              <div>
+                <p className="font-serif text-[18px] font-bold leading-5">
+                  {shade.name}
+                </p>
+                <p className="text-[12px] text-white/80 mt-1">
+                  {shade.code} · {selectedFinish}
+                </p>
+              </div>
+            </div>
           </div>
-        ) : (
-<>
-  <h3 className="font-serif text-[20px] font-bold mb-2 pr-6">
-    Get a Quote
-  </h3>
+        </div>
 
-  {/* Auto-selected product + shade (single compact row) */}
-  <div className="flex items-center gap-3 mb-3 rounded-[2px] border border-gray-200 bg-gray-50 px-3 py-2">
-    <div
-      className="h-9 w-9 shrink-0 rounded-sm border border-black/20"
-      style={{ backgroundColor: shade.color }}
-    />
-    <div className="text-[12px] leading-4">
-      <p className="font-semibold">Restroom Cubicles</p>
-      <p className="text-gray-600">
-        {shade.name} · {shade.code} · {selectedFinish}
-      </p>
-    </div>
-  </div>
+        {/* RIGHT: Form / Success */}
+        <div className="overflow-y-auto max-h-[90vh] px-6 py-6 md:px-8 md:py-8">
+          {success ? (
+            <div className="flex h-full flex-col items-center justify-center text-center py-10">
+              <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-green-100">
+                <svg className="h-8 w-8 text-green-600" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Quote Request Sent!</h3>
+              <p className="text-sm text-gray-600 mb-5">
+                Our team will contact you shortly.
+              </p>
+              <button
+                onClick={() => setShowModal(false)}
+                className="bg-[#d9b431] px-6 py-2 text-[12px] font-bold tracking-[1.5px] hover:bg-[#f0cd4b]"
+              >
+                CLOSE
+              </button>
+            </div>
+          ) : (
+            <>
+              <div className="flex items-center gap-3 mb-2">
+                <span className="w-8 h-[1px] bg-[#d9b42e]" />
+                <span className="text-[#b8921c] text-[10px] font-bold tracking-[3px] uppercase">
+                  Enquiry
+                </span>
+              </div>
 
-  <form onSubmit={handleSubmit} className="space-y-2">
-    <div className="grid grid-cols-2 gap-2">
-      <input name="name" type="text" required placeholder="Your Name"
-        className="w-full h-10 px-3 border border-gray-300 text-[13px] outline-none focus:border-[#d9b431]" />
-      <input name="phone" type="tel" required placeholder="Phone Number"
-        inputMode="numeric" maxLength={10} pattern="\d{10}"
-        title="Enter a valid 10-digit phone number"
-        className="w-full h-10 px-3 border border-gray-300 text-[13px] outline-none focus:border-[#d9b431]" />
-    </div>
+              <h3 className="font-serif text-[24px] font-bold mb-1 pr-6">
+                Get a Quote
+              </h3>
+              <p className="text-[13px] text-gray-500 mb-4">
+                Share your details and we'll get back with pricing.
+              </p>
 
-    <input name="email" type="email" required placeholder="Your Email"
-      className="w-full h-10 px-3 border border-gray-300 text-[13px] outline-none focus:border-[#d9b431]" />
+              {/* Shade summary (shown on mobile where the image is hidden) */}
+              <div className="md:hidden flex items-center gap-3 mb-4 rounded-[2px] border border-gray-200 bg-gray-50 px-3 py-2">
+                <div
+                  className="h-9 w-9 shrink-0 rounded-sm border border-black/20"
+                  style={{ backgroundColor: shade.color }}
+                />
+                <div className="text-[12px] leading-4">
+                  <p className="font-semibold">Restroom Cubicles</p>
+                  <p className="text-gray-600">
+                    {shade.name} · {shade.code} · {selectedFinish}
+                  </p>
+                </div>
+              </div>
 
-    <textarea name="message" rows={2} placeholder="Additional requirements (optional)"
-      className="w-full px-3 py-2 border border-gray-300 text-[13px] outline-none resize-none focus:border-[#d9b431]" />
+              <form onSubmit={handleSubmit} className="space-y-3">
+                <input
+                  name="name"
+                  type="text"
+                  required
+                  placeholder="Your Name"
+                  className="w-full h-11 px-3 border border-gray-300 text-[13px] outline-none focus:border-[#d9b431]"
+                />
 
-    <button
-      type="submit"
-      disabled={loading}
-      className="w-full bg-[#d9b431] py-2.5 text-[12px] font-bold tracking-[1.5px] hover:bg-[#f0cd4b] disabled:opacity-60 disabled:cursor-not-allowed transition-all"
-    >
-      {loading ? "SENDING..." : "REQUEST QUOTE"}
-    </button>
-  </form>
-</>
-        )}
+                <input
+                  name="phone"
+                  type="tel"
+                  required
+                  placeholder="Phone Number"
+                  inputMode="numeric"
+                  maxLength={10}
+                  pattern="\d{10}"
+                  title="Enter a valid 10-digit phone number"
+                  className="w-full h-11 px-3 border border-gray-300 text-[13px] outline-none focus:border-[#d9b431]"
+                />
+
+                <input
+                  name="email"
+                  type="email"
+                  required
+                  placeholder="Your Email"
+                  className="w-full h-11 px-3 border border-gray-300 text-[13px] outline-none focus:border-[#d9b431]"
+                />
+
+                <textarea
+                  name="message"
+                  rows={3}
+                  placeholder="Additional requirements (optional)"
+                  className="w-full px-3 py-2 border border-gray-300 text-[13px] outline-none resize-none focus:border-[#d9b431]"
+                />
+
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="w-full bg-[#d9b431] py-3 text-[12px] font-bold tracking-[1.5px] hover:bg-[#f0cd4b] disabled:opacity-60 disabled:cursor-not-allowed transition-all"
+                >
+                  {loading ? "SENDING..." : "REQUEST QUOTE"}
+                </button>
+              </form>
+            </>
+          )}
+        </div>
       </motion.div>
     </motion.div>
   )}
