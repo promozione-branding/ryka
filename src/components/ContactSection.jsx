@@ -38,15 +38,16 @@ export default function ContactSection() {
     setLoading(true);
 
     const form = e.target;
-    const firstName = form.firstName.value.trim();
-    const lastName = form.lastName.value.trim();
+const firstName = form.firstName.value.trim();
+const lastName = form.lastName.value.trim();
+const name = `${firstName} ${lastName}`.trim();
     const phone = form.phone.value.trim();
     const email = form.email.value.trim();
     const product = form.projectType.value;
     const place = form.location.value.trim();
     const message = form.description.value.trim();
 
-const formData = {
+    const formData = {
       platform: "Ryka Restroom Cubicles",
       supplierToken: "6a9bb67ac077e066ff1e0d9e",
       platformEmail: "rykarestroomcubicle@gmail.com",
@@ -55,7 +56,7 @@ const formData = {
       email,
       product,
       message,
-      place: "N/A",
+      place,
     };
 
     if (!/^\d{10}$/.test(formData.phone)) {
