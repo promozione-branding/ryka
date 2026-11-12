@@ -1,6 +1,9 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
+import Link from "next/link";
+import { User, Mail, Phone, Package, MessageSquare, Send, Loader2, Check } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination, EffectFade } from "swiper/modules";
 
@@ -16,6 +19,32 @@ import "swiper/css/effect-fade";
 /*  Main page component               */
 /* ---------------------------------- */
 
+const PRODUCT_NAME = "Urinal Partitions";
+
+const inputClass =
+  "w-full h-[42px] pl-10 pr-3 bg-[#fafafa] border border-[#dcdcdc] rounded-[3px] text-[14px] text-black placeholder:text-[#9a9a9a] outline-none transition-all duration-300 hover:border-[#b8b8b8] focus:bg-white focus:border-[#169bc8] focus:ring-4 focus:ring-[#169bc8]/15";
+
+function Field({ icon: Icon, label, alignTop = false, children }) {
+  return (
+    <label className="block group">
+      <span className="block text-[10px] font-semibold tracking-[1.5px] uppercase text-[#555] mb-1 transition-colors group-focus-within:text-[#169bc8]">
+        {label}
+      </span>
+
+      <div className="relative">
+        <Icon
+          size={16}
+          strokeWidth={1.8}
+          className={`absolute left-3.5 text-[#9a9a9a] transition-colors group-focus-within:text-[#169bc8] pointer-events-none ${
+            alignTop ? "top-[13px]" : "top-1/2 -translate-y-1/2"
+          }`}
+        />
+        {children}
+      </div>
+    </label>
+  );
+}
+
 export default function page() {
 
     const heroSlides = [
@@ -30,37 +59,89 @@ export default function page() {
 
 ];
 
-    const handleSubmit = (e) => {
-  e.preventDefault();
+  const [loading, setLoading] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
 
-  const formData = new FormData(e.currentTarget);
+  // Enquiry form -> brandbnalo API (same as the Contact Us page)
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  const name = formData.get("name");
-  const email = formData.get("email");
-  const mobile = formData.get("mobile");
-  const message = formData.get("message");
+    const form = e.currentTarget;
+    const fd = new FormData(form);
 
-  const subject = encodeURIComponent(
-    `Sky Hung Product Enquiry - ${productName}`
-  );
+    const formData = {
+      platform: "Ryka Restroom Cubicles",
+      supplierToken: "6a9bb67ac077e066ff1e0d9e",
+      platformEmail: "rykarestroomcubicle@gmail.com",
+      name: fd.get("name")?.toString().trim(),
+      phone: fd.get("mobile")?.toString().trim(),
+      email: fd.get("email")?.toString().trim(),
+      product: PRODUCT_NAME,
+      message: fd.get("message")?.toString().trim(),
+      place: "N/A",
+    };
 
-  const body = encodeURIComponent(
-    `Product: ${productName}
-Name: ${name}
-Email: ${email}
-Mobile: ${mobile}
+    if (!/^\d{10}$/.test(formData.phone)) {
+      return alert("Enter a valid 10-digit phone number");
+    }
 
-Message:
-${message}`
-  );
+    try {
+      setLoading(true);
 
-  window.location.href =
-    `mailto:${contactInfo.email}?subject=${subject}&body=${body}`;
-};
+      const { data } = await axios.post(
+        "https://brandbnalo.com/api/form/add",
+        formData
+      );
+
+      console.log(data);
+      form.reset();
+      setShowSuccess(true);
+    } catch (error) {
+      console.error(error);
+      alert("Something went wrong. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
 
   return (
     <main className="min-h-screen bg-white text-gray-900 antialiased">
+
+      {/* ============ SUCCESS POPUP ============ */}
+      {showSuccess && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 px-5"
+          onClick={() => setShowSuccess(false)}
+        >
+          <div
+            className="bg-white w-full max-w-[380px] rounded-md px-8 py-10 text-center shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
+              <Check size={34} strokeWidth={3} className="text-green-600" />
+            </div>
+
+            <h3 className="text-[22px] font-semibold text-black mb-2">
+              Message Sent Successfully!
+            </h3>
+
+            <p className="text-[14px] text-[#555] mb-6">
+              Thank you for your interest in {PRODUCT_NAME}. Our team will get
+              back to you shortly.
+            </p>
+
+            <button
+              type="button"
+              onClick={() => setShowSuccess(false)}
+              className="bg-[#169bc8] hover:bg-[#087eaa] text-white text-[15px] font-semibold px-8 py-2 rounded-[2px] transition-all duration-300"
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      )}
+
      
 {/* ============ HERO SLIDER ============ */}
 
@@ -326,79 +407,128 @@ ${message}`
 
     {/* Contact Form */}
     <div className="w-full">
+      <div className="bg-white rounded-[4px] border-t-4 border-[#169bc8] shadow-[0_12px_40px_rgba(0,0,0,0.12)] px-6 sm:px-7 py-5 sm:py-6">
 
-      <h2 className="mb-6 text-center text-[38px] font-semibold text-black md:text-[48px]">
-        Get in Touch
-      </h2>
+        <h2
+          className="text-[28px] sm:text-[32px] font-semibold text-transparent leading-tight tracking-tight"
+          style={{ WebkitTextStroke: "1.5px #222222" }}
+        >
+          Get in Touch
+        </h2>
 
-      <form onSubmit={handleSubmit}>
+        <div className="w-[60px] h-[1px] bg-[#b5a17b] mt-2 mb-4" />
 
-        <div className="grid grid-cols-1 gap-x-3 gap-y-6 sm:grid-cols-2">
+        <form onSubmit={handleSubmit} className="space-y-3">
 
-          <div>
-            <label className="mb-1 block text-[22px] text-black">
-              Name
-            </label>
-            <input
-              type="text"
-              name="name"
-              placeholder="Name"
-              required
-              className="h-9 w-full border-0 border-b border-black bg-transparent px-2 text-xs outline-none focus:border-[#0785cc]"
-            />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <Field icon={User} label="Your Name">
+              <input
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                required
+                autoComplete="name"
+                className={inputClass}
+              />
+            </Field>
+
+            <Field icon={Phone} label="Mobile Number">
+              <input
+                type="tel"
+                name="mobile"
+                placeholder="10-digit mobile number"
+                required
+                inputMode="numeric"
+                autoComplete="tel-national"
+                maxLength={10}
+                pattern="\d{10}"
+                title="Enter a valid 10-digit phone number"
+                onChange={(e) => {
+                  e.target.value = e.target.value.replace(/\D/g, "");
+                }}
+                className={inputClass}
+              />
+            </Field>
           </div>
 
-          <div>
-            <label className="mb-1 block text-[22px] text-black">
-              Mobile Number
-            </label>
-            <input
-              type="tel"
-              name="mobile"
-              placeholder="081234 56789"
-              required
-              className="h-9 w-full border-0 border-b border-black bg-transparent px-2 text-xs outline-none focus:border-[#0785cc]"
-            />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <Field icon={Mail} label="Your Email">
+              <input
+                type="email"
+                name="email"
+                placeholder="you@example.com"
+                required
+                autoComplete="email"
+                className={inputClass}
+              />
+            </Field>
+
+            {/* Product (auto-filled) */}
+            <Field icon={Package} label="Product">
+              <input
+                type="text"
+                value={PRODUCT_NAME}
+                readOnly
+                tabIndex={-1}
+                className={`${inputClass} bg-[#f0f0f0] text-[#333] font-medium cursor-default truncate`}
+              />
+            </Field>
           </div>
 
-          <div>
-            <label className="mb-1 block text-[22px] text-black">
-              Email
-            </label>
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              required
-              className="h-9 w-full border-0 border-b border-black bg-transparent px-2 text-xs outline-none focus:border-[#0785cc]"
-            />
-          </div>
-
-          <div>
-            <label className="mb-1 block text-[22px] text-black">
-              Message
-            </label>
+          <Field icon={MessageSquare} label="Your Message" alignTop>
             <textarea
               name="message"
-              placeholder="Enter Message"
-              rows={3}
+              placeholder="Tell us about your requirement..."
+              rows={2}
               required
-              className="h-[75px] w-full resize-none border-0 border-b border-black bg-transparent px-2 py-2 text-xs outline-none focus:border-[#0785cc]"
+              className={`${inputClass} h-auto min-h-[68px] py-2.5 resize-y`}
             />
-          </div>
+          </Field>
 
-        </div>
+          {/* Consent */}
+          <label className="flex items-start gap-2.5 cursor-pointer">
+            <input
+              type="checkbox"
+              required
+              className="mt-[2px] w-4 h-4 shrink-0 accent-[#169bc8] cursor-pointer"
+            />
+            <span className="text-[11px] sm:text-[12px] leading-[1.6] text-[#555]">
+              I agree to be contacted about my enquiry and accept the{" "}
+              <Link
+                href="/privacy-policy"
+                target="_blank"
+                className="text-[#169bc8] underline hover:text-[#087eaa]"
+              >
+                Privacy Policy
+              </Link>
+              .
+            </span>
+          </label>
 
-        {/* Submit */}
-        <button
-          type="submit"
-          className="mt-5 h-9 w-full max-w-[180px] border border-black text-xs text-black transition hover:bg-black hover:text-white"
-        >
-          Submit Now
-        </button>
+          <button
+            type="submit"
+            disabled={loading}
+            className="group w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-[#169bc8] hover:bg-[#087eaa] disabled:opacity-60 disabled:cursor-not-allowed text-white text-[14px] font-semibold tracking-wide px-9 h-[42px] rounded-[3px] shadow-[0_6px_16px_rgba(22,155,200,0.35)] hover:shadow-[0_8px_20px_rgba(8,126,170,0.4)] transition-all duration-300"
+          >
+            {loading ? (
+              <>
+                <Loader2 size={18} className="animate-spin" />
+                Sending...
+              </>
+            ) : (
+              <>
+                Submit Now
+                <Send
+                  size={17}
+                  className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-0.5"
+                />
+              </>
+            )}
+          </button>
 
-      </form>
+        </form>
 
+      </div>
     </div>
   </div>
 </section>

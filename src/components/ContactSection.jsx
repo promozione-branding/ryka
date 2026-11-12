@@ -383,7 +383,9 @@ const formData = {
                         <option value="Urinal Partition">
                           Urinal Partition
                         </option>
-
+                        <option value="Urinal Partition">
+                          Colors & finished
+                        </option>
                         <option value="Other">Other</option>
                       </select>
                     </div>

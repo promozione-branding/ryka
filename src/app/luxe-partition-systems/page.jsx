@@ -1,5 +1,9 @@
 "use client";
 
+import { useState } from "react";
+import axios from "axios";
+import Link from "next/link";
+import { User, Mail, Phone, Package, MessageSquare, Send, Loader2, Check } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
 import {
@@ -83,9 +87,114 @@ const overlayStyle = {
   `,
 };
 
+const PRODUCT_NAME = "Luxe Partition Systems";
+
+const darkInputClass =
+  "w-full h-[42px] pl-10 pr-3 bg-white/5 border border-white/25 rounded-[3px] text-[14px] text-white placeholder:text-white/40 outline-none transition-all duration-300 hover:border-white/50 focus:bg-white/10 focus:border-[#F4C735] focus:ring-4 focus:ring-[#F4C735]/15";
+
+function DarkField({ icon: Icon, label, alignTop = false, children }) {
+  return (
+    <label className="block group">
+      <span className="block text-[10px] font-semibold tracking-[1.5px] uppercase text-white/70 mb-1 transition-colors group-focus-within:text-[#F4C735]">
+        {label}
+      </span>
+
+      <div className="relative">
+        <Icon
+          size={16}
+          strokeWidth={1.8}
+          className={`absolute left-3.5 text-white/45 transition-colors group-focus-within:text-[#F4C735] pointer-events-none ${
+            alignTop ? "top-[13px]" : "top-1/2 -translate-y-1/2"
+          }`}
+        />
+        {children}
+      </div>
+    </label>
+  );
+}
+
 export default function HeroSlider() {
+  const [loading, setLoading] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
+
+  // Enquiry form -> brandbnalo API (same as the Contact Us page)
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+
+    const formData = {
+      platform: "Ryka Restroom Cubicles",
+      supplierToken: "6a9bb67ac077e066ff1e0d9e",
+      platformEmail: "rykarestroomcubicle@gmail.com",
+      name: fd.get("name")?.toString().trim(),
+      phone: fd.get("mobile")?.toString().trim(),
+      email: fd.get("email")?.toString().trim(),
+      product: PRODUCT_NAME,
+      message: fd.get("message")?.toString().trim(),
+      place: "N/A",
+    };
+
+    if (!/^\d{10}$/.test(formData.phone)) {
+      return alert("Enter a valid 10-digit phone number");
+    }
+
+    try {
+      setLoading(true);
+
+      const { data } = await axios.post(
+        "https://brandbnalo.com/api/form/add",
+        formData
+      );
+
+      console.log(data);
+      form.reset();
+      setShowSuccess(true);
+    } catch (error) {
+      console.error(error);
+      alert("Something went wrong. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <>
+
+      {/* ============ SUCCESS POPUP ============ */}
+      {showSuccess && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 px-5"
+          onClick={() => setShowSuccess(false)}
+        >
+          <div
+            className="bg-white w-full max-w-[380px] rounded-md px-8 py-10 text-center shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
+              <Check size={34} strokeWidth={3} className="text-green-600" />
+            </div>
+
+            <h3 className="text-[22px] font-semibold text-black mb-2">
+              Message Sent Successfully!
+            </h3>
+
+            <p className="text-[14px] text-[#555] mb-6">
+              Thank you for your interest in {PRODUCT_NAME}. Our team will get
+              back to you shortly.
+            </p>
+
+            <button
+              type="button"
+              onClick={() => setShowSuccess(false)}
+              className="bg-[#F4C735] hover:bg-[#e0b52a] text-black text-[15px] font-semibold px-8 py-2 rounded-[2px] transition-all duration-300"
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      )}
       {/* Hero slider (left static so it shows immediately) */}
       <section className="w-full overflow-hidden bg-black">
         <Swiper
@@ -384,77 +493,126 @@ export default function HeroSlider() {
 
           {/* Right Contact Form */}
           <FadeInUp margin="-60px" custom={1} className="w-full">
-            <h2 className="mb-5 text-center font-serif text-[46px] leading-none text-white md:text-[60px] lg:text-[68px]">
-              Get in <span className="text-[#F4C735]">Touch</span>
-            </h2>
+            <div className="rounded-[4px] border border-white/20 border-t-4 border-t-[#F4C735] bg-black/45 backdrop-blur-sm shadow-[0_12px_40px_rgba(0,0,0,0.5)] px-6 sm:px-7 py-5 sm:py-6">
 
-            <form className="grid grid-cols-1 gap-x-2 gap-y-5 sm:grid-cols-2">
-              {/* Name */}
-              <div className="flex flex-col">
-                <label className="mb-3 text-[18px] text-white md:text-[21px]">
-                  Name
+              <h2 className="font-serif text-[32px] leading-none text-white sm:text-[38px]">
+                Get in <span className="text-[#F4C735]">Touch</span>
+              </h2>
+
+              <div className="mt-3 mb-4 h-[1px] w-[60px] bg-[#F4C735]" />
+
+              <form onSubmit={handleSubmit} className="space-y-3">
+
+                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                  <DarkField icon={User} label="Your Name">
+                    <input
+                      type="text"
+                      name="name"
+                      placeholder="Your Name"
+                      required
+                      autoComplete="name"
+                      className={darkInputClass}
+                    />
+                  </DarkField>
+
+                  <DarkField icon={Phone} label="Mobile Number">
+                    <input
+                      type="tel"
+                      name="mobile"
+                      placeholder="10-digit mobile number"
+                      required
+                      inputMode="numeric"
+                      autoComplete="tel-national"
+                      maxLength={10}
+                      pattern="\d{10}"
+                      title="Enter a valid 10-digit phone number"
+                      onChange={(e) => {
+                        e.target.value = e.target.value.replace(/\D/g, "");
+                      }}
+                      className={darkInputClass}
+                    />
+                  </DarkField>
+                </div>
+
+                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                  <DarkField icon={Mail} label="Your Email">
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="you@example.com"
+                      required
+                      autoComplete="email"
+                      className={darkInputClass}
+                    />
+                  </DarkField>
+
+                  {/* Product (auto-filled) */}
+                  <DarkField icon={Package} label="Product">
+                    <input
+                      type="text"
+                      value={PRODUCT_NAME}
+                      readOnly
+                      tabIndex={-1}
+                      title={PRODUCT_NAME}
+                      className={`${darkInputClass} cursor-default truncate font-medium text-white/80`}
+                    />
+                  </DarkField>
+                </div>
+
+                <DarkField icon={MessageSquare} label="Your Message" alignTop>
+                  <textarea
+                    name="message"
+                    placeholder="Tell us about your requirement..."
+                    rows={2}
+                    required
+                    className={`${darkInputClass} h-auto min-h-[68px] resize-y py-2.5`}
+                  />
+                </DarkField>
+
+                {/* Consent */}
+                <label className="flex cursor-pointer items-start gap-2.5">
+                  <input
+                    type="checkbox"
+                    required
+                    className="mt-[2px] h-4 w-4 shrink-0 cursor-pointer accent-[#F4C735]"
+                  />
+                  <span className="text-[11px] leading-[1.6] text-white/70 sm:text-[12px]">
+                    I agree to be contacted about my enquiry and accept the{" "}
+                    <Link
+                      href="/privacy-policy"
+                      target="_blank"
+                      className="text-[#F4C735] underline hover:text-white"
+                    >
+                      Privacy Policy
+                    </Link>
+                    .
+                  </span>
                 </label>
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Name"
-                  required
-                  className="w-full border-b border-white/70 bg-transparent px-2 py-2 text-[13px] text-white outline-none placeholder:text-gray-400 focus:border-[#F4C735]"
-                />
-              </div>
 
-              {/* Mobile Number */}
-              <div className="flex flex-col">
-                <label className="mb-3 text-[18px] text-white md:text-[21px]">
-                  Mobile Number
-                </label>
-                <input
-                  type="tel"
-                  name="phone"
-                  placeholder="081234 56789"
-                  required
-                  className="w-full border-b border-white/70 bg-transparent px-2 py-2 text-[13px] text-white outline-none placeholder:text-gray-400 focus:border-[#F4C735]"
-                />
-              </div>
-
-              {/* Email */}
-              <div className="flex flex-col">
-                <label className="mb-3 text-[18px] text-white md:text-[21px]">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  required
-                  className="mt-5 w-full border-b border-white/70 bg-transparent px-2 py-2 text-[13px] text-white outline-none placeholder:text-gray-400 focus:border-[#F4C735]"
-                />
-              </div>
-
-              {/* Message */}
-              <div className="flex flex-col">
-                <label className="mb-3 text-[18px] text-white md:text-[21px]">
-                  Message
-                </label>
-                <textarea
-                  name="message"
-                  placeholder="Enter Message"
-                  rows={3}
-                  required
-                  className="w-full resize-none border-b border-white/70 bg-transparent px-2 py-2 text-center text-[13px] text-white outline-none placeholder:text-gray-400 focus:border-[#F4C735]"
-                />
-              </div>
-
-              {/* Submit Button */}
-              <div className="sm:col-span-2">
                 <button
                   type="submit"
-                  className="w-full max-w-[216px] border border-white px-5 py-2 text-[13px] text-white transition-all duration-300 hover:border-[#F4C735] hover:bg-[#F4C735] hover:text-black"
+                  disabled={loading}
+                  className="group inline-flex h-[42px] w-full items-center justify-center gap-2.5 rounded-[3px] bg-[#F4C735] px-9 text-[14px] font-semibold tracking-wide text-black shadow-[0_6px_16px_rgba(244,199,53,0.25)] transition-all duration-300 hover:bg-[#e0b52a] disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
                 >
-                  Submit Now
+                  {loading ? (
+                    <>
+                      <Loader2 size={18} className="animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      Submit Now
+                      <Send
+                        size={17}
+                        className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-1"
+                      />
+                    </>
+                  )}
                 </button>
-              </div>
-            </form>
+
+              </form>
+
+            </div>
           </FadeInUp>
         </div>
       </section>
