@@ -73,7 +73,7 @@ export default function AboutUs() {
             Our company is an amazing mix of restroom visual appeal and equally
             essential functionality. As a trusted{" "}
             <a
-              href="/"
+              href="/about-us"
               className="font-semibold text-[#0000a8] hover:underline"
             >
               Toilet Cubicles Partition Manufacturer

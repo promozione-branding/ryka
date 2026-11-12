@@ -266,7 +266,7 @@ export default function Page() {
           <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent" />
 
           <div className="absolute inset-x-0 bottom-0 z-10">
-            <div className="mx-auto max-w-7xl px-6 pb-8 md:pb-14">
+            {/* <div className="mx-auto max-w-7xl px-6 pb-8 md:pb-14">
               <nav
                 aria-label="Breadcrumb"
                 className="text-[12px] md:text-[13px] text-white/75 mb-3"
@@ -289,7 +289,7 @@ export default function Page() {
                 Get a Quote
                 <ArrowDown size={16} />
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>

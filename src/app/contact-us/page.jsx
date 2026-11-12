@@ -255,7 +255,7 @@ export default function ContactUs() {
                   />
                 </Field>
 
-                <Field icon={Package} label="Product Interested In">
+                <Field icon={Package} label="Select a Category">
                   <select
                     name="product"
                     required
