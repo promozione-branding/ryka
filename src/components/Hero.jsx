@@ -203,7 +203,7 @@ export default function Hero({ products: productsProp }) {
 
       <div className="pointer-events-none absolute bottom-20 right-0 z-0 h-32 w-40 rounded-br-[100px] border-b-[8px] 
       border-r-[8px] border-white" />
-
+ 
 
       <div className="relative z-10 mx-auto flex min-h-screen max-w-[1800px] flex-col px-5 pb-6 pt-[90px] sm:px-8 lg:h-full lg:min-h-0 lg:px-10 lg:pb-5 xl:px-12">
         <div className="grid flex-none grid-cols-1 items-start gap-5 lg:grid-cols-[minmax(0,1fr)_255px] 
