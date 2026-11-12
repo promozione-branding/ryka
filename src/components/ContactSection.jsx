@@ -27,59 +27,63 @@ export default function ContactSection() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+const [phoneValue, setPhoneValue] = useState("");
 
   const inputClass =
     "h-[46px] w-full rounded-[3px] border-2 border-[#c8c8c8] bg-white px-4 text-[13px] text-[#222] placeholder:text-[#888] shadow-sm outline-none transition-all duration-300 hover:border-[#999] focus:border-[#0B2E63] focus:ring-2 focus:ring-[#0B2E63]/15";
+const handlePhoneChange = (e) => {
+  let digits = e.target.value.replace(/\D/g, "");
+  if (digits.length > 10 && digits.startsWith("91")) digits = digits.slice(2);
+  if (digits.startsWith("0")) digits = digits.slice(1);
+  setPhoneValue(digits.slice(0, 10));
+};
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError("");
-    setSubmitted(false);
-    setLoading(true);
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setError("");
+  setSubmitted(false);
 
-    const form = e.target;
-const firstName = form.firstName.value.trim();
-const lastName = form.lastName.value.trim();
-const name = `${firstName} ${lastName}`.trim();
-    const phone = form.phone.value.trim();
-    const email = form.email.value.trim();
-    const product = form.projectType.value;
-    const place = form.location.value.trim();
-    const message = form.description.value.trim();
+  const form = e.target;
+  const firstName = form.firstName.value.trim();
+  const lastName = form.lastName.value.trim();
+  const name = `${firstName} ${lastName}`.trim();
+  const phone = phoneValue.trim();
+  const email = form.email.value.trim();
+  const product = form.projectType.value;
+  const place = form.location.value.trim();
+  const message = form.description.value.trim();
 
-    const formData = {
-      platform: "Ryka Restroom Cubicles",
-      supplierToken: "6a9bb67ac077e066ff1e0d9e",
-      platformEmail: "rykarestroomcubicle@gmail.com",
-      name,
-      phone,
-      email,
-      product,
-      message,
-      place,
-    };
+  if (!/^[6-9]\d{9}$/.test(phone)) {
+    setError("Enter a valid 10-digit mobile number starting with 6, 7, 8 or 9");
+    return;
+  }
 
-    if (!/^\d{10}$/.test(formData.phone)) {
-      setLoading(false);
-      setError("Enter a valid 10-digit phone number");
-      return;
-    }
+  setLoading(true);
 
-    try {
-      const { data } = await axios.post(
-        "https://brandbnalo.com/api/form/add",
-        formData
-      );
-
-      setSubmitted(true);
-      form.reset();
-    } catch (err) {
-      console.error(err);
-      setError("Something went wrong. Please try again.");
-    } finally {
-      setLoading(false);
-    }
+  const formData = {
+    platform: "Ryka Restroom Cubicles",
+    supplierToken: "6a9bb67ac077e066ff1e0d9e",
+    platformEmail: "rykarestroomcubicle@gmail.com",
+    name,
+    phone,
+    email,
+    product,
+    message,
+    place,
   };
+
+  try {
+    await axios.post("https://brandbnalo.com/api/form/add", formData);
+    setSubmitted(true);
+    form.reset();
+    setPhoneValue("");
+  } catch (err) {
+    console.error(err);
+    setError("Something went wrong. Please try again.");
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <section className="relative isolate flex min-h-screen w-full items-center overflow-hidden bg-[#101820] px-4 py-8 sm:px-7 lg:px-10">
@@ -316,14 +320,20 @@ const name = `${firstName} ${lastName}`.trim();
                         Phone Number *
                       </label>
 
-                      <input
-                        type="tel"
-                        name="phone"
-                        placeholder="Enter phone number"
-                        autoComplete="tel"
-                        required
-                        className={inputClass}
-                      />
+                    <input
+  type="tel"
+  name="phone"
+  value={phoneValue}
+  onChange={handlePhoneChange}
+  placeholder="Enter 10-digit phone number"
+  autoComplete="tel"
+  inputMode="numeric"
+  maxLength={10}
+  pattern="[6-9][0-9]{9}"
+  title="Enter a valid 10-digit mobile number starting with 6, 7, 8 or 9"
+  required
+  className={inputClass}
+/>
                     </div>
 
                     <div>
