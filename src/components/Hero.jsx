@@ -192,7 +192,7 @@ export default function Hero({ products: productsProp }) {
           }}
         />
 
-        <div className="absolute inset-0 bg-black/35" />
+        <div className="absolute inset-0 bg-black/25" />
 
         <div className="absolute inset-0 bg-gradient-to-r from-[#07111d]/75 via-[#07111d]/20 to-transparent" />
 
@@ -288,7 +288,7 @@ export default function Hero({ products: productsProp }) {
                   className="max-w-[1000px]"
                 >
 
-                  <h1 className="mb-4 text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl lg:text-[48px] xl:text-[58px]">
+                  <h1 className="mb-4 text-3xl font-Poppins font-bold leading-tight text-white sm:text-4xl md:text-5xl lg:text-[48px] xl:text-[58px]">
 
                     {slides[current].title}{" "}
 

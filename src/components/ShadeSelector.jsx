@@ -113,7 +113,7 @@ const formData = {
   return (
     <section className="w-full bg-[#f4f5f8] py-10 md:py-16 px-4">
 
-      <div className="max-w-[1224px] mx-auto relative overflow-hidden rounded-[4px] border border-[#d5ad35] bg-gradient-to-br from-[#0b2147] via-[#12376b] to-[#204a89] text-white">
+      <div className="max-w-[1224px] mx-auto relative overflow-hidden rounded-[4px] border border-[#d5ad35] bg-[#026db5] text-white">
 
         <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] gap-10 lg:gap-12 px-6 md:px-10 lg:px-[52px] py-10 md:py-[50px]">
 

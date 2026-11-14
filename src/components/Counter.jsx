@@ -124,11 +124,11 @@ export default function Counter() {
 
                 {/* COUNTER */}
 
-                <h3 className="whitespace-nowrap font-serif text-[32px] font-bold leading-none tracking-tight text-white sm:text-[35px] md:text-[40px] lg:text-[46px]">
+                <h3 className="whitespace-nowrap  text-[32px] font-bold leading-none tracking-tight text-white sm:text-[35px] md:text-[40px] lg:text-[46px]">
 
                   <span>{displayNumber}</span>
 
-                  <span className="ml-0.5 italic font-normal text-[#E6B62E]">
+                  <span className="ml-0.2     text-[#E6B62E]">
                     {stat.suffix}
                   </span>
 
