@@ -192,7 +192,7 @@ export default function Hero({ products: productsProp }) {
           }}
         />
 
-        <div className="absolute inset-0 bg-black/55" />
+        <div className="absolute inset-0 bg-black/75" />
 
         <div className="absolute inset-0 bg-gradient-to-r from-[#07111d]/75 via-[#07111d]/20 to-transparent" />
 
