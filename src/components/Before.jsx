@@ -64,7 +64,7 @@ export default function Before() {
 
               {/* AFTER IMAGE */}
               <img
-                src="/imgi_46_after-image.webp"
+                src="/after.webp"
                 alt="Modern restroom cubicles after renovation"
                 draggable="false"
                 className="absolute inset-0 h-full w-full object-cover"
@@ -83,7 +83,7 @@ export default function Before() {
                 }}
               >
                 <img
-                  src="/imgi_45_before-cubicles.webp"
+                  src="/before.webp"
                   alt="Old restroom cubicles before renovation"
                   draggable="false"
                   className="absolute inset-0 h-full w-full object-cover"
