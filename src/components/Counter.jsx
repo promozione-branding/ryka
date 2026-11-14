@@ -12,19 +12,19 @@ const stats = [
   },
   {
     value: 15,
-    label: "YEAR OF EXPERIENCE",
+    label: "YEARS OF EXPERIENCE",
     number: "15",
     suffix: "+",
   },
   {
     value: 50000,
-    label: "CUBICLE INSTALLED",
+    label: "CUBICLES INSTALLED",
     number: "50",
     suffix: "K+",
   },
   {
     value: 11000,
-    label: "HAPPY CLIENT",
+    label: "HAPPY CLIENTS",
     number: "11",
     suffix: "K+",
   },
