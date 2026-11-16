@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect } from "react";
@@ -14,10 +15,8 @@ const projectTypes = [
 ];
 
 const shades = [
-  { name: "Arctic White", code: "1001 AC", color: "#F3F1EA", dark: "#DCD9CF" },
   { name: "Ivory", code: "1002 AC", color: "#EFE6D2", dark: "#D6C9AF" },
   { name: "Silver Grey", code: "1003 AC", color: "#D4DBDF", dark: "#AEB8C0" },
-  { name: "Cloud Grey", code: "1004 AC", color: "#C5CBD0", dark: "#A0A8B0" },
   { name: "Champagne", code: "1005 AC", color: "#D8C6A6", dark: "#BBA37C" },
   { name: "Golden Oak", code: "1006 AC", color: "#B99B6B", dark: "#96794F" },
   { name: "Sun Yellow", code: "1007 AC", color: "#F3D16A", dark: "#D1A83D" },
@@ -27,7 +26,7 @@ const shades = [
   { name: "Graphite", code: "1011 AC", color: "#454B50", dark: "#303438" },
   { name: "Black", code: "1012 AC", color: "#1D1D1F", dark: "#080808" },
   { name: "Stone Grey", code: "1013 AC", color: "#898379", dark: "#6D675F" },
-  { name: "Walnut Brown", code: "1014 AC", color: "#69482F", dark: "#49301F" },
+  { name: "Walnut Brown", code: "1014 AC", color: "#a1401f", dark: "#49301F" },
   { name: "Maple", code: "1015 AC", color: "#C99B6B", dark: "#A87B50" },
   { name: "Teak", code: "1016 AC", color: "#A77C4F", dark: "#805B37" },
   { name: "Sapele", code: "1022 AC", color: "#80432D", dark: "#63301F" },
@@ -35,7 +34,7 @@ const shades = [
   { name: "Forest Green", code: "1024 AC", color: "#385C45", dark: "#25412F" },
   { name: "Ocean Blue", code: "1025 AC", color: "#315F80", dark: "#20445E" },
   { name: "Sand Beige", code: "1026 AC", color: "#C8B59A", dark: "#A28D71" },
-  { name: "Deep Maroon", code: "1027 AC", color: "#642F3B", dark: "#48212B" },
+  { name: "Deep Maroon", code: "1027 AC", color: "#82162f", dark: "#48212B" },
 ];
 
 const finishes = [
@@ -45,70 +44,88 @@ const finishes = [
   "Printed / Branded",
 ];
 
+// Image path based on selected shade
+// Example: Silver Grey -> /variant/silver-grey.webp
+const getShadeImage = (shade) => {
+  const imageName = shade.name
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, "-");
+    console.log(imageName)
+
+  return `/variant/${imageName}.webp`;
+};
+
 export default function ShadeSelector() {
   const [selectedShade, setSelectedShade] = useState(16);
   const [selectedFinish, setSelectedFinish] = useState("Woodgrain");
-const [showModal, setShowModal] = useState(false);
-const [loading, setLoading] = useState(false);
-const [success, setSuccess] = useState(false);
-const shade = shades[selectedShade];
+  const [showModal, setShowModal] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
 
-// close on Escape + lock page scroll while modal is open
-useEffect(() => {
-  if (!showModal) return;
-  const onKey = (e) => e.key === "Escape" && setShowModal(false);
-  document.body.style.overflow = "hidden";
-  window.addEventListener("keydown", onKey);
-  return () => {
-    document.body.style.overflow = "";
-    window.removeEventListener("keydown", onKey);
+  const shade = shades[selectedShade];
+
+  // Close on Escape + lock page scroll while modal is open
+  useEffect(() => {
+    if (!showModal) return;
+
+    const onKey = (e) => e.key === "Escape" && setShowModal(false);
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKey);
+
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [showModal]);
+
+  const handleQuote = () => {
+    setSuccess(false);
+    setShowModal(true);
   };
-}, [showModal]);
 
-const handleQuote = () => {
-  setSuccess(false);
-  setShowModal(true);
-};
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  const form = e.currentTarget;
-  const fd = new FormData(form);
+    const form = e.currentTarget;
+    const fd = new FormData(form);
 
-  const phone = fd.get("phone")?.toString().trim();
-  if (!/^\d{10}$/.test(phone)) {
-    return alert("Enter a valid 10-digit phone number");
-  }
+    const phone = fd.get("phone")?.toString().trim();
 
-const extra = fd.get("message")?.toString().trim();
-const projectType = fd.get("projectType")?.toString();
+    if (!/^\d{10}$/.test(phone)) {
+      return alert("Enter a valid 10-digit phone number");
+    }
 
-const formData = {
-  platform: "Ryka Restroom Cubicles",
-  supplierToken: "6a9bb67ac077e066ff1e0d9e",
-  platformEmail: "rykarestroomcubicle@gmail.com",
-  name: fd.get("name")?.toString().trim(),
-  email: fd.get("email")?.toString().trim(),
-  phone,
-  product: projectType || "Restroom Cubicles",
-  message: `Shade: ${shade.name} (${shade.code}) | Finish: ${selectedFinish}${
-    extra ? ` | ${extra}` : ""
-  }`,
-  place: "N/A",
-};
+    const extra = fd.get("message")?.toString().trim();
+    const projectType = fd.get("projectType")?.toString();
 
-  try {
-    setLoading(true);
-    await axios.post("https://brandbnalo.com/api/form/add", formData);
-    form.reset();
-    setSuccess(true);
-  } catch (err) {
-    console.error(err);
-    alert("Something went wrong. Please try again later.");
-  } finally {
-    setLoading(false);
-  }
-};
+    const formData = {
+      platform: "Ryka Restroom Cubicles",
+      supplierToken: "6a9bb67ac077e066ff1e0d9e",
+      platformEmail: "rykarestroomcubicle@gmail.com",
+      name: fd.get("name")?.toString().trim(),
+      email: fd.get("email")?.toString().trim(),
+      phone,
+      product: projectType || "Restroom Cubicles",
+      message: `Shade: ${shade.name} (${shade.code}) | Finish: ${selectedFinish}${
+        extra ? ` | ${extra}` : ""
+      }`,
+      place: "N/A",
+    };
+
+    try {
+      setLoading(true);
+      await axios.post("https://brandbnalo.com/api/form/add", formData);
+      form.reset();
+      setSuccess(true);
+    } catch (err) {
+      console.error(err);
+      alert("Something went wrong. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <section className="w-full bg-[#f4f5f8] py-10 md:py-16 px-4">
@@ -138,14 +155,16 @@ const formData = {
               to preview it. Your pick carries into the quote form.
             </p>
 
-            {/* Cubicle Preview */}
+            {/* Cubicle Preview - Actual Image */}
             <div className="mt-6 border border-[#b99a39]/50 bg-[#07162e] p-[10px] rounded-[2px]">
 
-              <div className="h-[230px] sm:h-[255px] flex items-stretch overflow-hidden">
+              <div className="h-[230px] sm:h-[255px] relative overflow-hidden">
 
-                {[0, 1, 2, 3, 4, 5].map((panel, index) => (
-                  <motion.div
-                    key={`${selectedShade}-${selectedFinish}-${panel}`}
+                <AnimatePresence mode="wait" initial={false}>
+                  <motion.img
+                    key={shade.code}
+                    src={getShadeImage(shade)}
+                    alt={`${shade.name} restroom cubicle`}
                     initial={{
                       opacity: 0.65,
                       y: 12,
@@ -154,48 +173,17 @@ const formData = {
                       opacity: 1,
                       y: 0,
                     }}
+                    exit={{
+                      opacity: 0,
+                      y: -8,
+                    }}
                     transition={{
                       duration: 0.45,
-                      delay: index * 0.045,
                       ease: "easeOut",
                     }}
-                    className="relative border-r-[2px] border-black/20"
-                    style={{
-                      flex: index === 0 || index === 2 || index === 4
-                        ? "0.85"
-                        : "1.25",
-                      backgroundColor:
-                        selectedFinish === "Gloss"
-                          ? shade.color
-                          : selectedFinish === "Matte"
-                          ? shade.color
-                          : shade.color,
-                      backgroundImage:
-                        selectedFinish === "Woodgrain"
-                          ? `repeating-linear-gradient(90deg, transparent 0px, rgba(0,0,0,0.035) 2px, transparent 5px), linear-gradient(90deg, ${shade.dark}, ${shade.color}, ${shade.dark})`
-                          : selectedFinish === "Gloss"
-                          ? `linear-gradient(115deg, rgba(255,255,255,0.42), transparent 35%, rgba(255,255,255,0.12) 65%, transparent)`
-                          : selectedFinish === "Printed / Branded"
-                          ? `linear-gradient(135deg, ${shade.color}, ${shade.dark})`
-                          : "none",
-                    }}
-                  >
-
-{/* Panel Handle (wide panels only) */}
-{index % 2 === 1 && (
-  <div className="absolute top-1/2 right-[16%] -translate-y-1/2 w-[11px] h-[11px] rounded-full bg-gradient-to-br from-[#fff0a0] via-[#caa74a] to-[#7e6224] shadow-[0_1px_5px_rgba(0,0,0,0.5)] border border-[#a48737]" />
-)}
-
-                    {selectedFinish === "Printed / Branded" && (
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <span className="text-[10px] font-bold text-white/40 rotate-[-90deg] tracking-widest">
-                          RYKA
-                        </span>
-                      </div>
-                    )}
-
-                  </motion.div>
-                ))}
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                </AnimatePresence>
 
               </div>
 
@@ -341,177 +329,219 @@ const formData = {
 
         </div>
       </div>
-<AnimatePresence>
-  {showModal && (
-    <motion.div
-      className="fixed inset-0 z-[99999] flex items-center justify-center bg-black/70 px-4"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      onClick={() => setShowModal(false)}
-    >
-      <motion.div
-        initial={{ y: 20, scale: 0.97, opacity: 0 }}
-        animate={{ y: 0, scale: 1, opacity: 1 }}
-        exit={{ y: 20, scale: 0.97, opacity: 0 }}
-        onClick={(e) => e.stopPropagation()}
-        className="relative w-full max-w-[860px] max-h-[90vh] overflow-hidden rounded-[4px] border border-[#d5ad35] bg-white text-[#111827] grid grid-cols-1 md:grid-cols-2"
-      >
-        {/* Close button */}
-        <button
-          type="button"
-          onClick={() => setShowModal(false)}
-          aria-label="Close"
-          className="absolute right-4 top-3 z-20 text-2xl leading-none text-gray-500 hover:text-black"
-        >
-          ×
-        </button>
 
-        {/* LEFT: Image */}
-        <div className="relative hidden md:block min-h-[460px]">
-          <img
-            src="/golder-cubicles-1536x800.webp"
-            alt="Ryka restroom cubicles"
-            className="absolute inset-0 h-full w-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0b2147]/90 via-[#0b2147]/30 to-transparent" />
+      {/* ENQUIRY MODAL */}
+      <AnimatePresence>
+        {showModal && (
+          <motion.div
+            className="fixed inset-0 z-[99999] flex items-center justify-center bg-black/70 px-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setShowModal(false)}
+          >
 
-          <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-            <p className="text-[10px] font-bold tracking-[2px] uppercase text-[#e2b832] mb-2">
-              Your Selection
-            </p>
-            <div className="flex items-center gap-3">
-              <div
-                className="h-11 w-11 shrink-0 rounded-sm border border-white/40 shadow-lg"
-                style={{ backgroundColor: shade.color }}
-              />
-              <div>
-                <p className="font-serif text-[18px] font-bold leading-5">
-                  {shade.name}
-                </p>
-                <p className="text-[12px] text-white/80 mt-1">
-                  {shade.code} · {selectedFinish}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+            <motion.div
+              initial={{ y: 20, scale: 0.97, opacity: 0 }}
+              animate={{ y: 0, scale: 1, opacity: 1 }}
+              exit={{ y: 20, scale: 0.97, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative w-full max-w-[860px] max-h-[90vh] overflow-hidden rounded-[4px] border border-[#d5ad35] bg-white text-[#111827] grid grid-cols-1 md:grid-cols-2"
+            >
 
-        {/* RIGHT: Form / Success */}
-        <div className="overflow-y-auto max-h-[90vh] px-6 py-6 md:px-8 md:py-8">
-          {success ? (
-            <div className="flex h-full flex-col items-center justify-center text-center py-10">
-              <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-green-100">
-                <svg className="h-8 w-8 text-green-600" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Quote Request Sent!</h3>
-              <p className="text-sm text-gray-600 mb-5">
-                Our team will contact you shortly.
-              </p>
+              {/* Close button */}
               <button
+                type="button"
                 onClick={() => setShowModal(false)}
-                className="bg-[#d9b431] px-6 py-2 text-[12px] font-bold tracking-[1.5px] hover:bg-[#f0cd4b]"
+                aria-label="Close"
+                className="absolute right-4 top-3 z-20 text-2xl leading-none text-gray-500 hover:text-black"
               >
-                CLOSE
+                ×
               </button>
-            </div>
-          ) : (
-            <>
-              <div className="flex items-center gap-3 mb-2">
-                <span className="w-8 h-[1px] bg-[#d9b42e]" />
-                <span className="text-[#b8921c] text-[10px] font-bold tracking-[3px] uppercase">
-                  Enquiry
-                </span>
-              </div>
 
-              <h3 className="font-serif text-[24px] font-bold mb-1 pr-6">
-                Get a Quote
-              </h3>
-              <p className="text-[13px] text-gray-500 mb-4">
-                Share your details and we'll get back with pricing.
-              </p>
-
-              {/* Shade summary (shown on mobile where the image is hidden) */}
-              <div className="md:hidden flex items-center gap-3 mb-4 rounded-[2px] border border-gray-200 bg-gray-50 px-3 py-2">
-                <div
-                  className="h-9 w-9 shrink-0 rounded-sm border border-black/20"
-                  style={{ backgroundColor: shade.color }}
+              {/* LEFT: Image */}
+              <div className="relative hidden md:block min-h-[460px]">
+                <img
+                  src="/golder-cubicles-1536x800.webp"
+                  alt="Ryka restroom cubicles"
+                  className="absolute inset-0 h-full w-full object-cover"
                 />
-                <div className="text-[12px] leading-4">
-                  <p className="font-semibold">Restroom Cubicles</p>
-                  <p className="text-gray-600">
-                    {shade.name} · {shade.code} · {selectedFinish}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0b2147]/90 via-[#0b2147]/30 to-transparent" />
+
+                <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                  <p className="text-[10px] font-bold tracking-[2px] uppercase text-[#e2b832] mb-2">
+                    Your Selection
                   </p>
+
+                  <div className="flex items-center gap-3">
+                    <div
+                      className="h-11 w-11 shrink-0 rounded-sm border border-white/40 shadow-lg"
+                      style={{ backgroundColor: shade.color }}
+                    />
+
+                    <div>
+                      <p className="font-serif text-[18px] font-bold leading-5">
+                        {shade.name}
+                      </p>
+                      <p className="text-[12px] text-white/80 mt-1">
+                        {shade.code} · {selectedFinish}
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-3">
-                <input
-                  name="name"
-                  type="text"
-                  required
-                  placeholder="Your Name"
-                  className="w-full h-11 px-3 border border-gray-300 text-[13px] outline-none focus:border-[#d9b431]"
-                />
+              {/* RIGHT: Form / Success */}
+              <div className="overflow-y-auto max-h-[90vh] px-6 py-6 md:px-8 md:py-8">
 
-                <input
-                  name="phone"
-                  type="tel"
-                  required
-                  placeholder="Phone Number"
-                  inputMode="numeric"
-                  maxLength={10}
-                  pattern="\d{10}"
-                  title="Enter a valid 10-digit phone number"
-                  className="w-full h-11 px-3 border border-gray-300 text-[13px] outline-none focus:border-[#d9b431]"
-                />
+                {success ? (
+                  <div className="flex h-full flex-col items-center justify-center text-center py-10">
 
-                <input
-                  name="email"
-                  type="email"
-                  required
-                  placeholder="Your Email"
-                  className="w-full h-11 px-3 border border-gray-300 text-[13px] outline-none focus:border-[#d9b431]"
-                />
-<select
-  name="projectType"
-  required
-  defaultValue=""
-  className="w-full h-11 px-3 border border-gray-300 bg-white text-[13px] outline-none cursor-pointer focus:border-[#d9b431] invalid:text-gray-400"
->
-  <option value="" disabled>
-    Select project type
-  </option>
-  {projectTypes.map((type) => (
-    <option key={type} value={type} className="text-[#111827]">
-      {type}
-    </option>
-  ))}
-</select>
-                <textarea
-                  name="message"
-                  rows={3}
-                  placeholder="Additional requirements (optional)"
-                  className="w-full px-3 py-2 border border-gray-300 text-[13px] outline-none resize-none focus:border-[#d9b431]"
-                />
+                    <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-green-100">
+                      <svg
+                        className="h-8 w-8 text-green-600"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="3"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                    </div>
 
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="w-full bg-[#d9b431] py-3 text-[12px] font-bold tracking-[1.5px] hover:bg-[#f0cd4b] disabled:opacity-60 disabled:cursor-not-allowed transition-all"
-                >
-                  {loading ? "SENDING..." : "REQUEST QUOTE"}
-                </button>
-              </form>
-            </>
-          )}
-        </div>
-      </motion.div>
-    </motion.div>
-  )}
-</AnimatePresence>
+                    <h3 className="text-xl font-semibold mb-2">
+                      Quote Request Sent!
+                    </h3>
+
+                    <p className="text-sm text-gray-600 mb-5">
+                      Our team will contact you shortly.
+                    </p>
+
+                    <button
+                      onClick={() => setShowModal(false)}
+                      className="bg-[#d9b431] px-6 py-2 text-[12px] font-bold tracking-[1.5px] hover:bg-[#f0cd4b]"
+                    >
+                      CLOSE
+                    </button>
+
+                  </div>
+                ) : (
+                  <>
+
+                    <div className="flex items-center gap-3 mb-2">
+                      <span className="w-8 h-[1px] bg-[#d9b42e]" />
+                      <span className="text-[#b8921c] text-[10px] font-bold tracking-[3px] uppercase">
+                        Enquiry
+                      </span>
+                    </div>
+
+                    <h3 className="font-serif text-[24px] font-bold mb-1 pr-6">
+                      Get a Quote
+                    </h3>
+
+                    <p className="text-[13px] text-gray-500 mb-4">
+                      Share your details and we'll get back with pricing.
+                    </p>
+
+                    {/* Shade summary (shown on mobile where the image is hidden) */}
+                    <div className="md:hidden flex items-center gap-3 mb-4 rounded-[2px] border border-gray-200 bg-gray-50 px-3 py-2">
+
+                      <div
+                        className="h-9 w-9 shrink-0 rounded-sm border border-black/20"
+                        style={{ backgroundColor: shade.color }}
+                      />
+
+                      <div className="text-[12px] leading-4">
+                        <p className="font-semibold">Restroom Cubicles</p>
+                        <p className="text-gray-600">
+                          {shade.name} · {shade.code} · {selectedFinish}
+                        </p>
+                      </div>
+
+                    </div>
+
+                    <form onSubmit={handleSubmit} className="space-y-3">
+
+                      <input
+                        name="name"
+                        type="text"
+                        required
+                        placeholder="Your Name"
+                        className="w-full h-11 px-3 border border-gray-300 text-[13px] outline-none focus:border-[#d9b431]"
+                      />
+
+                      <input
+                        name="phone"
+                        type="tel"
+                        required
+                        placeholder="Phone Number"
+                        inputMode="numeric"
+                        maxLength={10}
+                        pattern="\d{10}"
+                        title="Enter a valid 10-digit phone number"
+                        className="w-full h-11 px-3 border border-gray-300 text-[13px] outline-none focus:border-[#d9b431]"
+                      />
+
+                      <input
+                        name="email"
+                        type="email"
+                        required
+                        placeholder="Your Email"
+                        className="w-full h-11 px-3 border border-gray-300 text-[13px] outline-none focus:border-[#d9b431]"
+                      />
+
+                      <select
+                        name="projectType"
+                        required
+                        defaultValue=""
+                        className="w-full h-11 px-3 border border-gray-300 bg-white text-[13px] outline-none cursor-pointer focus:border-[#d9b431] invalid:text-gray-400"
+                      >
+                        <option value="" disabled>
+                          Select project type
+                        </option>
+
+                        {projectTypes.map((type) => (
+                          <option
+                            key={type}
+                            value={type}
+                            className="text-[#111827]"
+                          >
+                            {type}
+                          </option>
+                        ))}
+                      </select>
+
+                      <textarea
+                        name="message"
+                        rows={3}
+                        placeholder="Additional requirements (optional)"
+                        className="w-full px-3 py-2 border border-gray-300 text-[13px] outline-none resize-none focus:border-[#d9b431]"
+                      />
+
+                      <button
+                        type="submit"
+                        disabled={loading}
+                        className="w-full bg-[#d9b431] py-3 text-[12px] font-bold tracking-[1.5px] hover:bg-[#f0cd4b] disabled:opacity-60 disabled:cursor-not-allowed transition-all"
+                      >
+                        {loading ? "SENDING..." : "REQUEST QUOTE"}
+                      </button>
+
+                    </form>
+
+                  </>
+                )}
+
+              </div>
+
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
     </section>
   );
 }

@@ -154,7 +154,7 @@ export default function Before() {
           {/* Heading */}
           <h2 className="max-w-[600px] text-[34px] font-normal leading-[1.17] tracking-[-0.035em] text-[#171717] sm:text-[43px] md:text-[48px] xl:text-[53px]">
             From Cluttered & Unhygienic to{" "}
-            <span className="relative inline-block font-semibold text-[#0B2E63]">
+            <span className="relative inline-block font-semibold text-[#026eb6]">
               Clean & Contemporary
               <span className="absolute -bottom-1 left-0 h-[3px] w-[70%] bg-[#FFA21A]" />
             </span>
@@ -210,7 +210,7 @@ export default function Before() {
 
               return (
                 <div key={index} className="flex items-start gap-3">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-sm bg-[#0B2E63] text-[#FFA21A]">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-sm bg-[#026eb6] text-[#FFA21A]">
                     <Icon size={19} strokeWidth={1.8} />
                   </div>
 

@@ -137,7 +137,7 @@ export default function DesigningProcess() {
                 >
 
                   {/* ICON BOX */}
-                  <div className="flex h-[110px] w-full sm:h-[110px] sm:w-[110px] shrink-0 items-center justify-center bg-[#187eaf]">
+                  <div className="flex h-[110px] w-full sm:h-[110px] sm:w-[110px] shrink-0 items-center justify-center bg-[#026eb6]">
 
                     <Icon
                       size={48}

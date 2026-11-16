@@ -116,7 +116,7 @@ export default function Categories() {
 
           <h2 className="text-4xl font-bold tracking-tight text-[#171717] sm:text-6xl lg:text-[76px]">
             Our{" "}
-            <span className="text-[#123f70]">
+            <span className="text-[#026eb6]">
               Categories
             </span>
           </h2>
@@ -268,7 +268,7 @@ function CategoryCard({ category, large = false }) {
           </h3>
 
           {/* Arrow */}
-          <div className="mt-5 flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#343434] transition-all duration-500 group-hover:rotate-45 group-hover:bg-[#123f70] group-hover:text-white sm:h-11 sm:w-11">
+          <div className="mt-5 flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#343434] transition-all duration-500 group-hover:rotate-45 group-hover:bg-[#026eb6] group-hover:text-white sm:h-11 sm:w-11">
             <ArrowUpRight
               size={24}
               strokeWidth={2.5}
