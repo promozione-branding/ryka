@@ -156,13 +156,13 @@ export default function Before() {
             From Cluttered & Unhygienic to{" "}
             <span className="relative inline-block font-semibold text-[#026eb6]">
               Clean & Contemporary
-              <span className="absolute -bottom-1 left-0 h-[3px] w-[70%] bg-[#FFA21A]" />
+              <span className="absolute -bottom-1 left-0 h-[3px] w-[70%] bg-[#026eb6]" />
             </span>
           </h2>
 
           {/* Dotted Divider */}
           <div className="mb-7 mt-8 flex items-center gap-2">
-            <span className="h-[2px] w-12 bg-[#FFA21A]" />
+            <span className="h-[2px] w-12 bg-[#026eb6]" />
             <span className="h-[2px] w-2 border-t-2 border-dotted border-[#777]" />
           </div>
 

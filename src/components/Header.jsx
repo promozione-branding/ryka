@@ -62,7 +62,7 @@ export default function Header() {
 
           <Link
             href="/"
-            className="relative py-3 text-sm font-semibold uppercase tracking-wide after:absolute after:bottom-0 after:left-0 after:h-[3px] after:w-full after:bg-[#FFA21A]"
+            className="relative py-3 text-sm font-semibold uppercase tracking-wide after:absolute after:bottom-0 after:left-0 after:h-[3px] after:w-full after:bg-[#026eb6]"
           >
             Home
           </Link>
@@ -70,7 +70,7 @@ export default function Header() {
           <div className="relative">
             <button
               onClick={() => setSolutionsOpen(!solutionsOpen)}
-              className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wide hover:text-[#FFA21A] transition-colors"
+              className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wide hover:text-[#026eb6] transition-colors"
             >
               Solutions
               <ChevronDown
@@ -88,7 +88,7 @@ export default function Header() {
                     key={item.href}
                     href={item.href}
                     onClick={() => setSolutionsOpen(false)}
-                    className="block px-5 py-3 text-sm hover:bg-white/10 hover:text-[#FFA21A] transition-colors"
+                    className="block px-5 py-3 text-sm hover:bg-white/10 hover:text-[#026eb6] transition-colors"
                   >
                     {item.name}
                   </Link>
@@ -99,7 +99,7 @@ export default function Header() {
 
           <Link
             href="/contact-us"
-            className="text-sm font-semibold uppercase tracking-wide hover:text-[#FFA21A] transition-colors"
+            className="text-sm font-semibold uppercase tracking-wide hover:text-[#026eb6] transition-colors"
           >
             Contacts
           </Link>
@@ -111,7 +111,7 @@ export default function Header() {
           <Link
             href="/search"
             aria-label="Search"
-            className="flex h-12 w-12 items-center justify-center rounded-full border border-white/50 bg-black/30 backdrop-blur-sm hover:bg-[#FFA21A] hover:border-[#FFA21A] transition-all"
+            className="flex h-12 w-12 items-center justify-center rounded-full border border-white/50 bg-black/30 backdrop-blur-sm hover:bg-[#026eb6] hover:border-[#026eb6] transition-all"
           >
             <Search size={26} />
           </Link>
@@ -119,7 +119,7 @@ export default function Header() {
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
-            className="text-white hover:text-[#FFA21A] transition-colors"
+            className="text-white hover:text-[#026eb6] transition-colors"
           >
             {menuOpen ? <X size={34} /> : <Menu size={34} />}
           </button>
@@ -156,7 +156,7 @@ export default function Header() {
                   key={item.href}
                   href={item.href}
                   onClick={closeMenu}
-                  className="py-3 pl-4 text-sm text-white/70 hover:text-[#FFA21A]"
+                  className="py-3 pl-4 text-sm text-white/70 hover:text-[#026eb6]"
                 >
                   {item.name}
                 </Link>

@@ -16,7 +16,7 @@ const solutionHrefs = [
 ];
 
 const underline =
-  "after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-[#FFA21A]";
+  "after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-[#026eb6]";
 
 export default function HomeHeader() {
   const pathname = usePathname();
@@ -57,7 +57,7 @@ export default function HomeHeader() {
 
   // Text color: white only on home page (when not scrolled), otherwise black
   const textColor = isHome && !scrolled ? "text-white" : "text-[#1a1a1a]";
-  const hoverColor = "hover:text-[#FFA21A]";
+  const hoverColor = "hover:text-[#026eb6]";
 
   return (
     <>
@@ -128,13 +128,13 @@ export default function HomeHeader() {
 
               {solutionsOpen && (
                 <div className="absolute left-1/2 top-full z-50 w-64 -translate-x-1/2 pt-3">
-                  <div className="overflow-hidden rounded-xl border border-black/10 bg-white py-2 shadow-xl">
+                  <div className="overflow-hidden rounded-xl border border-black/10 bg-white py-0 shadow-xl">
                     {solutions.map((item) => (
                       <Link
                         key={item.href}
                         href={item.href}
                         onClick={() => setSolutionsOpen(false)}
-                        className="block px-5 py-2.5 text-sm text-[#1a1a1a] transition-colors hover:bg-[#FFF5E6] hover:text-[#FFA21A]"
+                        className="block px-5 py-2.5 text-sm text-[#1a1a1a] transition-colors hover:bg-[#026eb6]/20 hover:text-[#026eb6]"
                       >
                         {item.name}
                       </Link>
