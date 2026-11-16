@@ -22,7 +22,7 @@ const shades = [
   { name: "Sun Yellow", code: "1007 AC", color: "#F3D16A", dark: "#D1A83D" },
   { name: "Orange", code: "1008 AC", color: "#F19A48", dark: "#CF7831" },
   { name: "Ruby Red", code: "1009 AC", color: "#BE242D", dark: "#901A23" },
-  { name: "Royal Blue", code: "1010 AC", color: "#20509E", dark: "#15376F" },
+  { name: "Royal Blue", code: "1010 AC", color: "#2d5f7e", dark: "#15376F" },
   { name: "Graphite", code: "1011 AC", color: "#454B50", dark: "#303438" },
   { name: "Black", code: "1012 AC", color: "#1D1D1F", dark: "#080808" },
   { name: "Stone Grey", code: "1013 AC", color: "#898379", dark: "#6D675F" },
@@ -32,8 +32,8 @@ const shades = [
   { name: "Sapele", code: "1022 AC", color: "#80432D", dark: "#63301F" },
   { name: "Dark Sapele", code: "1023 AC", color: "#3E2D26", dark: "#291D19" },
   { name: "Forest Green", code: "1024 AC", color: "#385C45", dark: "#25412F" },
-  { name: "Ocean Blue", code: "1025 AC", color: "#315F80", dark: "#20445E" },
-  { name: "Sand Beige", code: "1026 AC", color: "#C8B59A", dark: "#A28D71" },
+  { name: "Ocean Blue", code: "1025 AC", color: "#003c95", dark: "#20445E" },
+  { name: "Sand Beige", code: "1026 AC", color: "#b89a71", dark: "#A28D71" },
   { name: "Deep Maroon", code: "1027 AC", color: "#82162f", dark: "#48212B" },
 ];
 
