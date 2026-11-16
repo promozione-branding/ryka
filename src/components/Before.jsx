@@ -152,7 +152,7 @@ export default function Before() {
           </div>
 
           {/* Heading */}
-          <h2 className="max-w-[600px] text-[34px] font-normal leading-[1.17] tracking-[-0.035em] text-[#171717] sm:text-[43px] md:text-[48px] xl:text-[53px]">
+          <h2 className="max-w-[650px] text-[34px] font-normal leading-[1.17] tracking-[-0.035em] text-[#171717] sm:text-[43px] md:text-[48px] ">
             From Cluttered & Unhygienic to{" "}
             <span className="relative inline-block font-semibold text-[#026eb6]">
               Clean & Contemporary
