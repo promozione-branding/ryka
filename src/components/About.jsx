@@ -93,8 +93,9 @@ export default function AboutUs() {
               return (
                 <article
                   key={card.title}
-                  className="flex min-h-[290px] flex-col rounded-[8px] border-[1.5px] border-black bg-[#421923] p-5 text-white sm:p-5"
+                  className="flex min-h-[260px] flex-col rounded-[8px] border-[1.5px] border-black bg-[#421923] p-5 text-white sm:p-5"
                 >
+                  <div className="flex justify-start items-center gap-2">
                   <Icon
                     size={46}
                     strokeWidth={1.4}
@@ -105,6 +106,7 @@ export default function AboutUs() {
                   <h4 className="mb-3 text-[22px] font-normal leading-tight">
                     {card.title}
                   </h4>
+                  </div>
 
                   <p className="text-[15px] leading-[1.95] text-white">
                     {isExpanded
