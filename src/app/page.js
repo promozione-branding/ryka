@@ -15,6 +15,7 @@ import ContactSection from "@/components/ContactSection";
 import { getProductByName, getProductHref } from "@/lib/catalog";
 import FAQSection from "@/components/FAQSection";
 import SupplyNetwork from "@/components/SupplyNetwork";
+import ClienteleMarquee from "@/components/ClienteleMarquee";
 
 const HERO_PRODUCT_NAMES = [
   "Nexus Evo",
@@ -121,6 +122,7 @@ export default function Home() {
     <>
       <Hero defaultProducts={defaultProducts} />
        <Counter/>
+       <ClienteleMarquee />
        <SpaceMarquee/>
       <About />
      
