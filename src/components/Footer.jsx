@@ -28,11 +28,11 @@ const legal = [
 ];
 
 const socials = [
-  { name: "Facebook", href: "https://facebook.com/your-page", Icon: FaFacebookF },
-  { name: "Instagram", href: "https://instagram.com/your-page", Icon: FaInstagram },
-  { name: "LinkedIn", href: "https://linkedin.com/company/your-page", Icon: FaLinkedinIn },
-  { name: "YouTube", href: "https://youtube.com/@your-page", Icon: FaYoutube },
-  { name: "X", href: "https://x.com/your-page", Icon: FaXTwitter },
+  { name: "Facebook", href: "https://www.facebook.com/teaminteriorsolutions/", Icon: FaFacebookF },
+  { name: "Instagram", href: "https://www.instagram.com/ryka_restroom_cubicles/", Icon: FaInstagram },
+  { name: "LinkedIn", href: "https://www.linkedin.com/in/team-interior-solution/", Icon: FaLinkedinIn },
+  { name: "YouTube", href: "https://www.youtube.com/@rykarestroomsubicles", Icon: FaYoutube },
+  // { name: "X", href: "https://x.com/your-page", Icon: FaXTwitter },
 ];
 
 export default function Footer() {
