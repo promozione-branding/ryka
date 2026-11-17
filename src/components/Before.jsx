@@ -60,19 +60,26 @@ export default function Before() {
           {/* Image Frame */}
           <div className="group relative overflow-hidden rounded-[5px] border border-black/10 bg-white p-2 shadow-[0_25px_70px_rgba(0,0,0,0.10)]">
 
-            <div className="relative h-[330px] w-full select-none overflow-hidden rounded-[3px] sm:h-[430px] lg:h-[510px] xl:h-[555px]">
+            <div className="relative h-[190px] w-full select-none overflow-hidden rounded-[3px] sm:h-[430px] lg:h-[510px] xl:h-[555px]">
 
               {/* AFTER IMAGE */}
               <img
                 src="/after.webp"
                 alt="Modern restroom cubicles after renovation"
                 draggable="false"
-                className="absolute inset-0 h-full w-full object-cover"
+                className="absolute inset-0  md:h-full w-full object-cover"
               />
 
               {/* AFTER IMAGE LABEL */}
-              <div className="absolute right-4 top-4 z-10 bg-[#0B2E63] px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-white shadow-lg sm:right-6 sm:top-6">
-                After
+              <div
+                className="pointer-events-none absolute inset-0 z-10"
+                style={{
+                  clipPath: `inset(0 0 0 ${position}%)`,
+                }}
+              >
+                <div className="absolute right-4 top-23 bg-[#0B2E63] px-1 md:px-4 py-1 md:py-2 text-[8px] md:text-[10px] font-semibold uppercase tracking-[0.2em] text-white shadow-lg sm:right-6 sm:top-70">
+                  After
+                </div>
               </div>
 
               {/* BEFORE IMAGE */}
@@ -90,7 +97,7 @@ export default function Before() {
                 />
 
                 {/* BEFORE LABEL */}
-                <div className="absolute left-4 top-4 bg-black/65 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-white backdrop-blur-sm sm:left-6 sm:top-6">
+                <div className="absolute left-4 top-23 bg-black/65 px-1 md:px-4 py-1 md:py-2 text-[8px] md:text-[10px] font-semibold uppercase tracking-[0.2em] text-white backdrop-blur-sm sm:left-6 sm:top-70">
                   Before
                 </div>
               </div>
@@ -106,7 +113,7 @@ export default function Before() {
 
               {/* SLIDER HANDLE */}
               <div
-                className="pointer-events-none absolute top-1/2 z-20 flex h-[48px] w-[48px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-[3px] border-white bg-[#FFA21A] text-white shadow-[0_4px_20px_rgba(0,0,0,0.3)] sm:h-[54px] sm:w-[54px]"
+                className="pointer-events-none absolute top-1/2 z-20 flex h-[38px] w-[38px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-[3px] border-white bg-[#FFA21A] text-white shadow-[0_4px_20px_rgba(0,0,0,0.3)] sm:h-[54px] sm:w-[54px]"
                 style={{ left: `${position}%` }}
               >
                 <MoveHorizontal size={22} strokeWidth={2.2} />
