@@ -77,7 +77,7 @@ const applications = [
 
 const ease = [0.22, 1, 0.36, 1];
 
-export default function Applications() {
+export default function   Applications() {
   const [start, setStart] = useState(0);
   const [perView, setPerView] = useState(6);
   const [paused, setPaused] = useState(false);
@@ -169,10 +169,12 @@ export default function Applications() {
             <span className="h-px w-12 bg-[#173e71]" />
           </div>
 
-          <h2 className="text-4xl font-bold tracking-tight text-[#101d32] sm:text-5xl lg:text-[68px]">
-            Cubicle Stall{" "}
+          <h2 className="text-4xl font-bold tracking-tight text-[#101d32] sm:text-6xl ">
+            Designed for every space.
+{" "}
+<br />
             <span className="relative inline-block text-[#0755b9]">
-              Applications
+              Trusted across industries.
 
               <motion.span
                 initial={{ scaleX: 0 }}

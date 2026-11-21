@@ -36,12 +36,14 @@ export default function SpaceMarquee() {
                 </span>
               </div>
 
-              <h2 className=" text-[32px] sm:text-[38px] md:text-[48px] leading-[1.12] text-[#202020] max-w-[650px]">
-                Designed for every space.
-                <span className="block text-[#b68a39] ">
-                  Trusted across industries.
-                </span>
-              </h2>
+          
+<h2 className="text-[32px] sm:text-[38px] md:text-[48px] leading-[1.12] text-[#202020] max-w-[650px]">
+  The RYKA Advantage.
+  <span className="block text-[#b68a39]">
+    Because Quality Makes the Difference.
+  </span>
+</h2>
+
             </div>
 
             <motion.div
