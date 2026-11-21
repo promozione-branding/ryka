@@ -17,8 +17,8 @@ export default function SpaceMarquee() {
     <section className="relative overflow-hidden bg-[#026DB5]/10 py-6 md:py-8">
 
       {/* Background details */}
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#c5a15c]/50 to-transparent" />
-      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#c5a15c]/50 to-transparent" />
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#026DB5]/50 to-transparent" />
+      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#026DB5]/50 to-transparent" />
 
       <div className="max-w-[1500px] mx-auto">
 
