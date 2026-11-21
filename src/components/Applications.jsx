@@ -25,7 +25,7 @@ const applications = [
   {
     name: "Hospitals",
     icon: Stethoscope,
-    image: "/applications/hospitals.webp",
+    image: "/applications/hospi2.webp",
   },
  
   {
@@ -61,7 +61,7 @@ const applications = [
   {
     name: "Airports",
     icon: Plane,
-    image: "/applications/airports.webp",
+    image: "/applications/airport2.webp",
   },
   {
     name: "Offices",
