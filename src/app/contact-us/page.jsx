@@ -375,7 +375,7 @@ export default function ContactUs() {
                     OUR ADDRESS:
                   </h3>
 
-                  <p className="text-[12px] leading-[24px] text-white/90">
+                  <p className="text-[12px] md:text-2xl  text-white/90">
                     H-3/216, 2nd Floor, Vardhman Plaza Tower,
                     Netaji Subhash Place, Pitampura, New Delhi
                   </p>
@@ -399,7 +399,7 @@ export default function ContactUs() {
 
                   <a
                     href="mailto:rykarestroomcubicle@gmail.com"
-                    className="text-[12px] text-white/90 hover:text-[#26a9d2] transition-colors break-all"
+                    className="text-[12px] md:text-xl  text-white/90 hover:text-[#26a9d2] transition-colors break-all"
                   >
                     rykarestroomcubicle@gmail.com
                   </a>
@@ -417,11 +417,11 @@ export default function ContactUs() {
                 />
 
                 <div>
-                  <h3 className="text-[12px] font-bold mb-2">
+                  <h3 className="text-[12px]  font-bold mb-2">
                     OUR PHONE:
                   </h3>
 
-                  <div className="flex flex-col gap-2 text-[12px] text-white/90">
+                  <div className="flex md:text-2xl  flex-col gap-2 text-[12px] text-white/90">
 
                     <a href="tel:+919873516255" className="hover:text-[#26a9d2] transition-colors">
                       91-9873516255

@@ -2,6 +2,7 @@ import { Raleway, Titillium_Web } from "next/font/google";
 import "./globals.css";
 import Footer from "../components/Footer";
 import HomeHeader from "@/components/HomeHeader";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 const raleway = Raleway({
   variable: "--font-raleway",
@@ -38,6 +39,7 @@ export default function RootLayout({ children }) {
         <HomeHeader/>
         <main className="flex-1">{children}</main>
         <Footer />
+        <WhatsAppButton />
       </body>
     </html>
   );
