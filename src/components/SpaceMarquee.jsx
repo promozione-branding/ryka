@@ -29,9 +29,9 @@ export default function SpaceMarquee() {
 
             <div>
               <div className="flex items-center gap-3 mb-4">
-                <span className="w-10 h-[2px] bg-[#b68a39]" />
+                <span className="w-10 h-[2px] bg-[#026DB5]" />
 
-                <span className="text-[10px] md:text-[11px] font-bold tracking-[3px] text-[#936c2e] uppercase">
+                <span className="text-[10px] md:text-[11px] font-bold tracking-[3px] text-[#026DB5] uppercase">
                   Spaces we serve
                 </span>
               </div>
@@ -39,7 +39,7 @@ export default function SpaceMarquee() {
           
 <h2 className="text-[32px] sm:text-[38px] md:text-[48px] leading-[1.12] text-[#202020] max-w-[650px]">
   The RYKA Advantage.
-  <span className="block text-[#b68a39]">
+  <span className="block text-[#026DB5]">
     Because Quality Makes the Difference.
   </span>
 </h2>
@@ -51,12 +51,12 @@ export default function SpaceMarquee() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
-              className="w-full max-w-[430px] border-l-2 border-[#c5a15c] bg-white/70 px-5 py-5 shadow-[0_12px_35px_rgba(71,61,42,0.06)] md:px-7 md:py-6"
+              className="w-full max-w-[430px] border-l-2 border-[#026DB5] bg-white/70 px-5 py-5 shadow-[0_12px_35px_rgba(71,61,42,0.06)] md:px-7 md:py-6"
             >
               <h3 className="mb-1 text-[26px] font-semibold leading-tight text-[#202020] md:text-[30px]">
                 RYKA
               </h3>
-              <p className="mb-5 text-sm font-medium leading-6 text-[#936c2e] md:text-[15px]">
+              <p className="mb-5 text-sm font-medium leading-6 text-[#026DB5] md:text-[15px]">
                 Premium Toilet Cubicles Built for Modern Spaces
               </p>
 
@@ -70,7 +70,7 @@ export default function SpaceMarquee() {
                       key={item}
                       className="flex items-start gap-2 text-[12px] leading-5 text-[#777166]"
                     >
-                      <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#b68a39] text-white">
+                      <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#026DB5] text-white">
                         <Check size={10} strokeWidth={3} />
                       </span>
                       <span>{item}</span>
@@ -89,12 +89,12 @@ export default function SpaceMarquee() {
         {/* BOTTOM NOTE */}
         <div className="px-5 lg:px-16 mt-4 flex flex-col sm:flex-row items-center justify-between gap-3">
 
-          <p className="text-[10px] md:text-[11px] uppercase tracking-[2px] text-[#9a907e]">
+          <p className="text-[10px] md:text-[11px] uppercase tracking-[2px] text-[#026DB5]">
             One solution. Multiple environments.
           </p>
 
           <div className="flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#b68a39]" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[#026DB5]" />
             <span className="text-[11px] text-[#8b806e]">
               Serving diverse spaces with confidence
             </span>

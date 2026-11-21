@@ -188,7 +188,7 @@ export default function Hero({ defaultProducts: suppliedProducts }) {
   };
 
   return (
-    <section className="relative isolate min-h-screen w-full overflow-hidden bg-[#07111d] lg:h-full">
+    <section className="relative isolate min-h-screen w-full overflow-hidden bg-[#ffffff] lg:h-full">
       <div className="absolute inset-0 -z-10">
 
         <div
@@ -199,11 +199,8 @@ export default function Hero({ defaultProducts: suppliedProducts }) {
           }}
         />
 
-        <div className="absolute inset-0 bg-black/75" />
+        <div className="absolute inset-0 bg-white/100" />
 
-        <div className="absolute inset-0 bg-gradient-to-r from-[#07111d]/75 via-[#07111d]/20 to-transparent" />
-
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/30" />
 
       </div>
  
