@@ -11,9 +11,9 @@ const stats = [
     suffix: "K+",
   },
   {
-    value: 15,
+    value: 20,
     label: "YEARS OF EXPERIENCE",
-    number: "15",
+    number: "20",
     suffix: "+",
   },
   {

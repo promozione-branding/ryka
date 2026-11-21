@@ -93,7 +93,7 @@ export default function AboutUs() {
               return (
                 <article
                   key={card.title}
-                  className="flex min-h-[230px] flex-col rounded-[8px] border-[1.5px] border-black bg-[#421923] p-5 text-white sm:p-4"
+                  className="flex min-h-[230px] flex-col rounded-[8px] border-[1.5px] border-black bg-[#3694d3] p-5 text-white sm:p-4"
                 >
                   <div className="flex justify-start items-center gap-2">
                   <Icon

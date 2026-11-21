@@ -90,7 +90,7 @@ export default function Before() {
                 }}
               >
                 <img
-                  src="/before.webp"
+                  src="/before-cubicles.webp"
                   alt="Old restroom cubicles before renovation"
                   draggable="false"
                   className="absolute inset-0 h-full w-full object-cover"

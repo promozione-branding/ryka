@@ -202,8 +202,8 @@ export default function Hero({ defaultProducts }) {
  
 
       <div className="relative z-10 mx-auto flex min-h-screen max-w-[1800px] flex-col px-5 pb-6 pt-[90px] sm:px-8 lg:h-full lg:min-h-0 lg:px-10 lg:pb-5 xl:px-12">
-        <div className="grid flex-none grid-cols-1 items-start gap-5 lg:grid-cols-[minmax(0,1fr)_255px] 
-        xl:grid-cols-[minmax(0,1fr)_270px] xl:gap-7 mt-6">
+        <div className="grid flex-none grid-cols-1 items-start gap-5 
+         xl:gap-7 mt-6">
           <div className="relative h-[500px] overflow-hidden rounded-[25px] border
            border-white/50 bg-[#07111d] shadow-2xl sm:h-[450px] lg:h-[460px]">
             <div className="absolute inset-0">
@@ -357,75 +357,7 @@ export default function Hero({ defaultProducts }) {
 
           {/* RYKA INFORMATION CARD */}
 
-          <motion.aside
-            initial={{
-              opacity: 0,
-              x: 25,
-            }}
-            animate={{
-              opacity: 1,
-              x: 0,
-            }}
-            transition={{
-              duration: 0.8,
-              ease,
-            }}
-            className="hidden rounded-[25px] border border-white/40 bg-[#07111d]/85 p-5 text-white shadow-2xl backdrop-blur-md md:block lg:mt-8 lg:self-start xl:p-6"
-          >
-
-            <h2 className="text-3xl font-bold text-white">
-              RYKA
-            </h2>
-
-            <p className="mt-2 text-sm leading-6">
-              Premium Toilet Cubicles Built for Modern Spaces
-            </p>
-
-            <div className="my-5 h-[2px] w-32 bg-[#6C6D71]" />
-
-            <h3 className="mb-5 text-lg font-bold text-white">
-              Why Choose RYKA?
-            </h3>
-
-            <div className="space-y-4">
-
-              {features.map((feature, index) => (
-
-                <motion.div
-                  key={feature}
-                  initial={{
-                    opacity: 0,
-                    x: 15,
-                  }}
-                  animate={{
-                    opacity: 1,
-                    x: 0,
-                  }}
-                  transition={{
-                    duration: 0.5,
-                    delay: 0.3 + index * 0.12,
-                    ease,
-                  }}
-                  className="flex items-start gap-3"
-                >
-
-                  <Check
-                    size={21}
-                    strokeWidth={3}
-                    className="shrink-0 text-white"
-                  />
-
-                  <span className="text-sm leading-5">
-                    {feature}
-                  </span>
-
-                </motion.div>
-
-              ))}
-
-            </div>
-
-          </motion.aside>
+         
 
         </div>
 
