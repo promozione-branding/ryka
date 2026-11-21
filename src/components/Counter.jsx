@@ -12,7 +12,7 @@ const stats = [
   },
   {
     value: 20,
-    label: "YEARS OF EXPERIENCE",
+    label: "YEARS OF INDUSTRY EXPERIENCE",
     number: "20",
     suffix: "+",
   },
