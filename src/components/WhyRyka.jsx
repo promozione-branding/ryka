@@ -82,7 +82,7 @@ function FeatureCard({ feature }) {
       variants={cardVariants}
       whileHover={{ y: -7 }}
       className="
-        group relative flex min-h-[200px]
+        group relative flex min-h-[100px]
         overflow-hidden rounded-[30px]
         border-[3px] border-white
         bg-gradient-to-br from-white via-[#fdfdff] to-[#f1f3fa]
@@ -151,9 +151,9 @@ function FeatureCard({ feature }) {
       <div className="relative z-10 flex flex-1 flex-col justify-center px-5 py-5 xl:px-7">
         <h3
           className="
-            text-[19px] font-extrabold leading-[1.13]
+            text-[19px]  leading-[1.13]
             tracking-[-0.6px] text-[#102d5a]
-            md:text-[20px] xl:text-[23px]
+            md:text-[18px] 
           "
         >
           {feature.title}
@@ -172,7 +172,7 @@ function FeatureCard({ feature }) {
           className="
             mt-3 text-[12px] leading-[1.55]
             text-[#344052]
-            xl:text-[14px]
+            xl:text-[13px]
           "
         >
           {feature.description}
@@ -237,11 +237,10 @@ export default function WhyRyka() {
           <h2
             className="
               max-w-[770px] text-[30px]
-              font-extrabold leading-[1.08]
+               leading-[1.08]
               tracking-[-1.8px] text-[#026db5]
               sm:text-[46px]
-              lg:text-[48px]
-              xl:text-[57px]
+             
             "
           >
             Engineered for wet, busy,
@@ -271,7 +270,7 @@ export default function WhyRyka() {
               mt-5 max-w-[700px]
               text-[14px] leading-[1.65]
               text-[#3c4656]
-              sm:text-[16px] xl:text-[18px]
+              sm:text-[16px] 
             "
           >
             Say goodbye to rusted hardware, poor layouts and

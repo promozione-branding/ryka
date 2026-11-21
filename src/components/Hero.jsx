@@ -7,7 +7,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowRight,
   ArrowLeft,
-  Check,
+  Users,
+  Gem,
+  Box,
+  Settings,
 } from "lucide-react";
 
 const slides = [
@@ -120,23 +123,24 @@ const defaultProducts = [
   },
 ];
 
-const features = [
-  "Premium Quality Products",
-  "Reliable & Consistent Standards",
-  "Built for Modern Commercial Spaces",
-  "Durable & Easy to Maintain",
-];
-
 const ease = [0.22, 1, 0.36, 1];
 
-export default function Hero({ defaultProducts }) {
-  const products = defaultProducts
+const getProductDetails = (product) => ({
+  application: product.application || "Public Restroom",
+  series: product.series || (product.featured ? "Premium" : "Commercial"),
+  model: product.model || product.name,
+  hardware: product.hardware || "Full Stainless Steel",
+});
+
+export default function Hero({ defaultProducts: suppliedProducts }) {
+  const products = suppliedProducts?.length ? suppliedProducts : defaultProducts;
 
   const [current, setCurrent] = useState(0);
   const [productStart, setProductStart] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  // how many cards are visible: 2 on mobile, 4 on lg+
-  const [perView, setPerView] = useState(4);
+  const [hoveredProduct, setHoveredProduct] = useState(null);
+  // 1 card on mobile, 2 on tablet, 3 on desktop
+  const [perView, setPerView] = useState(3);
 
   // HERO AUTOPLAY
   useEffect(() => {
@@ -148,11 +152,14 @@ export default function Hero({ defaultProducts }) {
   }, []);
 
   useEffect(() => {
-    const mq = window.matchMedia("(min-width: 1024px)");
-    const update = () => setPerView(mq.matches ? 4 : 2);
+    const update = () => {
+      if (window.innerWidth >= 1024) setPerView(3);
+      else if (window.innerWidth >= 640) setPerView(2);
+      else setPerView(1);
+    };
     update();
-    mq.addEventListener("change", update);
-    return () => mq.removeEventListener("change", update);
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
   }, []);
 
   const maxProductStart = Math.max(products.length - perView, 0);
@@ -407,66 +414,115 @@ export default function Hero({ defaultProducts }) {
               >
               
 
-                {products.map((product) => (
-                  
+                {products.map((product, index) => {
+                  const details = getProductDetails(product);
+                  const productKey = `${product.name}-${index}`;
+                  const isHovered = hoveredProduct === productKey;
 
-                  <div
-                    key={product.name}
-                    className="w-1/2 flex-none px-1.5 sm:px-2 lg:w-1/4 lg:px-2.5"
-                  >
-
-                    <motion.div
-                      whileHover={{ y: -5 }}
-                      transition={{ duration: 0.25 }}
-                      className="group overflow-hidden rounded-xl border border-white/70 bg-white shadow-xl sm:rounded-2xl"
+                  return (
+                    <div
+                      key={productKey}
+                      className="w-full flex-none px-1.5 sm:w-1/2 sm:px-2 lg:w-1/3 lg:px-2.5"
                     >
-
-                      <Link
-                        href={product.href}
-                        className="block"
+                      <motion.div
+                        whileHover={{ y: -5 }}
+                        transition={{ duration: 0.25 }}
+                        onMouseEnter={() => setHoveredProduct(productKey)}
+                        onMouseLeave={() => setHoveredProduct(null)}
+                        onFocus={() => setHoveredProduct(productKey)}
+                        onBlur={() => setHoveredProduct(null)}
+                        className="group relative h-[210px] overflow-hidden rounded-xl border border-white/70 bg-white shadow-xl sm:h-[235px] sm:rounded-2xl lg:h-[260px]"
                       >
+                        <Link
+                          href={product.href}
+                          className="block h-full"
+                        >
+                          <div className="absolute inset-0 overflow-hidden bg-[#dfe4e8]">
+                            <motion.img
+                              src={product.image}
+                              alt={product.name}
+                              draggable={false}
+                              className="h-full w-full object-cover"
+                              whileHover={{ scale: 1.06 }}
+                              transition={{ duration: 0.7, ease }}
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-r from-black/15 via-transparent to-black/10" />
+                          </div>
 
-                        {/* PRODUCT IMAGE */}
+                          <div
+                            className={`absolute bottom-0 left-0 right-0 flex items-center justify-between gap-2 bg-[#7f8993]/95 px-4 py-3 text-white transition-all duration-300 sm:px-5 sm:py-4 ${
+                              isHovered ? "translate-y-full opacity-0" : "translate-y-0 opacity-100"
+                            }`}
+                          >
+                            <h3 className="text-sm font-semibold sm:text-base lg:text-lg">
+                              {product.name}
+                            </h3>
+                            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-[#101820]">
+                              <ArrowRight size={17} />
+                            </span>
+                          </div>
 
-                        <div className="relative h-[85px] overflow-hidden bg-gray-700 sm:h-[110px] lg:h-[105px] xl:h-[125px]">
-
-                          <motion.img
-                            src={product.image}
-                            alt={product.name}
-                            draggable={false}
-                            className="h-full w-full object-cover"
-                            whileHover={{
-                              scale: 1.08,
+                          <motion.div
+                            initial={false}
+                            animate={{
+                              x: isHovered ? "0%" : "105%",
+                              opacity: isHovered ? 1 : 0,
                             }}
-                            transition={{
-                              duration: 0.7,
-                              ease,
-                            }}
-                          />
+                            transition={{ duration: 0.35, ease }}
+                            className="absolute bottom-0 right-0 top-0 w-[58%] bg-white px-4 py-4 text-[#102a46] shadow-[-14px_0_35px_rgba(7,17,29,0.12)] sm:px-5 lg:px-6"
+                          >
+                            <div className="mb-2 flex items-start justify-between gap-2 border-b border-[#e8edf2] pb-2">
+                              <h3 className="text-sm font-bold uppercase leading-tight sm:text-base lg:text-lg">
+                                {product.name}
+                              </h3>
+                              {product.featured && (
+                                <span className="rounded-full bg-[#4285f4] px-2 py-1 text-[8px] font-bold uppercase text-white">
+                                  Premium
+                                </span>
+                              )}
+                            </div>
 
-                        </div>
+                            <div className="space-y-1.5">
+                              <div className="flex items-center gap-2.5">
+                                <Users size={16} className="shrink-0 text-[#5d7390]" />
+                                <div>
+                                  <p className="text-[8px] font-bold uppercase tracking-wider text-[#8b97a7]">Application</p>
+                                  <p className="text-[11px] font-semibold leading-tight">{details.application}</p>
+                                </div>
+                              </div>
+                              <div className="flex items-center gap-2.5">
+                                <Gem size={16} className="shrink-0 text-[#5d7390]" />
+                                <div>
+                                  <p className="text-[8px] font-bold uppercase tracking-wider text-[#8b97a7]">Series</p>
+                                  <p className="text-[11px] font-semibold leading-tight">{details.series}</p>
+                                </div>
+                              </div>
+                              <div className="flex items-center gap-2.5">
+                                <Box size={16} className="shrink-0 text-[#5d7390]" />
+                                <div>
+                                  <p className="text-[8px] font-bold uppercase tracking-wider text-[#8b97a7]">Model</p>
+                                  <p className="text-[11px] font-semibold leading-tight">{details.model}</p>
+                                </div>
+                              </div>
+                              <div className="flex items-center gap-2.5">
+                                <Settings size={16} className="shrink-0 text-[#5d7390]" />
+                                <div>
+                                  <p className="text-[8px] font-bold uppercase tracking-wider text-[#8b97a7]">Hardware</p>
+                                  <p className="text-[11px] font-semibold leading-tight">{details.hardware}</p>
+                                </div>
+                              </div>
+                            </div>
 
-                        {/* PRODUCT NAME */}
-
-                        <div className="flex items-center justify-between gap-2 px-3 py-2 sm:px-4 sm:py-2.5 bg-gray-400">
-
-                          <h3 className="text-xs font-semibold text-white sm:text-sm lg:text-base">
-                            {product.name}
-                          </h3>
-
-                          <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white text-black transition-all duration-300 group-hover:bg-[#101820] group-hover:text-white">
-                            <ArrowRight size={16} />
-                          </span>
-
-                        </div>
-
-                      </Link>
-
-                    </motion.div>
-
-                  </div>
-
-                ))}
+                            <div className="mt-3 flex items-center justify-between border-t border-[#e8edf2] pt-2 text-xs font-bold">
+                              <span>View Full Product Details</span>
+                              <ArrowRight size={16} />
+                            </div>
+                          </motion.div>
+                        </Link>
+                      </motion.div>
+                    </div>
+                  );
+                })}
 
               </motion.div>
 
