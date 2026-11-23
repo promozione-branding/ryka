@@ -447,7 +447,7 @@ export default function Hero({ defaultProducts: suppliedProducts }) {
                           </div>
 
                           <div
-                            className={`absolute bottom-0 left-0 right-0 flex items-center justify-between gap-2 bg-[#7f8993]/95 px-4 py-3 text-white transition-all duration-300 sm:px-5 sm:py-4 ${
+                            className={`absolute bottom-0 left-0 right-0 flex items-center justify-between gap-2 bg-[#7f8993]/65 px-4 py-3 text-white transition-all duration-300 sm:px-5 sm:py-4 ${
                               isHovered ? "translate-y-full opacity-0" : "translate-y-0 opacity-100"
                             }`}
                           >

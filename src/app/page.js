@@ -31,6 +31,7 @@ const defaultProducts = [
     name: "Nexus Evo",
     image: "/product/imgi_9_Nexus-Evos.webp",
     href: "/public-restroom-partitions/nexus-evo",
+   
   },
   {
     name: "Nexus Canvas",
@@ -42,11 +43,13 @@ const defaultProducts = [
     name: "Nexus Grand",
     image: "/product/imgi_11_Nexus-Grand-2.webp",
     href: "/public-restroom-partitions/nexus-grand",
+     hardware:"SS With Aluminum"
   },
   {
     name: "Carlton Prime",
     image: "/product/imgi_12_Carlton-Prime-1.webp",
     href: "/public-restroom-partitions/carlton-prime",
+    hardware: "Nylon Polyamide With Aluminum"
   },
   {
     name: "Floatex",
