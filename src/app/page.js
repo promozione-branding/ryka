@@ -65,17 +65,20 @@ const defaultProducts = [
     name: "Miniput",
     image: "/product/imgi_16_kids-cubicles.webp",
     href: "/kids-restrooms-partitions/miniput",
+    hardware: "Nylon Polyamide With Aluminum"
   },
   {
     name: "Lil-Waves",
     image: "/product/imgi_17_petar-pan.webp",
     href: "/kids-restrooms-partitions/lil-waves",
     featured: true,
+    hardware: "Nylon Polyamide With Aluminum"
   },
   {
     name: "Lil-Shine",
     image: "/product/imgi_18_Lil-Shine.webp",
     href: "/kids-restrooms-partitions/lil-shine",
+    hardware: "Nylon Polyamide With Aluminum"
   },
   {
     name: "Aero Kids",
@@ -91,6 +94,7 @@ const defaultProducts = [
     name: "Slice Cut",
     image: "/product/imgi_21_Slice-Cut-2.webp",
     href: "/kids-restrooms-partitions/slice-cut",
+    hardware: "Nylon Polyamide With Aluminum"
   },
     {
     name: "RYKA LUXOR",
