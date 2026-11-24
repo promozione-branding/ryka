@@ -56,7 +56,7 @@ export default function HomeHeader() {
   if (isAdmin) return null;
 
   // Text color: white only on home page (when not scrolled), otherwise black
-  const textColor =  "text-[#1a1a1a]";
+  const textColor = isHome && !scrolled ? "text-[#fff]" : "text-black";
   const hoverColor = "hover:text-[#026eb6]";
 
   return (
@@ -64,7 +64,7 @@ export default function HomeHeader() {
       <header
         className={`fixed top-0 left-0 z-[9999] w-full transition-all duration-300 ${
           isHome && !scrolled
-            ? "bg-white border-b border-white/10"
+            ? "bg-black border-b border-white/10"
             : "bg-[#FDF8F0]/55 shadow-sm border-b border-black/5"
         }`}
       >
@@ -72,7 +72,7 @@ export default function HomeHeader() {
           {/* LOGO */}
           <Link href="/" className="flex shrink-0 items-center">
             <Image
-              src={"/logo_transp.webp"}
+              src={scrolled ? "/logo_transp.webp" : "/logo-10 (2).webp"}
               alt="RYKA Restroom Cubicles"
               width={220}
               height={70}
