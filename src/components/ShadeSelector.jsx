@@ -16,7 +16,7 @@ const projectTypes = [
 
 const shades = [
   { name: "Ivory", code: "1002 AC", color: "#EFE6D2", dark: "#D6C9AF" },
-  { name: "Silver Grey", code: "1003 AC", color: "#D4DBDF", dark: "#AEB8C0" },
+  { name: "Cyan", code: "1003 AC", color: "#249594", dark: "#AEB8C0" },
   { name: "Champagne", code: "1005 AC", color: "#D8C6A6", dark: "#BBA37C" },
   { name: "Golden Oak", code: "1006 AC", color: "#B99B6B", dark: "#96794F" },
   { name: "Sun Yellow", code: "1007 AC", color: "#F3D16A", dark: "#D1A83D" },
@@ -31,7 +31,7 @@ const shades = [
   { name: "Teak", code: "1016 AC", color: "#A77C4F", dark: "#805B37" },
   { name: "Sapele", code: "1022 AC", color: "#80432D", dark: "#63301F" },
   { name: "Dark Sapele", code: "1023 AC", color: "#3E2D26", dark: "#291D19" },
-  { name: "Forest Green", code: "1024 AC", color: "#385C45", dark: "#25412F" },
+  { name: "Wild Lime", code: "1024 AC", color: "#8cc63e", dark: "#25412F" },
   { name: "Ocean Blue", code: "1025 AC", color: "#003c95", dark: "#20445E" },
   { name: "Sand Beige", code: "1026 AC", color: "#b89a71", dark: "#A28D71" },
   { name: "Deep Maroon", code: "1027 AC", color: "#82162f", dark: "#48212B" },
@@ -53,7 +53,7 @@ const getShadeImage = (shade) => {
     .replace(/\s+/g, "-");
     console.log(imageName)
 
-  return `/variant/${imageName}.webp`;
+  return `/variant2/${imageName}.jpeg`;
 };
 
 export default function ShadeSelector() {
