@@ -31,85 +31,103 @@ const defaultProducts = [
     name: "Nexus Evo",
     image: "/product/imgi_9_Nexus-Evos.webp",
     href: "/public-restroom-partitions/nexus-evo",
+    featured:"PREMIUM"
    
   },
   {
     name: "Nexus Canvas",
     image: "/product/imgi_10_Nexus-Canvas-1.webp",
     href: "/public-restroom-partitions/nexus-canvas",
+     featured:"PREMIUM"
   },
 
   {
     name: "Nexus Grand",
     image: "/product/imgi_11_Nexus-Grand-2.webp",
     href: "/public-restroom-partitions/nexus-grand",
-     hardware:"SS With Aluminum"
+     hardware:"SS With Aluminum",
+      featured:"STANDARD"
   },
   {
     name: "Carlton Prime",
     image: "/product/imgi_12_Carlton-Prime-1.webp",
     href: "/public-restroom-partitions/carlton-prime",
-    hardware: "Nylon Polyamide With Aluminum"
+    hardware: "Nylon Polyamide With Aluminum",
+     featured:"STANDARD"
   },
   {
     name: "Floatex",
     image: "/product/imgi_7_Swing-Lite-4.webp",
     href: "/public-restroom-partitions/floatex",
+     featured:"PREMIUM"
   },
   {
     name: "Sky Hung",
     image: "/product/imgi_8_top-hung-2.webp",
     href: "/public-restroom-partitions/sky-hung",
+     featured:"PREMIUM"
   },
   {
     name: "Miniput",
     image: "/product/imgi_16_kids-cubicles.webp",
+     featured:"PREMIUM",
     href: "/kids-restrooms-partitions/miniput",
-    hardware: "Nylon Polyamide With Aluminum"
+    hardware: "Full Stainless Steel"
+
   },
   {
     name: "Lil-Waves",
     image: "/product/imgi_17_petar-pan.webp",
     href: "/kids-restrooms-partitions/lil-waves",
-    featured: true,
-    hardware: "Nylon Polyamide With Aluminum"
+     featured:"PREMIUM",
+    hardware: "SS With Aluminum"
   },
   {
     name: "Lil-Shine",
-    image: "/product/imgi_18_Lil-Shine.webp",
+     featured:"PREMIUM",
+    image: "/newimag.webp",
     href: "/kids-restrooms-partitions/lil-shine",
-    hardware: "Nylon Polyamide With Aluminum"
+    hardware: "Full Stainless Steel"
   },
   {
     name: "Aero Kids",
     image: "/product/aero-kids.webp",
+     featured:"STANDARD",
     href: "/kids-restrooms-partitions/aero-kids",
+    hardware: "Nylon Polyamide With Aluminum",
   },
   {
     name: "Half Round",
     image: "/product/imgi_20_Hansel-Gretel.webp",
     href: "/kids-restrooms-partitions/half-round",
+     featured:"STANDARD",
+     hardware: "Nylon Polyamide With Aluminum",
   },
   {
     name: "Slice Cut",
     image: "/product/imgi_21_Slice-Cut-2.webp",
     href: "/kids-restrooms-partitions/slice-cut",
-    hardware: "Nylon Polyamide With Aluminum"
+    hardware: "Full Stainless Steel",
+     featured:"PREMIUM"
   },
     {
     name: "RYKA LUXOR",
     image: "/Golden-Partitions.webp",
     href: "/luxe-partition-systems",
+     featured:"PREMIUM"
   },
   {
     name: "Straight",
     image: "/product/straight.webp",
     href: "/kids-restrooms-partitions/straight",
+     featured:"STANDARD",
+     hardware: "Nylon Polyamide With Aluminum",
   },
    {
     name: "Slice Cut",
     image: "/product/imgi_21_Slice-Cut-2.webp",
     href: "/kids-restrooms-partitions/slice-cut",
+     featured:"PREMIUM"
   },
 
 ];

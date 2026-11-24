@@ -98,8 +98,9 @@ const defaultProducts = [
   },
   {
     name: "Lil-Shine",
-    image: "/product/imgi_18_Lil-Shine.webp",
+    image: "/newimag.webp",
     href: "/kids-restrooms-partitions/lil-shine",
+    
   },
   {
     name: "Aero Kids",
@@ -127,7 +128,7 @@ const ease = [0.22, 1, 0.36, 1];
 
 const getProductDetails = (product) => ({
   application: product.application || "Public Restroom",
-  series: product.series || (product.featured ? "Premium" : "Commercial"),
+  series: product.featured ,
   model: product.model || product.name,
   hardware: product.hardware || "Full Stainless Steel",
 });
