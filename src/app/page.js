@@ -112,7 +112,7 @@ const defaultProducts = [
   },
     {
     name: "RYKA LUXOR",
-    image: "/Golden-Partitions.webp",
+    image: "/luxor2.webp",
     href: "/luxe-partition-systems",
      featured:"PREMIUM"
   },
