@@ -15,26 +15,13 @@ const projectTypes = [
 ];
 
 const shades = [
-  { name: "Ivory", code: "1002 AC", color: "#EFE6D2", dark: "#D6C9AF" },
   { name: "Cyan", code: "1003 AC", color: "#249594", dark: "#AEB8C0" },
-  { name: "Champagne", code: "1005 AC", color: "#D8C6A6", dark: "#BBA37C" },
-  { name: "Golden Oak", code: "1006 AC", color: "#B99B6B", dark: "#96794F" },
   { name: "Sun Yellow", code: "1007 AC", color: "#F3D16A", dark: "#D1A83D" },
   { name: "Orange", code: "1008 AC", color: "#F19A48", dark: "#CF7831" },
-  { name: "Ruby Red", code: "1009 AC", color: "#BE242D", dark: "#901A23" },
-  { name: "Royal Blue", code: "1010 AC", color: "#2d5f7e", dark: "#15376F" },
   { name: "Graphite", code: "1011 AC", color: "#454B50", dark: "#303438" },
-  { name: "Black", code: "1012 AC", color: "#1D1D1F", dark: "#080808" },
-  { name: "Stone Grey", code: "1013 AC", color: "#898379", dark: "#6D675F" },
-  { name: "Walnut Brown", code: "1014 AC", color: "#a1401f", dark: "#49301F" },
-  { name: "Maple", code: "1015 AC", color: "#C99B6B", dark: "#A87B50" },
   { name: "Teak", code: "1016 AC", color: "#A77C4F", dark: "#805B37" },
-  { name: "Sapele", code: "1022 AC", color: "#80432D", dark: "#63301F" },
-  { name: "Dark Sapele", code: "1023 AC", color: "#3E2D26", dark: "#291D19" },
   { name: "Wild Lime", code: "1024 AC", color: "#8cc63e", dark: "#25412F" },
   { name: "Ocean Blue", code: "1025 AC", color: "#003c95", dark: "#20445E" },
-  { name: "Sand Beige", code: "1026 AC", color: "#b89a71", dark: "#A28D71" },
-  { name: "Deep Maroon", code: "1027 AC", color: "#82162f", dark: "#48212B" },
 ];
 
 const finishes = [
