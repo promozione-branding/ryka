@@ -64,7 +64,7 @@ export default function HomeHeader() {
       <header
         className={`fixed top-0 left-0 z-[9999] w-full transition-all duration-300 ${
           isHome && !scrolled
-            ? "bg-black border-b border-white/10"
+            ? "bg-black/75 border-b border-white/10"
             : "bg-[#FDF8F0]/55 shadow-sm border-b border-black/5"
         }`}
       >
@@ -87,7 +87,7 @@ export default function HomeHeader() {
               href="/"
               className={`relative py-2 text-[16px] font-semibold uppercase tracking-[0.12em] ${textColor} transition-colors ${hoverColor} ${
                 isHome ? underline : ""
-              }`}
+              }`}   
             >
               Home
             </Link>

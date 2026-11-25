@@ -200,7 +200,7 @@ export default function Hero({ defaultProducts: suppliedProducts }) {
           }}
         />
 
-        <div className="absolute inset-0 bg-white/100" />
+        <div className="absolute inset-0 bg-white/40" />
 
 
       </div>
@@ -289,7 +289,7 @@ export default function Hero({ defaultProducts: suppliedProducts }) {
                   className="max-w-[1000px]"
                 >
 
-                  <h1 className="mb-4 text-3xl font-Poppins font-bold leading-tight text-white sm:text-4xl md:text-5xl lg:text-[48px] xl:text-[58px]">
+                  <h1 className="mb-4 text-3xl font-Poppins font-[500] leading-tight text-white sm:text-4xl md:text-5xl lg:text-[48px] xl:text-[58px]">
 
                     {slides[current].title}{" "}
 

@@ -85,7 +85,7 @@ export default function Testimonials() {
       <div className="relative z-10 mx-auto w-full max-w-[1500px] px-5 sm:px-10 lg:px-16">
         {/* Heading */}
         <div className="mb-10 text-center sm:mb-12">
-          <h2 className="text-[38px] font-bold leading-tight text-[#191919] sm:text-[48px] lg:text-[60px]">
+          <h2 className="text-[38px] font-[500] leading-tight text-[#191919] sm:text-[48px] lg:text-[60px]">
             Testimonials
           </h2>
 

@@ -25,7 +25,7 @@ export default function SupplyNetwork() {
         >
           
 
-          <h2 className="text-3xl font-black tracking-tight text-[#33203F] sm:text-4xl md:text-5xl lg:text-[54px]">
+          <h2 className="text-3xl font-[500] tracking-tight text-[#33203F] sm:text-4xl md:text-5xl lg:text-[54px]">
             Our Supply{" "}
             <span className="text-[#026eb8]">Network</span>
           </h2>

@@ -63,10 +63,10 @@ export default function FAQSection() {
   };
 
   return (
-    <section className="w-full bg-[#1a1a1a] py-6 md:py-24 px-5">
+    <section className="w-full bg-[#1a1a1a] py-6 md:py-12 px-5">
       <div className="max-w-4xl mx-auto">
         {/* Title */}
-        <h2 className="text-white text-4xl md:text-5xl font-bold tracking-tight mb-5 md:mb-10">
+        <h2 className="text-white text-4xl md:text-5xl font-[500] tracking-tight mb-5 md:mb-10">
           FAQS
         </h2>
 

@@ -86,7 +86,7 @@ export default function WhyChooseRyka() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.8 }}
-            className="relative min-h-[380px] overflow-hidden rounded-[120px_20px_20px_20px] sm:min-h-[450px] lg:col-span-5 lg:min-h-[540px]"
+            className="relative min-h-[380px] overflow-hidden rounded-[120px_20px_20px_20px] sm:min-h-[450px] lg:col-span-5 lg:min-h-[440px]"
           >
             <img
               src="/gallery/silvera-3.webp"

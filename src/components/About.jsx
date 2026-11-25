@@ -59,13 +59,13 @@ export default function AboutUs() {
 
         {/* RIGHT CONTENT */}
         <div className="w-full">
-          <h2 className="text-[46px] font-bold leading-[1.1] tracking-tight text-[#191919] sm:text-[56px] lg:text-[76px]">
+          <h2 className="text-[46px] font-[500] leading-[1.1] tracking-tight text-[#191919] sm:text-[56px] lg:text-[76px]">
             About Us
           </h2>
 
           <div className="mb-3 mt-3 h-[2px] w-[66px] bg-black" />
 
-          <h3 className="mb-1 text-xl font-bold leading-snug text-black sm:text-2xl">
+          <h3 className="mb-1 text-xl font-[600] leading-snug text-black sm:text-2xl">
             Toilet Cubicles Partition Manufacturer
           </h3>
 

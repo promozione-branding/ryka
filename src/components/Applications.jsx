@@ -169,7 +169,7 @@ export default function   Applications() {
             <span className="h-px w-12 bg-[#173e71]" />
           </div>
 
-          <h2 className="text-4xl font-bold tracking-tight text-[#101d32] sm:text-6xl ">
+          <h2 className="text-4xl font-[600] tracking-tight text-[#101d32] sm:text-6xl ">
             Designed for every space.
 {" "}
 <br />

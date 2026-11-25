@@ -62,7 +62,7 @@ export default function DesigningProcess() {
               RYKA RESTROOM CUBICLES DESIGN APPROACH
             </span>
 
-            <h2 className="mt-1 text-white text-3xl sm:text-4xl font-bold leading-tight">
+            <h2 className="mt-1 text-white text-3xl sm:text-4xl font-[600] leading-tight">
               Our Designing Process
             </h2>
 
@@ -156,7 +156,7 @@ export default function DesigningProcess() {
                         {step.number}
                       </span>
 
-                      <h3 className="text-[17px] sm:text-[18px] font-bold text-black leading-snug">
+                      <h3 className="text-[17px] sm:text-[18px] font-[500] text-black leading-snug">
                         {step.title}
                       </h3>
 

@@ -114,7 +114,7 @@ export default function Categories() {
             <span className="h-[1px] w-12 bg-[#222]" />
           </div>
 
-          <h2 className="text-4xl font-bold tracking-tight text-[#171717] sm:text-6xl lg:text-[76px]">
+          <h2 className="text-4xl font-[500] tracking-tight text-[#171717] sm:text-6xl lg:text-[76px]">
             Our{" "}
             <span className="text-[#026eb6]">
               Categories
