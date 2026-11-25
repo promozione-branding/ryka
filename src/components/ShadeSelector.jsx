@@ -44,7 +44,7 @@ const getShadeImage = (shade) => {
 };
 
 export default function ShadeSelector() {
-  const [selectedShade, setSelectedShade] = useState(16);
+  const [selectedShade, setSelectedShade] = useState(0);
   const [selectedFinish, setSelectedFinish] = useState("Woodgrain");
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(false);
