@@ -274,7 +274,7 @@ export default function AboutUs() {
 
       {/* ================= OUR ETHICS ================= */}
       <section
-        className="relative bg-[#171819] bg-cover bg-center px-5 py-12 md:py-14 lg:py-10"
+        className="relative bg-[#171819] bg-cover bg-center px-5 py-6 md:py-12 "
         style={{
           backgroundImage:
             "linear-gradient(rgba(15,16,17,0.94),rgba(15,16,17,0.94)),url('/bg1-aboutus.webp')",
@@ -360,7 +360,7 @@ export default function AboutUs() {
       </section>
 
       {/* ================= STATISTICS ================= */}
-      <section className="relative bg-[#fafafa] px-5 py-12 md:py-14 lg:py-12">
+      <section className="relative bg-[#fafafa] px-5 py-8 md:py-14 lg:py-12">
 
         <div
           className="absolute inset-0 pointer-events-none opacity-40"
@@ -395,7 +395,7 @@ export default function AboutUs() {
       </section>
 
       {/* ================= HOW IT WORKS ================= */}
-      <section className="w-full bg-white py-14 md:py-20 px-5 md:px-8">
+      <section className="w-full bg-white py-7 md:py-20 px-5 md:px-8">
 
         <div className="max-w-[1152px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-[18px] items-stretch">
 
@@ -472,7 +472,7 @@ export default function AboutUs() {
       </section>
 
       {/* ================= APPLICATIONS ================= */}
-      <section className="w-full bg-[#1684b5] px-5 py-10 md:py-12">
+      <section className="w-full bg-[#1684b5] px-5 py-8 md:py-12">
 
         <div className="max-w-7xl mx-auto">
 
@@ -513,7 +513,7 @@ export default function AboutUs() {
       </section>
 
       {/* ================= FAQs ================= */}
-      <section className="bg-white py-12 md:py-16 px-4 sm:px-6 lg:px-8">
+      <section className="bg-white py-7 md:py-16 px-4 sm:px-6 lg:px-8">
 
         <div className="max-w-7xl mx-auto">
 

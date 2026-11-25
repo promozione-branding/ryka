@@ -31,7 +31,7 @@ const inputClass =
 
 function SectionHeading({ title, subtitle }) {
   return (
-    <FadeInUp className="mb-10 text-center">
+    <FadeInUp className="mb-5 md:mb-10 text-center">
       <h2 className="text-3xl md:text-5xl font-semibold text-gray-900 tracking-tight">
         {title}
       </h2>
@@ -296,7 +296,7 @@ export default function Page() {
 
       {/* ============ OVERVIEW ============ */}
 
-      <section className="mx-auto max-w-4xl px-6 py-16 md:py-20">
+      <section className="mx-auto max-w-4xl px-6 py-6 md:py-20">
         <SectionHeading title={`About ${productName}`} />
 
         <FadeInUp custom={1}>
@@ -337,7 +337,7 @@ export default function Page() {
       {/* ============ HARDWARE & ACCESSORIES ============ */}
 
       {hardwareAndAccessories.length > 0 && (
-        <section className="w-full bg-[#e7e7e7] py-12 md:py-16 overflow-hidden">
+        <section className="w-full bg-[#e7e7e7] py-6 md:py-16 overflow-hidden">
           <div className="mx-auto max-w-[1350px] px-5 md:px-8">
             <FadeInUp>
               <h2 className="text-center text-[34px] sm:text-[46px] md:text-[58px] lg:text-[64px] font-semibold tracking-tight leading-tight mb-4">
@@ -363,7 +363,7 @@ export default function Page() {
 
       {(drawings.length > 0 || specifications.length > 0) && (
         <section
-          className="relative w-full overflow-hidden py-14 md:py-16"
+          className="relative w-full overflow-hidden py-6 md:py-16"
           style={{
             backgroundImage: "url('/c3-box-1-1-2-1.webp')",
             backgroundRepeat: "repeat",

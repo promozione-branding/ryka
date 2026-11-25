@@ -181,7 +181,7 @@ export default function   Applications() {
                 whileInView={{ scaleX: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.9, delay: 0.4, ease }}
-                className="absolute -bottom-2 left-0 h-[5px] w-full origin-left rounded-full bg-[#0755b9]"
+                className="absolute -bottom-2 left-21 md:left-0 h-[5px] w-[52%] md:w-full origin-left rounded-full bg-[#0755b9]"
               />
             </span>
           </h2>

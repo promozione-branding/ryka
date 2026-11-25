@@ -9,7 +9,7 @@ const getLogoUrl = (client) => {
 export default function Clientele() {
   return (
     <main className="w-full bg-[#D8F3F9] min-h-screen">
-      <section className="px-5 pt-16 pb-10 md:pt-20 md:pb-14 text-center mt-10">
+      <section className="px-5 pt-18 pb-5 md:pt-20 md:pb-14 text-center mt-10">
         <span className="text-sm tracking-[4px] uppercase text-[#b49a55] font-semibold">
           Trusted Partnerships
         </span>
@@ -22,7 +22,7 @@ export default function Clientele() {
       </section>
 
       {/* Client Logos */}
-      <section className="max-w-[1350px] mx-auto px-5 md:px-8 pb-20">
+      <section className="max-w-[1350px] mx-auto px-5 md:px-8 pb-10 md:pb-20">
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-2 md:gap-3">
           {clients.map((client, index) => (
             <div

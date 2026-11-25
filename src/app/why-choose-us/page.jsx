@@ -105,13 +105,13 @@ const features = [
 export default function WhyChooseUs() {
   return (
     <>
-    <section className="relative overflow-hidden bg-[#dfc98d] px-5 md:px-[5.5%] py-16 md:py-12 min-h-[650px]">
+    <section className="relative overflow-hidden bg-[#dfc98d] px-5 md:px-[5.5%] py-10 md:py-12 min-h-[650px]">
 
 <FlowerBackdrop/>
-      <div className="relative z-10 max-w-[1250px] mx-auto pt-22">
+      <div className="relative z-10 max-w-[1250px] mx-auto pt-19 md:pt-22">
 
         {/* Heading */}
-        <div className="text-center mb-10 md:mb-11">
+        <div className="text-center mb-5 md:mb-11">
           <h2 className="text-[42px] md:text-[72px] leading-tight font-bold text-[#171717]">
             Why Choose Us
           </h2>
@@ -133,7 +133,7 @@ export default function WhyChooseUs() {
             return (
               <div
                 key={index}
-                className="group relative min-h-[340px] bg-[#f7f7f7] px-6 py-8 flex justify-center text-center cursor-pointer transition-all duration-500 hover:bg-[#191919] hover:-translate-y-1"
+                className="group relative md:min-h-[340px] bg-[#f7f7f7] p-4 md:px-6 md:py-8 flex justify-center text-center cursor-pointer transition-all duration-500 hover:bg-[#191919] hover:-translate-y-1"
               >
 
                 {/* Background pattern */}

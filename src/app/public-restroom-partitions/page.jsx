@@ -138,12 +138,12 @@ function ProductCategory({ category }) {
 
 export default function PublicRestroomProducts() {
   return (
-    <section className="relative w-full overflow-hidden bg-[#f5f6fa] py-16 md:py-24">
+    <section className="relative w-full overflow-hidden bg-[#f5f6fa] py-6 md:py-24">
       <FlowerBackdrop />
 
-      <div className="relative z-10 mx-auto max-w-[1400px] px-5 md:px-8">
+      <div className="relative pt-20 md:pt-10 z-10 mx-auto max-w-[1400px] px-5 md:px-8">
         {/* Main Heading */}
-        <FadeInUp className="mb-20 text-center">
+        <FadeInUp className="mb-5 md:mb-10 text-center">
           <div className="mb-4 flex items-center justify-center gap-4">
             <span className="hidden h-px w-16 bg-[#0b2b5d] sm:block" />
 

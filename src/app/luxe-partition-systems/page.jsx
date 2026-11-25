@@ -247,7 +247,7 @@ export default function HeroSlider() {
 
       {/* Intro */}
       <section
-        className="relative isolate w-full overflow-hidden bg-cover bg-center bg-no-repeat px-5 py-10 md:px-12 md:py-12"
+        className="relative isolate w-full overflow-hidden bg-cover bg-center bg-no-repeat px-5 py-6 md:px-12 md:py-12"
         style={darkBg}
       >
         <div
@@ -301,7 +301,7 @@ export default function HeroSlider() {
 
       {/* Hardware & Accessories */}
       <section
-        className="relative isolate w-full overflow-hidden bg-cover bg-center bg-no-repeat px-4 py-10 md:px-8 md:py-8"
+        className="relative isolate w-full overflow-hidden bg-cover bg-center bg-no-repeat px-4 py-6 md:px-8 md:py-8"
         style={darkBg}
       >
         <div

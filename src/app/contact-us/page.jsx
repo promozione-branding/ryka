@@ -156,7 +156,8 @@ export default function ContactUs() {
 
       {/* ================= TITLE BAR ================= */}
       <section
-        className="relative min-h-[145px] md:min-h-[145px] flex items-center justify-center px-5 py-15
+        className="relative min-h-[145px] md:min-h-[145px] flex items-center justify-center px-5 py-6
+        
         bg-[#c9c7c7] bg-cover bg-center overflow-hidden pt-30"
         style={{
           backgroundImage:

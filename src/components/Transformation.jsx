@@ -43,7 +43,7 @@ const processSteps = [
 export default function DesigningProcess() {
   return (
     <section
-      className="relative w-full overflow-visible bg-[#171717] py-16 md:py-15"
+      className="relative w-full overflow-visible bg-[#171717] py-6 md:py-15"
       style={{
         backgroundImage:
           "linear-gradient(rgba(15,15,15,0.91),rgba(15,15,15,0.91)),url('/Footer-3-Bg.webp')",

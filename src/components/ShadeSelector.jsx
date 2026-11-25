@@ -255,7 +255,7 @@ export default function ShadeSelector() {
           <div>
 
             {/* Colour Swatches */}
-            <div className="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-8 gap-[9px] mt-50">
+            <div className="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-8 gap-[9px] md:mt-50">
 
               {shades.map((item, index) => (
                 <motion.button

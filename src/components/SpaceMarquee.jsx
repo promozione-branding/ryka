@@ -139,7 +139,7 @@ export default function WhyChooseRyka() {
                   <motion.div
                     key={item.title}
                     variants={fadeUp}
-                    className="group flex min-h-[185px] items-start gap-5 rounded-[22px] border border-white bg-white/80 p-6 shadow-[0_8px_35px_rgba(28,65,95,0.045)] transition-all duration-500 hover:-translate-y-1 hover:border-[#026DB5]/20 hover:shadow-[0_15px_35px_rgba(2,109,181,0.09)] md:p-7"
+                    className="group flex min-h-[185px] items-start gap-5 rounded-[22px] border border-white bg-white/80 p-4 shadow-[0_8px_35px_rgba(28,65,95,0.045)] transition-all duration-500 hover:-translate-y-1 hover:border-[#026DB5]/20 hover:shadow-[0_15px_35px_rgba(2,109,181,0.09)] md:p-5"
                   >
                     {/* Icon */}
                     <div className="flex h-[72px] w-[72px] shrink-0 items-center justify-center rounded-full bg-[#E8F3FA] text-[#026DB5] transition-all duration-500 group-hover:bg-[#026DB5] group-hover:text-white">

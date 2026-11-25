@@ -83,7 +83,7 @@ export default function Career() {
   return (
     <main className="w-full overflow-hidden bg-white text-[#102b55]">
       {/* Hero */}
-      <section className="relative w-full bg-[#d4edda] py-24 md:py-28 sm:py-28 px-5 overflow-hidden">
+      <section className="relative w-full bg-[#d4edda] pt-24 pb-5 md:pt-28 md:pb-10 sm:py-28 px-5 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none opacity-40">
           <svg
             className="absolute top-6 left-6 w-40 h-40 text-white"
