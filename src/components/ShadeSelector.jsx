@@ -31,6 +31,8 @@ const finishes = [
   "Printed / Branded",
 ];
 
+
+
 // Image path based on selected shade
 // Example: Silver Grey -> /variant/silver-grey.webp
 const getShadeImage = (shade) => {
