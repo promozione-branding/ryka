@@ -20,7 +20,7 @@ const shades = [
   { name: "Orange", code: "1008 AC", color: "#F19A48", dark: "#CF7831" },
   { name: "Graphite", code: "1011 AC", color: "#454B50", dark: "#303438" },
   { name: "Teak", code: "1016 AC", color: "#A77C4F", dark: "#805B37" },
-  { name: "Wild Lime", code: "1024 AC", color: "#8cc63e", dark: "#25412F" },
+  // { name: "Wild Lime", code: "1024 AC", color: "#8cc63e", dark: "#25412F" },
   { name: "Ocean Blue", code: "1025 AC", color: "#003c95", dark: "#20445E" },
 ];
 
